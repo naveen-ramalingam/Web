@@ -1,7 +1,0 @@
-#EXTM3U
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=917e83062be1087fd26c2e3c81ce91d2:7fe42bac4f14e5396b334fd134e4cb38
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-#EXTINF:-1 tvg-id="895" tvg-name="TT" tvg-shift="1" tvg-logo="https://sund-images.sunnxt.com/194410/640x360_SunMusic_194410_d4d08876-9d23-432c-aab4-b5c70c58aaac.jpg" group-title="Test",Sun TTV
-https://livestream.sunnxt.com/585bb66e95c84ccea3f828c96b3567b5/SunMusicB_IN_index.mpd
