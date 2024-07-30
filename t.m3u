@@ -169,3 +169,409 @@ https://livestream.sunnxt.com/1893b9ab790747cb80a584873a608dcb/KochuTVB_IN_index
 #KODIPROP:inputstream.adaptive.license_key=https://play.denver1769.in/Sun.php?id=194347
 #EXTINF:-1 tvg-id="555" tvg-language="Kannada" tvg-logo="https://sund-images.sunnxt.com/194347/960x540_ChintuTV_194347_64af5425-0ed0-4c8a-b071-00ef86eaefde.jpg" group-title="Sun Nxt",Chintu TV
 https://livestream.sunnxt.com/ed4c67ad957644b69361651d9101107e/ChintuTVB_IN_index.mpd
+
+
+
+#EXTINF:-1 tvg-id="colorstamilhd.in" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/c1/Colors_Tamil_HD.jpg/revision/latest?cb=20180222170738" group-title="TAMIL",COLOR TAMIL HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=57
+
+#EXTINF:-1 tvg-id="ktvhd.in" tvg-logo="https://i.ibb.co/p4knk5y/images-4.png" group-title="TAMIL",KTV 4K
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=98893
+
+#EXTINF:-1 tvg-id="ktvhd.in" tvg-logo="" group-title="TAMIL",KTV (FHD)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=23318
+
+#EXTINF:-1 tvg-id="ktvhd.in" tvg-logo="" group-title="TAMIL",KTV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=160
+
+#EXTINF:-1 tvg-id="ktvhd.in" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/tv/150/150/bnw/ktv-HD-white.png" group-title="TAMIL",KTV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5900
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://vignette.wikia.nocookie.net/logopedia/images/1/16/K:TV:HD.jpg/revision/latest/scale-to-width-down/340?cb=20180317144717" group-title="TAMIL",KTV  FHD (usa)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5898
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://vignette.wikia.nocookie.net/logopedia/images/1/16/K:TV:HD.jpg/revision/latest/scale-to-width-down/340?cb=20180317144717" group-title="TAMIL",KTV FHD (IND)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5899
+
+#EXTINF:-1 tvg-id="suntvhd.in" tvg-logo="https://i.ibb.co/p4knk5y/images-4.png" group-title="TAMIL",SUNTV 4K
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=98899
+
+#EXTINF:-1 tvg-id="suntvhd.in" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/2/2a/HD.SUN.jpg/revision/latest/scale-to-width-down/340?cb=20180306135150" group-title="TAMIL",SUNTV (FHD)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=23320
+
+#EXTINF:-1 tvg-id="suntvhd.in" tvg-logo="" group-title="TAMIL",SUN TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=158
+
+#EXTINF:-1 tvg-id="suntvhd.in" tvg-logo="" group-title="TAMIL",SUN TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5921
+
+#EXTINF:-1 tvg-id="suntvhd.in" tvg-logo="https://www.smartads.in/resources/assets/uploads/product_group/Television/Sun-TV-HD-Logo.png" group-title="TAMIL",SUN TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5922
+
+#EXTINF:-1 tvg-id="suntvhd.in" tvg-logo="https://www.smartads.in/resources/assets/uploads/product_group/Television/Sun-TV-HD-Logo.png" group-title="TAMIL",SUN TV HD 
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5923
+
+#EXTINF:-1 tvg-id="sunmusichd.in" tvg-logo="https://i.ibb.co/p4knk5y/images-4.png" group-title="TAMIL",SUN-MUSIC 4K
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=98900
+
+#EXTINF:-1 tvg-id="sunmusichd.in" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWh7nKqPNpFt4Ykh-pzPQiCvEzTitpRbkLOg&usqp=CAU" group-title="TAMIL",SUN-MUSIC (FHD)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=23321
+
+#EXTINF:-1 tvg-id="sunmusichd.in" tvg-logo="" group-title="TAMIL",SUN MUSIC HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=159
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",SUN TV USA
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=76343
+
+#EXTINF:-1 tvg-id="sunmusichd.in" tvg-logo="" group-title="TAMIL",SUN MUSIC HD VIP (USA)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5920
+
+#EXTINF:-1 tvg-id="vijaysuper.in" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/9d/Star_Vijay_Super_2019.png/revision/latest/scale-to-width-down/200?cb=20210319232047" group-title="TAMIL",VIJAY SUPER HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1614
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/19/Vijay_musicBig.png/revision/latest?cb=20200217033512" group-title="TAMIL",VIJAY MUSIC
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=23869
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/Ftmf1oX.png" group-title="TAMIL",ZEE THIRAI HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=181966
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",Zee Thirai
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=144636
+
+#EXTINF:-1 tvg-id="sunlife.in" tvg-logo="http://2.bp.blogspot.com/-UhBQgmp7gyI/UCkbz25X2OI/AAAAAAAAA70/DbPoAqxWOB4/s1600/sun_life_manisat_com.png" group-title="TAMIL",SUN LIFE HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5919
+
+#EXTINF:-1 tvg-id="sunlife.in" tvg-logo="" group-title="TAMIL",SUN LIFE HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5918
+
+#EXTINF:-1 tvg-id="sunlife.in" tvg-logo="" group-title="TAMIL",SUN LIFE
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1612
+
+#EXTINF:-1 tvg-id="sunnews.in" tvg-logo="https://seeklogo.com/images/S/sun-news-logo-107E32491A-seeklogo.com.png" group-title="TAMIL",SUN NEWS
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1613
+
+#EXTINF:-1 tvg-id="sunnews.in" tvg-logo="" group-title="TAMIL",SUN NEWS
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5924
+
+#EXTINF:-1 tvg-id="polimernews.in" tvg-logo="" group-title="TAMIL",POLIMER NEWS
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5911
+
+#EXTINF:-1 tvg-id="polimernews.in" tvg-logo="" group-title="TAMIL",POLIMER NEWS
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=237
+
+#EXTINF:-1 tvg-id="polimertv.in" tvg-logo="" group-title="TAMIL",POLIMER TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=161
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://i.ibb.co/p4knk5y/images-4.png" group-title="TAMIL",VIJAY TV 4K
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=98898
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROOIKSnDTq5SwY84Bh4uMzNquSleZdK2SnAA&usqp=CAU" group-title="TAMIL",VIJAY TV (FHD)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9969
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/cf/Star_Vijay_HD_2017-0.png/revision/latest/scale-to-width-down/250?cb=20190715142233" group-title="TAMIL",STAR VIJAY INDIA FHD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5916
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/cf/Star_Vijay_HD_2017-0.png/revision/latest/scale-to-width-down/250?cb=20190715142233" group-title="TAMIL",STAR VIJAY HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=157
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/cf/Star_Vijay_HD_2017-0.png/revision/latest/scale-to-width-down/250?cb=20190715142233" group-title="TAMIL",VIJAY TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1634
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/cf/Star_Vijay_HD_2017-0.png/revision/latest/scale-to-width-down/250?cb=20190715142233" group-title="TAMIL",STAR VIJAY HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5915
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/cf/Star_Vijay_HD_2017-0.png/revision/latest/scale-to-width-down/250?cb=20190715142233" group-title="TAMIL",STAR VIJAY HD (Vip)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5917
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://i.ibb.co/p4knk5y/images-4.png" group-title="TAMIL",Zee Tamil 4K
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=98897
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/5d/Zee_Tamil.jpeg" group-title="TAMIL",Zee Tamil (FHD)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9971
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Tamil.png" group-title="TAMIL",ZEE TAMIL HD (USA)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5930
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://www.smartads.in/resources/assets/uploads/product_group/Television/Zee-Tamil-HD-Logo.png" group-title="TAMIL",ZEE TAMIL
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=225
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://i.ibb.co/p4knk5y/images-4.png" group-title="TAMIL",Colors Tamil 4K
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=98911
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://bestmediainfo.com/timthumb.php?src=/wp-content/uploads/2018/07/Colors_Tamil_HD_1.jpg&w=620&h=350&zc=1&q=100" group-title="TAMIL",Colors Tamil (FHD)
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9970
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/c1/Colors_Tamil_HD.jpg/revision/latest?cb=20180222170738" group-title="TAMIL",COLORS TAMIL HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5886
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",KAIRALI NEWS HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5896
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://127.0.0.1/" group-title="TAMIL",Kalaignar TV News
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5897
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://127.0.0.1/" group-title="TAMIL",Sathiyam Tv news
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=256457
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://e7.pngegg.com/pngimages/630/474/png-clipart-jaya-tv-television-channel-television-show-star-vijay-tv-news-television-logo.png" group-title="TAMIL",JAYA TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=188
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://www.logolynx.com/images/logolynx/2d/2da9869ee753c8bbaf5e5b7923d96c67.png" group-title="TAMIL",JAYA TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5895
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",JAYA MAX
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=240
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",JAYA PLUS
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1615
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",JAYA MOVIES
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1618
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://w7.pngwing.com/pngs/191/1020/png-transparent-vendhar-tv-television-channel-tamil-streaming-media-others-television-orange-logo.png" group-title="TAMIL",VENDHAR TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1624
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Vendhar_TV.png" group-title="TAMIL",VENDHAR TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5931
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/4/40/Raj_TV_Tamil.png" group-title="TAMIL",RAJ TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5913
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/4/40/Raj_TV_Tamil.png" group-title="TAMIL",RAJ TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1619
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/e3/Raj_Digital_Plus.jpeg/revision/latest/scale-to-width-down/300?cb=20191231195635" group-title="TAMIL",RAJ DIGITAL PLUS
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1616
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ef/News18_tamilnadu_logo.png/revision/latest/scale-to-width-down/170?cb=20191220041016" group-title="TAMIL",NEWS 18 TAMIL NADU HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5906
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",PUTHIYA THALAIMURAI TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5910
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/b/bf/Puthuyugam_TV.gif" group-title="TAMIL",PUTHU YUGAmM TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5912
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/7/74/Sirippoli_tv.jpg" group-title="TAMIL",SIRIPPOLI TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5932
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",MEGA TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=28141
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",MEGA 24
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=26163
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ef/Mega_Musiq.jpeg/revision/latest/scale-to-width-down/250?cb=20191224093201" group-title="TAMIL",MEGA MUSIQ
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=26164
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ed/Isai_Aruvi.jpeg/revision/latest/smart/width/250/height/250?cb=20191224121230" group-title="TAMIL",ISAI ARUVI
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=26165
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Malai_Murasu.png" group-title="TAMIL",MURASU TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=29086
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",D TAMIL
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=26162
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",TRAVEL XP
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9972
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTT9j-h-4CiDAqFZA2ijrp4jj8dPM10fve8GA&usqp=CAU" group-title="TAMIL",SONY BBC EARTH HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=222
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",NEWS 7 TAMIL HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5907
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",NEWS J
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5908
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Thanthi_TV.png" group-title="TAMIL",THANTHI TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=111034
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://127.0.0.1/" group-title="TAMIL",Sri Sankara TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=153205
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://www.lyngsat.com/logo/tv/nn/news-tamil-24x7-in.png" group-title="TAMIL",News Tamil 24x7
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=160589
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",PEPPERS TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5909
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",TAMIL VISION HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5926
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://127.0.0.1/" group-title="TAMIL",SRI SHANKARA TAMIL
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=36653
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://127.0.0.1/" group-title="TAMIL",CHITHIRAM
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=46743
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://127.0.0.1/" group-title="TAMIL",Chutti Tv
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=85931
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://www.pngitem.com/pimgs/m/193-1933662_news-7-tamil-hd-png-download.png" group-title="TAMIL",7 STAR TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5876
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",AASTHA TAMIL HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5877
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://banner2.cleanpng.com/20180525/fjr/kisspng-angel-tv-television-channel-high-definition-televi-videocon-d2h-5b08ada3f0f428.382478911527295395987.jpg" group-title="TAMIL",ANGEL TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5881
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://upload.wikimedia.org/wikipedia/en/9/95/Logo_of_Angel_TV.png" group-title="TAMIL",ANGEL TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=189
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",ANGEL TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5882
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://banner2.cleanpng.com/20180525/fjr/kisspng-angel-tv-television-channel-high-definition-televi-videocon-d2h-5b08ada3f0f428.382478911527295395987.jpg" group-title="TAMIL",ANGEL TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5883
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",DD PODHIGAI
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5887
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/tv/150/150/bnw/IBC-Comedy-new1-black.png" group-title="TAMIL",IBC COMEDY
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=1633
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",IBC CANADA HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5890
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",IBC COMEDY
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5891
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/tv/480/270/languages/IBC-Music_new1.jpg" group-title="TAMIL",IBC MUSIC HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5892
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",IBC TAMIL HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5894
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",MADHA TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5902
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",MAKKAL TV HD
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=5903
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/MK_TV.png" group-title="TAMIL",MK TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=37451
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://127.0.0.1/" group-title="TAMIL",MK Tunes
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=37452
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Kalaignar_TV.png" group-title="TAMIL",KALAIGNAR TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9018
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/b4/Adithya_TV.jpg/revision/latest?cb=20180318045832" group-title="TAMIL",ADITYA TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9019
+
+#EXTINF:-1 tvg-id="" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Vasanth_TV.png" group-title="TAMIL",VASANTH TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9020
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://www.dishpromotions.com/wp-content/uploads/JMOV-logo.png" group-title="TAMIL",J MOVIES
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9022
+
+#EXTINF:-1 tvg-id="" tvg-logo="" group-title="TAMIL",MALAI MURASU TV
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9023
+
+#EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/57/Raj_Musix_Tamil.jpeg/revision/latest?cb=20191227071716" group-title="TAMIL",RAJ MUSIX TAMIL
+#EXTVLCOPT:http-user-agent=Denver1769
+https://port.denver1769.in/Share5.php?id=9024
