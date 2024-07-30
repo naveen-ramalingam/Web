@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sun Nxt TV Channels</title>
+    <title>Tamil TV Channels</title>
     <!-- Load JW Player script -->
     <script src="https://cdn.jwplayer.com/libraries/your-jwplayer-library-id.js"></script>
     <style>
@@ -31,40 +31,33 @@
     </style>
 </head>
 <body>
-    <h1>Sun Nxt TV Channels</h1>
+    <h1>Tamil TV Channels</h1>
     <div class="player-container">
         <div id="my-jwplayer"></div>
     </div>
     <div>
-        <a href="#" class="channel-link" onclick="playChannel('https://livestream.sunnxt.com/248c92b73514435686fd72ba325d4008/SunNeoHDB_IN_index.mpd', 'https://play.denver1769.in/Sun.php?id=194389')">Sun Neo HD</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://livestream.sunnxt.com/05b5df1221764bca9867054c5e65ee62/SunTVB_IN_index.mpd', 'https://play.denver1769.in/Sun.php?id=194408')">Sun TV</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://livestream.sunnxt.com/19ee29194c4d4fc286c3e697362e60cd/SunTVHDB_IN_index.mpd', 'https://play.denver1769.in/Sun.php?id=194403')">Sun TV HD</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://livestream.sunnxt.com/b0aacde03b744564870634ecb10e8a31/SunMarathiB_IN_index.mpd', 'https://play.denver1769.in/Sun.php?id=194387')">Sun Marathi</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://livestream.sunnxt.com/d434796d90fa4dc9b7ecfacedbe683f1/SunMusicHDB_IN_index.mpd', 'https://play.denver1769.in/Sun.php?id=194406')">Sun Music HD</a>
+        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=37451')">MK TV</a>
+        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=37452')">MK Tunes</a>
+        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9018')">KALAIGNAR TV</a>
+        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9019')">ADITYA TV</a>
+        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9020')">VASANTH TV</a>
+        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9022')">J MOVIES</a>
+        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9023')">MALAI MURASU TV</a>
+        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9024')">RAJ MUSIX TAMIL</a>
     </div>
     <script>
-        const jwPlayerInstance = jwplayer("my-jwplayer").setup({
-            width: "100%",
-            aspectratio: "16:9",
-            // Initially empty
+        jwplayer("my-jwplayer").setup({
             file: "",
             image: "",
-            playlist: []
+            width: "100%",
+            aspectratio: "16:9"
         });
 
-        function playChannel(url, licenseKey) {
-            jwPlayerInstance.setup({
-                file: url,
-                drm: {
-                    widevine: {
-                        licenseUrl: licenseKey,
-                        clearKey: {
-                            key: 'YOUR_CLEARK_KEY'  // Set your ClearKey key here
-                        }
-                    }
-                }
+        function playChannel(url) {
+            jwplayer().load({
+                file: url
             });
-            jwPlayerInstance.play();
+            jwplayer().play();
         }
     </script>
 </body>
