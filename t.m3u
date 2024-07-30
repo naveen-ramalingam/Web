@@ -572,6 +572,773 @@ https://port.denver1769.in/Share5.php?id=9022
 #EXTVLCOPT:http-user-agent=Denver1769
 https://port.denver1769.in/Share5.php?id=9023
 
+
+
+
+
+
+
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://play.denver1769.in/KeyLelo.php?id=246
+#EXTINF:-1 tvg-id="ts246" tvg-logo="https://i.postimg.cc/Nfz7CWJp/image.jpg" group-title="Cricket",Star Sports Select 1
+https://play.denver1769.in/tp.mpd?id=246
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://play.denver1769.in/KeyLelo.php?id=463
+#EXTINF:-1 tvg-id="ts463" tvg-logo="https://img10.hotstar.com/image/upload/f_auto,q_90,w_256/sources/r1/cms/prod/7082/597082-h.jpg" group-title="Cricket",Star Sports Select 2
+https://play.denver1769.in/tp.mpd?id=463
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://play.denver1769.in/KeyLelo.php?id=78
+#EXTINF:-1 tvg-id="ts78" tvg-logo="https://img10.hotstar.com/image/upload/sources/r1/cms/prod/4942/1424942-a-6e211260a748.jpg" group-title="Cricket",Star Sports 1
+https://play.denver1769.in/tp.mpd?id=78
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://play.denver1769.in/KeyLelo.php?id=235
+#EXTINF:-1 tvg-id="ts235" tvg-logo="https://img10.hotstar.com/image/upload/sources/r1/cms/prod/4943/1424943-a-e3a5d328a913.jpg" group-title="Cricket",Star Sports 2
+https://play.denver1769.in/tp.mpd?id=235
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://play.denver1769.in/KeyLelo.php?id=24
+#EXTINF:-1 tvg-id="ts24" tvg-logo="https://mediaready.videoready.tv/tatasky-epg/image/fetch/f_auto,fl_lossy,q_auto,dpr_6.75,w_40/https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/imageContent-60-j5fdr6a0-v1/imageContent-60-j5fdr6a0-m1.png" group-title="Sports",Star Sports 1 Hindi HD
+https://play.denver1769.in/tp.mpd?id=24
+
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://i.postimg.cc/65v3BvQ6/IMG-20240518-182510.jpg",Stat 4K
+#EXTVLCOPT:http-user-agent=Mozilla/5.0
+http://port.denver1769.in/j.php?tv=18855
+
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://img10.hotstar.com/image/upload/sources/r1/cms/prod/4951/1424951-a-eda1818aa83d.jpg",Tamil
+#EXTVLCOPT:http-user-agent=Mozilla/5.0
+http://port.denver1769.in/j.php?tv=363
+
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://img10.hotstar.com/image/upload/sources/r1/cms/prod/4952/1424952-a-5e13c7b9ff28.jpg",Telugu
+#EXTVLCOPT:http-user-agent=Mozilla/5.0
+http://port.denver1769.in/j.php?tv=8457
+
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://i.postimg.cc/htrRtFpc/image.jpg",Kannada 
+#EXTVLCOPT:http-user-agent=Mozilla/5.0
+http://port.denver1769.in/j.php?tv=8469
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=824
+#EXTINF:-1 group-title="Cricket" tvg-id="824" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png",Astro Cricket HD
+https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=825
+#EXTINF:-1 group-title="Cricket" tvg-id="827" tvg-logo="https://te.legra.ph/file/a4161fec63c07a3e5e726.jpg",Astro Cricket Plus
+https://linear05-playback.sooka.my/CH2/masterCH2.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=828
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://i.postimg.cc/k4F8Dkhv/Screenshot-2024-01-15-23-25-24-69-1c337646f29875672b5a61192b9010f9.jpg",Willow Cricket HD
+https://linear-novi.stvacdn.spectrum.com/LIVE/5248/bpk-tv/10364/drm/manifest.mpd
+
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://media.info/i/lf/0/1507600280/1134.png",Sky Sports Cricket
+#EXTVLCOPT:http-user-agent=Mozilla/5.0
+http://port.denver1769.in/j.php?tv=878
+
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://media.info/i/lf/0/1507600280/1134.png",Sky Sports Cricket
+#EXTVLCOPT:http-user-agent=XCIPTV-v5.0.1
+https://port.denver1769.in/oplx2.php?id=167594
+
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://seeklogo.com/images/S/Super_Sport-logo-3B6B403F2C-seeklogo.com.png",Super Sports Cricket
+#EXTVLCOPT:http-user-agent=Mozilla/5.0
+http://port.denver1769.in/j.php?tv=5021
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=898
+#EXTINF:-1 tvg-id="ts78" tvg-logo="https://i.postimg.cc/8Pmfhntd/Screenshot-2024-06-01-13-34-54-85-40deb401b9ffe8e1df2f1cc5ba480b12.jpg" group-title="Cricket",Cric Life 2
+#https://live2.shoq.com.pk/live/eds/Criclife2/DASH/Criclife2.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=899
+#EXTINF:-1 tvg-id="ts78" tvg-logo="https://d3hhg1rtk1dmrv.cloudfront.net/dialogdigitizationservices/productcatalogue/dtv/4/010.png" group-title="Cricket",TV1
+#https://live2.shoq.com.pk/live/eds/Criclife2/DASH/Criclife2.mpd
+
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=897
+#EXTINF:-1 tvg-id="ts78" tvg-logo="https://i.postimg.cc/9XJjZdyR/Screenshot-2024-06-01-13-33-36-44-40deb401b9ffe8e1df2f1cc5ba480b12.jpg" group-title="Cricket",PTV SPORTS
+https://live4.shoq.com.pk/live/eds/PTV_Sports/DASH/PTV_Sports.mpd
+
+#EXTINF:-1 tvg-id="1033" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Sports18_1_HD.png" group-title="Sports",Sports18 1 HD
+https://prod-ent-live-gm.jiocinema.com/bpk-tv/JC_Sports18_1HD/JCHLS/index.m3u8
+
+
+#EXTINF:-1 tvg-id="1998" group-title="Sports" tvg-language="Hindi" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Sports18_Khel.png",SPORTS 18 Khel
+https://prod-sports-hin-fa.jiocinema.com/bpk-tv/Sports18_Khel_voot_MOB/Fallback/index.m3u8
+
+#EXTINF:-1 group-title="Sports" tvg-language="Hindi" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/jc_sports_horizontal_tray-1695561700528.jpg",JC Sports 24x7
+https://prod-sports-hin-fa.jiocinema.com/bpk-tv/JC_Sports_24x7_IDC/Fallback/index.m3u8
+
+#EXTINF:-1 group-title="Sports" tvg-language="Hindi" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/sports_zone_cricket_horizontal-1695032322122.jpg",JC CricStream
+https://prod-sports-hin-fa.jiocinema.com/bpk-tv/JV_SportsHD15_DIG_MOB/Fallback/index.m3u8
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=849
+#EXTINF:-1 group-title="Sports" tvg-id="849" tvg-logo="https://i.postimg.cc/c1c1CB5x/image.jpg",Astro Arena HD
+https://linearjitp-playback.astro.com.my/dash-wv/linear/2604/default.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=868
+#EXTINF:-1 group-title="Sports" tvg-id="868" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ72VAmvKxUnMQg2OiiaqPDTUW2iTVOlm6fg&usqp=CAU",Astro Arena 801
+https://linearjitp-playback.astro.com.my/dash-wv/linear/2604/default_ott.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=869
+#EXTINF:-1 group-title="Sports" tvg-id="869" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/63/Astro_Arena_2.png",Astro Arena 2
+https://linearjitp-playback.astro.com.my/dash-wv/linear/5057/default.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=870
+#EXTINF:-1 group-title="Sports" tvg-id="870" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/55/Astro_Arena_Bola.png",Astro Arena Bola
+https://d1fk7kbmz4il3.cloudfront.net/CH1/masterCH1.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=871
+#EXTINF:-1 group-title="Sports" tvg-id="871" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/1/17/Astro_Arena_Bola_2.png",Astro Arena Bola 2
+https://d1fk7kbmz4il3.cloudfront.net/CH5/masterCH5.mpd
+
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=872
+#EXTINF:-1 group-title="Sports" tvg-id="872" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Astro_Arena_Bola_3_logo.png/1200px-Astro_Arena_Bola_3_logo.png",Astro Arena Bola 3
+https://d1fk7kbmz4il3.cloudfront.net/CH3/masterCH3.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=890
+#EXTINF:-1 group-title="Sports" tvg-id="872" tvg-logo="https://i.postimg.cc/7Z5s67ys/Screenshot-2024-05-08-13-59-33-68-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",Astro Arena Bola 4
+https://linearjitp-playback.astro.com.my/dash-wv/linear/5102/default.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=850
+#EXTINF:-1 group-title="Sports" tvg-id="850" tvg-logo="https://i.postimg.cc/fTt5LPC6/IMG-20240115-231703.jpg",ASTRO SuperSports UHD
+https://staging-linearjitp-playback.astro.com.my/dash-wv/linear/1601/default_primary.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=863
+#EXTINF:-1 group-title="Sports" tvg-id="863" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/154_144.png",ASTRO SuperSports HD 1
+https://d3j4fjrwclc3o8.cloudfront.net/CH1/masterCH1.mpd"
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=864
+#EXTINF:-1 group-title="Sports" tvg-id="864" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/138_144.png",ASTRO SuperSports HD 2
+https://d3j4fjrwclc3o8.cloudfront.net/CH4/masterCH4.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=865
+#EXTINF:-1 group-title="Sports" tvg-id="865" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/164_144.png",ASTRO SuperSports HD 3
+https://d3j4fjrwclc3o8.cloudfront.net/CH5/masterCH5.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=866
+#EXTINF:-1 group-title="Sports" tvg-id="866" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/241_144.png",ASTRO SuperSports HD 4
+https://linearjitp-playback.astro.com.my/dash-wv/linear/2506/default.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=867
+#EXTINF:-1 group-title="Sports" tvg-id="867" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/508_144.png",ASTRO PREMIER
+http://linearjitp-playback.astro.com.my/dash-wv/linear/2601/default.mpd
+
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00053ac1e9b1231eed3eb4e3540b3ae1:0f03d8541826af3d9acbac975d751165
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://media.info/i/lf/0/1507600280/1134.png",Sky Sports Cricket
+https://test.ddnetwork.workers.dev/index.mpd?kid=00053ac1e9b1231eed3eb4e3540b3ae1&ch=https://linear007-gb-dash1-prd-ak.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(skysportscricket)/manifest_720-120.mpd|X-Forwarded-For=38.54.2.195
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0005c37ab85893a379c1e1e5ed60fcf0:b60a9aa6c55026adfc3f47136ce64924
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/gcD18jC3/Screenshot-2024-01-15-23-37-45-31-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",Sky Sports Football
+https://test.ddnetwork.workers.dev/index.mpd?kid=0005c37ab85893a379c1e1e5ed60fcf0&ch=https://linear014-gb-dash1-prd-ak.cdn.skycdp.com/Content/DASH_003_720_120/Live/channel(skysportsfootball)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00058832b1c058c3de8b5d118cc775d4:721345f25729d236d6bb317fce797b77
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/KcHr6yLd/IMG-20240115-234207.jpg",Sky Sports Premier League
+https://test.ddnetwork.workers.dev/index.mpd?kid=00058832b1c058c3de8b5d118cc775d4&ch=https://linear034-gb-dash1-prd-ll.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(skysportspremierleague)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0005c0635a06a943911f666abcef3923:749cae7fc7f350be6ba7400f11150ea9
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/rpVh9Xvz/Screenshot-2024-01-15-23-43-07-39-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",Sky Sports F1
+https://test.ddnetwork.workers.dev/index.mpd?kid=0005c0635a06a943911f666abcef3923&ch=https://linear034-gb-dash1-prd-ak.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(skysportsf1)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0005f065b6b710a9d4769fb357e2027b:f26593b44feb0a043b1d6e090ce27a75
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/cC3yNG10/Screenshot-2024-01-15-23-46-09-82-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",Sky Sports Golf
+https://test.ddnetwork.workers.dev/index.mpd?kid=0005f065b6b710a9d4769fb357e2027b&ch=https://linear034-gb-dash1-prd-ak.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(skysportsgolf)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=000546476256963bd054ded3b6ae5800:1e497068bcc078fdb2f4296bc400ca2b
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/c4VyTHmC/Screenshot-2024-01-15-23-45-23-74-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",Sky Sports Main Event
+https://test.ddnetwork.workers.dev/index.mpd?kid=000546476256963bd054ded3b6ae5800&ch=https://linear015-gb-dash1-prd-ak.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(skysportsmainevent)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00052237a76cdb0eb5fcbccf4c16f658:4e42c0a0ecf6e534426fbb21525c1911
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/gk4L6Cqg/Screenshot-2024-01-15-23-44-03-67-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",Sky Sports Mix
+https://test.ddnetwork.workers.dev/index.mpd?kid=00052237a76cdb0eb5fcbccf4c16f658&ch=https://linear034-gb-dash1-prd-ak.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(skysportsmix)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=000516903d55e9706d1661c489ee94da:acf37edb85d8a99a8cfb8ed5e3e9acf2
+#EXTINF:-1 group-title="Sports" tvg-logo="https://skymediaglobal.b-cdn.net/wp-content/uploads/2020/09/Sky-Sports-Arena-2020-logo-250.png",Sky Sports Arena
+https://test.ddnetwork.workers.dev/index.mpd?kid=000516903d55e9706d1661c489ee94da&ch=http://linear031-gb-dash1-prd-ak.cdn.skycdp.com/Content/DASH_003_720_120/Live/channel(skysportsarena)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=000397ec797bffa6a7d2f5f14bf3f90b:644bb73f541fb127d218ddfc0fccb38f
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/k4Y2WYYV/image.png",Sky Sports Action
+https://test.ddnetwork.workers.dev/index.mpd?kid=000397ec797bffa6a7d2f5f14bf3f90b&ch=https://linear034-gb-dash1-prd-ak.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(skysportsaction)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=
+00032023ad4896139b22a071d6c1183c:e0c6c1454bb792b843f085be9999c9da
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/Zn4F75r9/image.jpg",Sky Sports Tennis
+https://test.ddnetwork.workers.dev/index.mpd?kid=00032023ad4896139b22a071d6c1183c&ch=https://linear014-gb-dash1-prd-ak.cdn.skycdp.com/Content/DASH_003_720_120/Live/channel(skysportstennis)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0036ea2e908d4cc20ef08595da9ff991:08e1ae9fa0ee4d9ec2b194c4908613ae
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/d3z9vjCf/image.png",Sky Sports Moto GP
+https://test.ddnetwork.workers.dev/index.mpd?kid=0036ea2e908d4cc20ef08595da9ff991&ch=https://linear306-it-dash1-prd.selector.skycdn.it/016a/31483/FHD/skysportmotogp/master.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00057bfb9cf2fc40b5ed61f9c8a41d54:cb9908093e35e3c3f7db06f55913cce0
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/6qhcCwVt/image.png",Sky Sports News
+https://test.ddnetwork.workers.dev/index.mpd?kid=00057bfb9cf2fc40b5ed61f9c8a41d54&ch=http://linear031-gb-dash1-prd-ak.cdn.skycdp.com/Content/DASH_003_720_120/Live/channel(skysportsnews)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=887
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/Kvt7ktrF/sky-sport-max-it.png",Sky Sports Max
+https://test.ddnetwork.workers.dev/index.mpd?kid=0036a901e6f0381cfd1b6fcf10cc6038&ch=https://linear304-it-dash1-prd-akg0.cdn13.skycdp.com/31248/FHD/skysportmax/master.mpd
+
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=dash
+#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
+#KODIPROP:inputstream.adaptive.license_key=0036dc70e4d659fe5ae57b52793a1ff3:55517f806b6be917c2bf0e9cf9acc44f
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/8c4dcjzH/Screenshot-2024-01-15-23-47-29-15-40deb401b9ffe8e1df2f1cc5ba480b12.jpg", tvg-id="ksport1hd" group-title="Sports", SKY SPORT Uno
+https://test.ddnetwork.workers.dev/index.mpd?kid=0036dc70e4d659fe5ae57b52793a1ff3&ch=https://linear301-it-dash1-prd-akg0.cdn13.skycdp.com/016a/31023/FHD/skysportuno/master_stereo.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=837
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/66RZfCPg/Screenshot-2024-01-15-22-01-44-34-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",TNT Sports 1
+https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/wf8usag51e/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=838
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/rsYyzsV2/Screenshot-2024-01-15-23-11-32-86-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",TNT Sports 2
+https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/f0qvkrra8j/out/v1/f8fa17f087564f51aa4d5c700be43ec4/cenc.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=839
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/NFWhWHGF/Screenshot-2024-01-15-23-12-20-61-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",TNT Sports 3
+https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/lsdasbvglv/out/v1/bb548a3626cd4708afbb94a58d71dce9/cenc.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=840
+#EXTINF:-1 group-title="Sports" tvg-logo="https://media.info/i/lf/600/1690027975/1491.png",TNT Sports 4
+https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/i2pcjr4pe5/out/v1/912e9db56d75403b8a9ac0a719110f36/cenc.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=877
+#EXTINF:-1 group-title="Sports" tvg-logo="https://dnl.tntsports.co.uk/sd/img/structured-data/tntsports.jpg",TNT Sports 5
+https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/gesdwrdncn/out/v1/79e752f1eccd4e18b6a8904a0bc01f2d/cenc.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=853
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/fRQZDKPD/Screenshot-2024-01-16-00-15-58-24-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",FOX SPORTS 1 HD
+https://linear-novi.stvacdn.spectrum.com/LIVE/1166/dash/cenc/SPEEDHD/manifest.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=854
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/sxZdRQ9M/Screenshot-2024-01-16-00-17-06-62-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",FOX SPORTS 2 HD
+https://linear-novi.stvacdn.spectrum.com/LIVE/1108/dash/cenc/FS2HD_00564/manifest.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=875
+#EXTINF:-1 group-title="Sports" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Fox_Soccer_Plus_logo.svg/1200px-Fox_Soccer_Plus_logo.svg.png",FOX SPORTS Soccer
+https://linear.stvacdn.spectrum.com/LIVE/1143/dash/cenc/FSCPLHD/manifest.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=855
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/bN9jwLTH/Screenshot-2024-01-15-23-35-03-09-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",WWE HD
+https://linearjitp02-playback.astro.com.my/dash-wv/linear/2603/default.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=eb4b504ae8015e149965a48cfff9418e:b67881cf246e6c7ef8a3db7491c5b036
+#EXTINF:-1 group-title="Sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9DxkmyztdYq_WmP-yqwbN34ChSC_D6P78hA&usqp=CAU",TENNIS CHANNEL
+https://director.streaming.telia.com/tvm-packager-prod/group2/60ae45e51522bd66f469461b/manifest.mpd
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9DxkmyztdYq_WmP-yqwbN34ChSC_D6P78hA&usqp=CAU",TENNIS 2
+https://tennischannel-intl-samsung-uk.amagi.tv/playlist.m3u8
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=878
+#EXTINF:-1 group-title="Sports" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8c/PS_Logo_STACKED_4.png",PREMIER Sports HD
+http://linearjitp02-playback.astro.com.my/dash-wv/linear/2601/default.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=879
+#EXTINF:-1 group-title="Sports" tvg-logo="http://linear-poster.astro.com.my/prod/logo/PremierSports.png",PREMIER Sports 1 HD
+https://test.ddnetwork.workers.dev/index.mpd?kid=0005b3dba78ae0fe7a9288022d3b3736&ch=https://linear034-ie-dash1-prd-ll.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(premiersports1)/manifest_720-120.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=880
+#EXTINF:-1 group-title="Sports" tvg-logo="http://linear-poster.astro.com.my/prod/logo/PremierSports.png",PREMIER Sports 2 HD
+https://test.ddnetwork.workers.dev/index.mpd?kid=0005d61a0ac86aca28176591b21ae2d9&ch=https://linear033-ie-dash1-prd-ak.cdn.skycdp.com/016a/Content/DASH_003_720_120/Live/channel(premiersports2)/manifest_720.mpd
+
+
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=858
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/CxMW7QBP/Screenshot-2024-01-16-00-22-20-26-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",SPOTV 1 HD
+https://linearjitp-playback.astro.com.my/dash-wv/linear/5058/default.mpd|X-Forwarded-For=38.54.2.195
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=5efd26da5001363b4d6fa4a9c812ad10:ed6d67d953d14b026b2602cf8846577e
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/7hyR2srN/Screenshot-2024-01-16-00-23-15-15-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",SPOTV 2 HD
+https://linearjitp02-playback.astro.com.my/dash-wv/linear/5079/default_ott.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key={ "keys":[ { "kty":"oct", "k":"6o+kPMcQLkgc1EHFiy7LCA", "kid":"58ZQrHLc0DEUEYMqgnG7EA" } ], "type":"temporary" }
+#EXTINF:-1 tvg-logo="http://linear-poster.astro.com.my/prod/logo/SPOTV-STADIA.png" group-title="Sports",SPOTV Stadia
+https://linearjitp-playback.astro.com.my/dash-wv/dashiso/5148/default_primary.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key={ "keys":[ { "kty":"oct", "k":"1nOa7mx2dBdjmS03zGbxuA", "kid":"964dxxzFj7h2tOZZF0+cEA" } ], "type":"temporary" }
+#EXTINF:-1 tvg-logo="https://linear-poster.astro.com.my/prod/logo/SPOTV2-STADIA.png" group-title="Sports",SPOTV 2 Stadia
+https://linearjitp-playback.astro.com.my/dash-wv/dashiso/5149/default_primary.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=860
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/28SJpSRQ/Screenshot-2024-01-21-13-30-15-22-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",beIN Sports HD
+https://linearjitp-playback.astro.com.my/dash-wv/linear/408/default.mpd|X-Forwarded-For=38.54.2.195
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=874
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/g28PtTG3/Screenshot-2024-01-16-00-28-21-00-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",beIN Sports 1
+https://cdn08jtedge.indihometv.com/dassdvr/133/beib1/manifest-Denver.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=861
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/DfNkvTZq/Screenshot-2024-01-16-00-29-11-78-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",beIN Sports 2
+https://linearjitp-playback.astro.com.my/dash-wv/linear/5066/default.mpd|X-Forwarded-For=38.54.2.195
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=862
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/VsJsB40W/Screenshot-2024-01-16-00-29-47-91-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",beIN Sports 3
+https://linearjitp-playback.astro.com.my/dash-wv/linear/2705/default.mpd|X-Forwarded-For=38.54.2.195
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=873
+#EXTINF:-1 group-title="Cricket" tvg-logo="https://i.ibb.co/zhr5RgC/Cric-streaming-tencric.png",Ten Cricket
+https://bpcdn.dialog.lk/bpk-tv/Ch065/output/index.mpd
+
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/Ssfqy6LT/Screenshot-2024-01-21-13-51-18-90-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",Fifa
+https://38ca3c9c.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1nYl9GSUZBUGx1c19ITFM/playlist.m3u8
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/pdbLTP7p/image.png",ESPN 1
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/05fn0Q01/Screenshot-2024-01-21-16-39-47-85-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",ESPN 2
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.postimg.cc/L5bZQrsL/Screenshot-2024-01-21-16-40-16-26-40deb401b9ffe8e1df2f1cc5ba480b12.jpg",ESPN 3
+
+#EXTINF:-1 tvg-id="162" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Ten_HD.png" group-title="Sports",SONY TEN 1 HD
+https://dai.google.com/ssai/event/yeYP86THQ4yl7US8Zx5eug/master.m3u8
+
+#EXTINF:-1 tvg-id="514" tvg-logo="https://sonypicturesnetworks.com/images/logos/SONY_SportsTen1_SD_Logo_CLR.png" group-title="Sports",SONY TEN 1
+https://dai.google.com/ssai/event/4_pnLi2QTe6bRGvvahRbfg/master.m3u8
+
+#EXTINF:-1 tvg-id="891" tvg-logo="https://sonypicturesnetworks.com/images/logos/SONY_SportsTen2_HD_Logo_CLR.png" group-title="Sports",SONY TEN 2 HD
+https://dai.google.com/ssai/event/Syu8F41-R1y_JmQ7x0oNxQ/master.m3u8
+
+#EXTINF:-1 tvg-id="523" tvg-logo="https://sonypicturesnetworks.com/images/logos/SONY_SportsTen2_SD_Logo_CLR.png" group-title="Sports",SONY TEN 2
+https://dai.google.com/ssai/event/nspQRqO5RmC06VmlPrTwkQ/master.m3u8
+
+#EXTINF:-1 tvg-id="892" tvg-logo="https://sonypicturesnetworks.com/images/logos/SONY_SportsTen3_HD_Logo_CLR.png" group-title="Sports",SONY TEN 3 HD
+https://dai.google.com/ssai/event/nmQFuHURTYGQBNdUG-2Qdw/master.m3u8
+
+#EXTINF:-1 tvg-id="524" tvg-logo="https://sonypicturesnetworks.com/images/logos/SONY_SportsTen3_SD_Logo_CLR.png" group-title="Sports",SONY TEN 3
+https://dai.google.com/ssai/event/9kocjiLUSf-erlSrv3d4Mw/master.m3u8
+
+#EXTINF:-1 tvg-id="1772" tvg-logo="https://www.sonypicturesnetworks.com/images/logos/SONY_SportsTen4_HD_Logo_CLR.png" group-title="Sports",SONY TEN 4 HD
+https://dai.google.com/ssai/event/x4LxWUcVSIiDaq1VCM7DSA/master.m3u8
+
+#EXTINF:-1 tvg-id="1773" tvg-logo="https://www.sonypicturesnetworks.com/images/logos/SONY_SportsTen4_HD_Logo_CLR.png" group-title="Sports",SONY TEN 4
+https://dai.google.com/ssai/event/hInaEKUJSziZAGv9boOdjg/master.m3u8
+
+#EXTINF:-1 tvg-id="155" tvg-logo="https://www.sonypicturesnetworks.com/images/logos/SONY_SportsTen5_HD_Logo_CLR.png" group-title="Sports",SONY TEN 5 HD
+https://dai.google.com/ssai/event/DD7fA-HgSUaLyZp9AjRYxQ/master.m3u8
+
+#EXTINF:-1 tvg-id="525" tvg-logo="https://www.sonypicturesnetworks.com/images/logos/SONY_SportsTen5_HD_Logo_CLR.png" group-title="Sports",SONY TEN 5
+https://dai.google.com/ssai/event/S-q8I27RRzmkb-OIdoaiAw/master.m3u8
+
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=https://denver1769.in/TP/key.php?id=888
+#EXTINF:-1 tvg-id="ts812" tvg-logo="https://i.postimg.cc/L5vQY5Mt/14-Eurosport-HD.png" group-title="Sports",Eurosport HD
+http://linearjitp-playback.astro.com.my/dash-wv/linear/2100/default_ott.mpd
+
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b7/Astro_Cricket.png",Astro Cricket
+https://port.denver1769.in/oplx3.php?id=167581
+
+#EXTINF:-1 tvg-name="A Sports" tvg-logo="http://stariptv.fun/logos/asportshd.png" group-title="Sports",A Sports 4k
+https://port.denver1769.in/oplx3.php?id=219689
+
+#EXTINF:-1 tvg-logo="https://cdn.imgbin.com/2/7/1/imgbin-logo-ptv-sports-television-channel-pakistan-cricket-8YvzSP5MmbjMiT27N1RsitE0D.jpg" group-title="Sports",PTV SPORTS
+https://port.denver1769.in/oplx3.php?id=167567
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdsSGRuYLYMYwAWMitSAiG9yR1apQ5jtBpNg&usqp=CAU",Fox Cricket
+https://port.denver1769.in/oplx3.php?id=167593
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz2YE2gNBgYRoWcmaxiy_sN49t9oyuzcvU4w&usqp=CAU" group-title="Sports",Starz Play Cric life 1
+https://port.denver1769.in/Share2.php?id=122979
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz2YE2gNBgYRoWcmaxiy_sN49t9oyuzcvU4w&usqp=CAU" group-title="Sports",Starz Play Cric life 2
+https://port.denver1769.in/Share2.php?id=122980
+
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz2YE2gNBgYRoWcmaxiy_sN49t9oyuzcvU4w&usqp=CAU" group-title="Sports",Starz Play Cric life 3
+https://port.denver1769.in/Share2.php?id=158898
+
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz2YE2gNBgYRoWcmaxiy_sN49t9oyuzcvU4w&usqp=CAU" group-title="Sports",Starz Play Cric life 4
+https://port.denver1769.in/Share2.php?id=158897
+
+#EXTINF:-1 tvg-logo="https://www.lyngsat.com/logo/tv/ss/supersport-cricket-za.png" group-title="Sports",SUPER SPORTS CRICKET (4K)
+http://port.denver1769.in/j.php?tv=5021
+
+#EXTINF:-1 tvg-logo="https://seeklogo.com/images/S/Super_Sport-logo-3B6B403F2C-seeklogo.com.png" group-title="Sports",SUPER SPORTS CRICKET
+http://port.denver1769.in/j.php?tv=5009
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://i.ibb.co/8dQ1yxs/download.jpg",Sky Sports F1
+http://port.denver1769.in/j.php?tv=881
+
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sky_Sport_Football_-_Logo_2018.svg/1280px-Sky_Sport_Football_-_Logo_2018.svg.png" group-title="Sports",SKY SPORTS FOOTBALL
+http://port.denver1769.in/j.php?tv=899
+
+#EXTINF:-1 tvg-logo="http://stariptv.fun/logos/skysportspremierleaguehd.png" group-title="Sports",Sky Sports Premier League HD
+http://port.denver1769.in/j.php?tv=7887
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://media.info/i/lf/0/1507600280/1134.png",Sky Sports Cricket
+https://port.denver1769.in/oplx3.php?id=167594
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://media.info/i/lf/0/1507600280/1134.png",Sky Sports Cricket 4k
+http://port.denver1769.in/j.php?tv=8345
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://media.info/i/lf/0/1507600280/1134.png",Sky Sports Cricket 4k
+http://port.denver1769.in/j.php?tv=878
+
+#EXTINF:-1 tvg-id="ts246" group-title="Sports" tvg-language="English" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_Select_HD_1.png",Star Sports Select 1 HD (4K).
+https://port.denver1769.in/oplx3.php?id=355596
+
+#EXTINF:-1 tvg-id="ts246" group-title="Sports" tvg-language="English" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_Select_HD_1.png",Star Sports Select 1 HD (FHD)
+http://port.denver1769.in/j.php?tv=801
+
+#EXTINF:-1 tvg-id="ts463" group-title="Sports" tvg-language="English" tvg-logo="https://a.rstream.me/images/t/yTiRZUJMgP.png",START SPORTS SELECT 2 (4K).
+http://port.denver1769.in/j.php?tv=362
+
+#EXTINF:-1 tvg-id="ts463" group-title="Sports" tvg-language="English" tvg-logo="https://a.rstream.me/images/t/yTiRZUJMgP.png",START SPORTS SELECT 2 (FHD)
+https://port.denver1769.in/oplx3.php?id=355597
+
+#EXTINF:-1 tvg-id="ts78" group-title="Sports" tvg-language="English" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_HD_1.png",Star Sports 1 (4K)
+https://port.denver1769.in/oplx3.php?id=109987
+
+#EXTINF:-1 tvg-id="ts78" group-title="Sports" tvg-language="English" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_HD_1.png",Star Sport 1 HD
+http://port.denver1769.in/j.php?tv=364
+
+#EXTINF:-1 tvg-id="ts78" group-title="Sports" tvg-language="English" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_HD_1.png",Star Sport 1 HD
+http://port.denver1769.in/dd.php?tv=669
+
+#EXTINF:-1 tvg-id="ts24" group-title="Sports" tvg-language="Hindi" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_3.png",Star Sports Hindi 1 FHD
+http://port.denver1769.in/j.php?tv=365
+
+#EXTINF:-1 tvg-id="ts24" group-title="Sports" tvg-language="Hindi" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_3.png",Star Sports Hindi 1 HD
+https://port.denver1769.in/oplx3.php?id=167573
+
+#EXTINF:-1 tvg-id="ts24" group-title="Sports" tvg-language="Hindi" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_3.png",Star Sports Hindi 1
+http://port.denver1769.in/j.php?tv=14790
+
+#EXTINF:-1 tvg-id="ts235" group-title="Sports" tvg-language="English" tvg-logo="http://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Sports_HD_2.png",Star Sports 2 (4K)
+https://port.denver1769.in/oplx3.php?id=167576
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5s3zazJhUP2l1t5r6IVMuQbt3e6TnWVNiSMp3fpZLrXiTSzFQphL3N9Y&s=10" group-title="Sports",Star Sports 3
+https://port.denver1769.in/oplx3.php?id=167577
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRYDaxckY5oNL_ciFgsL8Dca8rtsczMfjTGIVrUqqr3rVHdLUNa-4V7EDQ&s=10" group-title="Sports",Star Sports Tamil
+https://port.denver1769.in/oplx3.php?id=167574
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWwVhb6HvEGcAsqFAjoMSF47u2xX4teh03i6nJewjlCu72Bo9AFdw7DJXS&s=10" group-title="Sports",Star Sports Telugu
+http://port.denver1769.in/dd.php?tv=23994
+
+#EXTINF:-1 group-title="Sports" tvg-language="Hindi" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Eurosport_Logo_2015.svg/800px-Eurosport_Logo_2015.svg.png",EUROSPORTS (4K).
+http://port.denver1769.in/j.php?tv=379
+
+#EXTINF:-1 group-title="Sports" tvg-language="Hindi" tvg-logo="https://upload.wikimedia.org/wikipedia/en/d/d3/Willow_Cricket.PNG",WILLOW CRICKET.
+https://port.denver1769.in/oplx3.php?id=167583
+
+#EXTINF:-1 group-title="Sports" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdEsKtEMCnmP8oBbAU6dBUH3qy-Z0wSsT3HA&usqp=CAU",Willow Cricket Extra HD 
+http://port.denver1769.in/dd.php?tv=5676
+
+
+
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020c8f2c972400f9bb815a63d5981c8:22a841f67bba4ee9a9c0496782b9f670
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Best of Paris Premium HD
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc101if3w3)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002029fcdaae2385eedf0fd9332c3c90:33b97956f316d0b65e9fd28888e7c7a9
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Dateline 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc112xzr75)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020c970519e635452e81e2496c919ca:87114e92d957670e78e6d38113c340c5
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Hallmark Channel HD
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc130gttyz)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002068abf577c8d929c7f9954381d2c7:0b867154899ea5f9e0175cc0a3c794cc
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NBC NEWS NOW 
+https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc102s5icf)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020d88a6713159839743f655c5da7de:ba9f34226301f69a4f0f13f65a1f92ec
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NBC Sports on Peacock 
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc122ycnuy)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00207278b6ffcd0509d22d9cc88b0dbc:bfc50c28b15c2820b80e68a49ff26976
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",REELZ HD
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc136p5w66)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020441738b197a02c0e5cd63df71fd8:5ebcc56b9cd51e6f4fbbb28990dff3ab
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",That 70s Show - Linear HD
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc110k6s0r)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020114fe7af66d3597d3142118ba726:9f0a93a10317ad6a13d9ff9d0ce3c6de
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",SNL Vault 
+https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc103ce13q)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020be41438d79a614ad87270e641598:29cad8bd3fbbf5909792d4f92cf3ba59
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",LOL 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc1224oy9g)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020a0d619f477cebf6ead8dce2ca663:f7956505953f8d205bd115d81ba60938
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",This Old House 
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc1171rbo9)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00209d759e643e8d4b0dafa5c9937eaa:88c91f003f8cd5cc6502489f9b139133
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Nosey 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc13333fsc)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020ff1bb25785a5f99720c82dbc6115:d657d77fcf20ad2dafa7ea6dac4c578b
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Confess by Nosey 
+https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc1061vjor)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020e77e0f75070a0b504fa69f65e3b7:cec1b5e92b8358141585e66775184ab7
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Love Nature HD
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc135mf424)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020283ab8e5d2f36f3652f7c2338c57:b02e021c2d46c4ecf4214e239eb4b0e4
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",MovieSphere by Lionsgate HD
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc137ld1mh)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00203ffc3dd556b6fa75245f235758eb:4d738f2d8ed3b6ede907b59bd7adbf99
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Ghost Hunters Channel HD
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc1397yzck)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00204fad3935b123c2bc3e1b47aa4511:a7c6f7bffe978bfaaf2cb986875c0711
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Hallmark Mystery HD
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc132wswht)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020103077f01f7343b03e497a636169:3c38d1ab5a1011bb1d0d96232ac0ed27
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Hallmark Family HD
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc131pdfws)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002083222fa01db25a4b6f65cde392c9:91beeda772761db6581741b10b82c827
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Ebony TV by Lionsgate HD
+https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc13843l4l)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020c328ae1c2bf1e151affe5d35150a:10b555c34cc053ade7ddf4095d2dcfd4
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Telemundo Al Dia 
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc127fxuqc)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002007110c69a23803173b50eab05f23:590d6e8f4ca81319f9bb29104f571990
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NFL Channel 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc107a1ddy)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020212a47511b226f7cc9d030aa171b:323c16315e1cb8d7c821facc3c1778a4
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",GolfPass 
+https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc124phhny)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002046c9a49b9ab1cdb6616bec5d26c3:d2f92f6b7edc9a1a05d393ba0c20ef9e
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Premier League TV HD
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc1021n07j)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00208c93f4358213b52220898b962385:8ae6063167228e350dd132d4a1573102
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",WWE Network 
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc106wh3yw)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00208908ec8a9e825da84e452eeaf5c5:6e08fee4b73c0ba921a5a48616b03992
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Law & Crime Network 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc1349acq4)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020a49a0d48d25362f30057e72f0b4a:86abf8c2a6f693a958c6492bef11ee81
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Top Gear 
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc124p21qf)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002022d3dd34131838d2b8856c645f71:833cdc03a6a878a60a1328c3639284ff
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Decision 2024 HD
+https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc109f2x5w)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020e4c3c187f99f1fe2b04aa1f4a822:8dd21fef13cf1ee44c86e5e0636d9d81
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",TODAY All Day 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(vc120ri5pb)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020c13c3690d99ce5dbe3ea50725afb:c432e72a86293d935174b1144290bde7
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Sky News 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc103ow4ej)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=004522adf6d0897f1b18a5f9b660ab98:7ed01c4b1d01d31aa7bb0d948e33a3cd
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Noticias Telemundo Ahora HD
+https://akam.stream.peacocktv.com/Content/CMAF_OL2-CTR-4s-v2/Live/channel(nota)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002057c016e213dea0e08129e7210657:09bf792a01ba6f70a196b51550c8c146
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NBC New York News 
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc1126fksa)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002082bbeba36536625edbabc33308b9:0bd9923f10901ec2ab5d360ee4132663
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NBC Chicago News 
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc121nd4w6)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=002041cbc7b2c011d0d62c4625a7cca5:8fbf83582a2f4a5af25e827e1d0372e6
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NBC Philadelphia News 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc120ewbm0)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00205952f36ce7ca3cd62483a012be86:6144038dcddbaf105c8494ca6d9fcf28
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NBC South Florida News 
+https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc129a7cya)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00202c6831e237d2b815d33c2012aae6:3b0a954dd06f625d7d8b0596e74884f3
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NBC Boston News 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc108c4guk)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020a5d68dee53a89a127355a14a68ce:9d68d133e940e61656b051a6ac260201
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",NBC Los Angeles News 
+https://akam.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc116wxfpw)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=00201afe2ce399852cd0c29a3c215ac8:f8e352189a5fc42e076e88c7be472426
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",Circle 
+https://fsly.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc125fnbp0)/master_2min.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0020a9dd35db0d63bc03e2d10bb46d58:a49b35665fee8b7e16eb366d8ef9c276
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://i.postimg.cc/9X4pxy76/image.jpg",LX 
+https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s-v2/Live/channel(lc1051jtk0)/master_2min.mpd
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Hindi Feed 01
+https://prod-ent-live-gm.jiocinema.com/out/v1/1bcf841b61684be0b93bb7b230c2690c/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Hindi Feed 02
+https://prod-ent-live-gm.jiocinema.com/out/v1/cc9831a59b3e40cebc5f5d0f3f382c97/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio English Feed 01
+https://prod-ent-live-gm.jiocinema.com/out/v1/b531b22738de4b0186a624d84df41252/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio English Feed 02
+https://prod-ent-live-gm.jiocinema.com/out/v1/6886123a36c2469dbf9df2978c25aa0e/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Tamil Feed
+https://prod-ent-live-gm.jiocinema.com/out/v1/91b7ede936174e2ca6d7ae2fddd56f79/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Telugu Feed
+https://prod-ent-live-gm.jiocinema.com/out/v1/5543162717ff4a09acef38807e9c4c16/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Women's Feed
+https://prod-ent-live-gm.jiocinema.com/out/v1/0b34cb010c084aa7a3903f3da14bf0ba/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 01
+https://prod-ent-live-gm.jiocinema.com/out/v1/49db48fa744442a79e358f64305aae1d/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 02
+https://prod-ent-live-gm.jiocinema.com/out/v1/315b8865044a47689c0abd30d841cf62/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 03
+https://prod-ent-live-gm.jiocinema.com/out/v1/6ebb36c259e04ffdbf0118943cd24719/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 04
+https://prod-ent-live-gm.jiocinema.com/out/v1/704c095613b84c418d2490235abb6462/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 05
+https://prod-ent-live-gm.jiocinema.com/out/v1/dc88e57ec8514471b5c00e4b5986331a/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 06
+https://prod-ent-live-gm.jiocinema.com/out/v1/a1c207b69b9a4c1c8dcd59837aee4a7a/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 07
+https://prod-ent-live-gm.jiocinema.com/out/v1/0391369c7b3f464a9bf6796b5d1e91e0/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 08
+https://prod-ent-live-gm.jiocinema.com/out/v1/a657920362fc4bb5b1b9ab619478d27b/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 09
+https://prod-ent-live-gm.jiocinema.com/out/v1/ae998c85edb141e0bb81a7a2cd5472bc/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 10
+https://prod-ent-live-gm.jiocinema.com/out/v1/5531c5690dec41feb8c6be8d50a4f70a/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 11
+https://prod-ent-live-gm.jiocinema.com/out/v1/812aa4b97eb34cee88d96dbd758ba038/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 12
+https://prod-ent-live-gm.jiocinema.com/out/v1/2a151d7b3186492ca8109cabe9bcae09/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 13
+https://prod-ent-live-gm.jiocinema.com/out/v1/0ca6054dde714ed8bfce474b1b76fb82/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 14
+https://prod-ent-live-gm.jiocinema.com/out/v1/1a9b72935b3544c4aad4b9042f3e0804/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 15
+https://prod-ent-live-gm.jiocinema.com/out/v1/491e9adcd61f4125a680454ebb623754/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 16
+https://prod-ent-live-gm.jiocinema.com/out/v1/b4716a46b96a43c2ad24526975b6e91f/master.m3u8
+
+#EXTINF:-1 group-title="Olympic" tvg-logo="https://v3img.voot.com/resizeMedium,w_1090,h_613/v3Storage/assets/india_centric_horizontal_show_page-1722088862175.jpg",Jio Feed 17
+https://prod-ent-live-gm.jiocinema.com/out/v1/a838e39b1b9a48849ec15c9c12d79682/master.m3u8
+
 #EXTINF:-1 tvg-id="" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/57/Raj_Musix_Tamil.jpeg/revision/latest?cb=20191227071716" group-title="TAMIL",RAJ MUSIX TAMIL
 #EXTVLCOPT:http-user-agent=Denver1769
 https://port.denver1769.in/Share5.php?id=9024
