@@ -2,63 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tamil TV Channels</title>
-    <!-- Load JW Player script -->
-    <script src="https://cdn.jwplayer.com/libraries/your-jwplayer-library-id.js"></script>
+    <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Stream Tamil TV Channels live in high quality.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
+            font-family: "Roboto", sans-serif;
+            background-color: #000;
+            color: #fff;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background-color: #069994;
+            padding: 15px;
+            color: #fff;
+            font-size: 24px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
         .player-container {
-            margin: 0 auto;
+            margin: 20px auto;
             width: 80%;
-            max-width: 800px;
+            max-width: 1200px;
         }
-        .channel-link {
-            display: block;
-            margin: 10px 0;
-            color: #007bff;
+        .channel-links {
+            margin-top: 20px;
+        }
+        .channel-links a {
+            color: #ff9b05;
             text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+            display: inline-block;
         }
-        .channel-link:hover {
+        .channel-links a:hover {
             text-decoration: underline;
+        }
+        .alert {
+            padding: 20px;
+            background-color: #292828;
+            color: #817b8b;
+            border-radius: 5px;
+        }
+        .closebtn {
+            float: right;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+        .closebtn:hover {
+            color: black;
         }
     </style>
 </head>
 <body>
-    <h1>Tamil TV Channels</h1>
+    <header class="header">Tamil TV Channels</header>
     <div class="player-container">
-        <div id="my-jwplayer"></div>
+        <div id="player-container"></div>
     </div>
-    <div>
-        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=37451')">MK TV</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=37452')">MK Tunes</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9018')">KALAIGNAR TV</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9019')">ADITYA TV</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9020')">VASANTH TV</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9022')">J MOVIES</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9023')">MALAI MURASU TV</a>
-        <a href="#" class="channel-link" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9024')">RAJ MUSIX TAMIL</a>
+    <div class="channel-links">
+        <a href="#" onclick="playChannel('https://port.denver1769.in/Share5.php?id=37451')">MK TV</a>
+        <a href="#" onclick="playChannel('https://port.denver1769.in/Share5.php?id=37452')">MK Tunes</a>
+        <a href="#" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9018')">KALAIGNAR TV</a>
+        <a href="#" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9019')">ADITYA TV</a>
+        <a href="#" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9020')">VASANTH TV</a>
+        <a href="#" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9022')">J MOVIES</a>
+        <a href="#" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9023')">MALAI MURASU TV</a>
+        <a href="#" onclick="playChannel('https://port.denver1769.in/Share5.php?id=9024')">RAJ MUSIX TAMIL</a>
     </div>
+    <div id="alert-container"></div>
     <script>
-        jwplayer("my-jwplayer").setup({
-            file: "",
-            image: "",
-            width: "100%",
-            aspectratio: "16:9"
-        });
+        // Initialize JW Player
+        var player = jwplayer("player-container");
 
         function playChannel(url) {
-            jwplayer().load({
+            player.load({
                 file: url
             });
-            jwplayer().play();
+            player.play();
         }
+
+        player.setup({
+            file: "https://port.denver1769.in/Share5.php?id=37451", // Default channel
+            width: "100%",
+            height: "auto",
+            autostart: false,
+            mute: false,
+            primary: "html5",
+            stretching: "uniform",
+            logo: {
+                file: "https://i.ibb.co/hXw44BG/output-onlinegiftools.gif",
+                hide: false,
+                position: "top-right"
+            }
+        });
     </script>
 </body>
 </html>
