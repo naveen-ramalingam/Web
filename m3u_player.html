@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U Player</title>
+</head>
+<body>
+    <h1>M3U Stream Player</h1>
+    <form id="m3uForm">
+        <label for="m3uInput">Enter M3U URL:</label>
+        <input type="text" id="m3uInput" name="m3uInput" required>
+        <button type="submit">Play</button>
+    </form>
+    <audio id="audioPlayer" controls>
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.getElementById('m3uForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const m3uUrl = document.getElementById('m3uInput').value;
+            const audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.src = m3uUrl;
+            audioPlayer.play();
+        });
+    </script>
+</body>
+</html>
