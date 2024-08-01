@@ -79,24 +79,19 @@
             width: 100%;
             height: 500px;
         }
-        .group-title {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #ccc;
+        .channel-info {
+            color: white;
+            padding: 10px;
+            background-color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
         }
-        .channel-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .channel-list li {
-            padding: 5px 0;
-            display: flex;
-            align-items: center;
-        }
-        .channel-list img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
+        .channel-info img {
+            max-width: 100px;
+            max-height: 50px;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -106,45 +101,69 @@
     </header>
     <div class="containerbox">
         <div class="sidebar">
+            <!-- Input for M3U file upload -->
             <input type="file" id="m3u-file" accept=".m3u" style="margin-bottom: 10px;">
             <button class="block" onclick="loadChannels()">Load Channels</button>
-            <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="margin-top: 10px;">
+            <!-- Dropdown for group selection -->
+            <select id="group-select" onchange="onGroupChange()">
+                <option value="">Select a Group</option>
+            </select>
+            <!-- Dropdown for channel selection -->
+            <select id="channel-select" onchange="onChannelChange()">
+                <option value="">Select a Channel</option>
+            </select>
+            <!-- Input for direct .m3u8 link -->
+            <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="width: 100%; padding: 10px; margin-top: 10px;">
             <button class="block" onclick="playDirectLink()">Play Direct .m3u8</button>
-            <input type="text" id="m3u-url" placeholder="Enter M3U URL here" style="margin-top: 10px;">
+            <!-- Input for M3U URL -->
+            <input type="text" id="m3u-url" placeholder="Enter M3U URL here" style="width: 100%; padding: 10px; margin-top: 10px;">
             <button class="block" onclick="loadM3UFromUrl()">Load M3U from URL</button>
         </div>
         <div class="player-container">
+            <!-- Channel Info Display -->
+            <div id="channel-info" class="channel-info">
+                <img id="channel-logo" src="" alt="Channel Logo" style="display:none;">
+                <div id="channel-details"></div>
+            </div>
+            <!-- Video Player -->
             <div id="player-container"></div>
         </div>
     </div>
     <script>
+        let channels = {};
+
         function parseM3U(content) {
             const lines = content.split('\n');
-            const channels = {};
-            let currentGroup = null;
+            const groups = {};
+            let currentGroup = 'All Channels';
+            let currentChannel = {};
 
             lines.forEach(line => {
                 line = line.trim();
                 if (line.startsWith('#EXTINF:')) {
-                    const details = line.split(' ');
-                    const name = details[1] ? details[1].split(',')[1] : '';
-                    const groupTitle = details.find(detail => detail.startsWith('group-title')).split('=')[1].replace(/"/g, '');
-                    const logo = details.find(detail => detail.startsWith('tvg-logo')).split('=')[1].replace(/"/g, '');
-                    const id = details.find(detail => detail.startsWith('tvg-id')).split('=')[1].replace(/"/g, '');
-                    
-                    if (!channels[groupTitle]) {
-                        channels[groupTitle] = [];
-                    }
-                    currentGroup = groupTitle;
-                    channels[currentGroup].push({ name, url: '', logo, id });
+                    const infoParts = line.split(',');
+                    const name = infoParts[1];
+                    const info = infoParts[0].split(' ');
+                    currentChannel = { name };
+                    info.forEach(attr => {
+                        if (attr.startsWith('tvg-id')) {
+                            currentChannel.tvgId = attr.split('=')[1].replace(/"/g, '');
+                        } else if (attr.startsWith('group-title')) {
+                            currentGroup = attr.split('=')[1].replace(/"/g, '');
+                        } else if (attr.startsWith('tvg-logo')) {
+                            currentChannel.logo = attr.split('=')[1].replace(/"/g, '');
+                        }
+                    });
                 } else if (line && !line.startsWith('#')) {
-                    if (currentGroup) {
-                        channels[currentGroup][channels[currentGroup].length - 1].url = line;
+                    currentChannel.url = line;
+                    if (!groups[currentGroup]) {
+                        groups[currentGroup] = [];
                     }
+                    groups[currentGroup].push(currentChannel);
                 }
             });
 
-            return channels;
+            return groups;
         }
 
         function loadChannels() {
@@ -158,8 +177,8 @@
             const reader = new FileReader();
             reader.onload = function(e) {
                 const content = e.target.result;
-                const channels = parseM3U(content);
-                displayChannels(channels);
+                channels = parseM3U(content);
+                populateGroupDropdown(channels);
             };
             reader.readAsText(file);
         }
@@ -174,8 +193,8 @@
             fetch(url)
                 .then(response => response.text())
                 .then(content => {
-                    const channels = parseM3U(content);
-                    displayChannels(channels);
+                    channels = parseM3U(content);
+                    populateGroupDropdown(channels);
                 })
                 .catch(error => {
                     console.error('Error fetching M3U URL:', error);
@@ -183,68 +202,110 @@
                 });
         }
 
-        function displayChannels(channels) {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.innerHTML = `
-                <input type="file" id="m3u-file" accept=".m3u" style="margin-bottom: 10px;">
-                <button class="block" onclick="loadChannels()">Load Channels</button>
-                <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="margin-top: 10px;">
-                <button class="block" onclick="playDirectLink()">Play Direct .m3u8</button>
-                <input type="text" id="m3u-url" placeholder="Enter M3U URL here" style="margin-top: 10px;">
-                <button class="block" onclick="loadM3UFromUrl()">Load M3U from URL</button>
-                <div id="channels-container"></div>
-            `;
+        function populateGroupDropdown(groups) {
+            const groupDropdown = document.getElementById('group-select');
+            groupDropdown.innerHTML = '<option value="">Select a Group</option>'; // Clear existing options
+            Object.keys(groups).forEach(group => {
+                const option = document.createElement('option');
+                option.value = group;
+                option.textContent = group;
+                groupDropdown.appendChild(option);
+            });
+            onGroupChange(); // Update channels on group change
+        }
 
-            const channelsContainer = document.getElementById('channels-container');
-            for (const [groupTitle, groupChannels] of Object.entries(channels)) {
-                const groupDiv = document.createElement('div');
-                groupDiv.innerHTML = `<div class="group-title">${groupTitle}</div>`;
-                const ul = document.createElement('ul');
-                ul.classList.add('channel-list');
-                
-                groupChannels.forEach(channel => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        ${channel.logo ? `<img src="${channel.logo}" alt="${channel.name} logo">` : ''}
-                        <a href="#" onclick="playChannel('${channel.url}')">${channel.name}</a>
-                    `;
-                    ul.appendChild(li);
+        function onGroupChange() {
+            const groupDropdown = document.getElementById('group-select');
+            const selectedGroup = groupDropdown.value;
+            const channelDropdown = document.getElementById('channel-select');
+
+            channelDropdown.innerHTML = '<option value="">Select a Channel</option>'; // Clear existing options
+
+            if (selectedGroup) {
+                const channelsInGroup = channels[selectedGroup] || [];
+                channelsInGroup.forEach(channel => {
+                    const option = document.createElement('option');
+                    option.value = channel.url;
+                    option.textContent = channel.name;
+                    channelDropdown.appendChild(option);
                 });
-                groupDiv.appendChild(ul);
-                channelsContainer.appendChild(groupDiv);
             }
         }
 
-        function playChannel(url) {
-            const player = jwplayer("player-container");
-            player.setup({
-                file: url,
-                width: "100%",
-                stretching: "uniform",
-                type: "hls",
-                autostart: true,
-                mute: false,
-                primary: "html5"
-            });
+        function onChannelChange() {
+            const channelDropdown = document.getElementById('channel-select');
+            const selectedUrl = channelDropdown.value;
+
+            if (selectedUrl) {
+                const selectedChannel = findChannelByUrl(selectedUrl);
+                if (selectedChannel) {
+                    displayChannelInfo(selectedChannel);
+                    loadStream(selectedUrl);
+                }
+            }
+        }
+
+        function findChannelByUrl(url) {
+            for (const group in channels) {
+                const channel = channels[group].find(c => c.url === url);
+                if (channel) {
+                    return channel;
+                }
+            }
+            return null;
+        }
+
+        function displayChannelInfo(channel) {
+            const channelInfo = document.getElementById('channel-info');
+            const channelLogo = document.getElementById('channel-logo');
+            const channelDetails = document.getElementById('channel-details');
+
+            channelDetails.innerHTML = `
+                <div><strong>TVG ID:</strong> ${channel.tvgId || 'N/A'}</div>
+                <div><strong>Group Title:</strong> ${channel.groupTitle || 'N/A'}</div>
+                <div><strong>Channel Name:</strong> ${channel.name || 'N/A'}</div>
+            `;
+
+            if (channel.logo) {
+                channelLogo.src = channel.logo;
+                channelLogo.style.display = 'block';
+            } else {
+                channelLogo.style.display = 'none';
+            }
         }
 
         function playDirectLink() {
             const m3u8Link = document.getElementById('m3u8-link').value;
-            if (!m3u8Link) {
-                alert('Please enter a .m3u8 link.');
-                return;
+            if (m3u8Link) {
+                loadStream(m3u8Link);
             }
+        }
 
+        function loadStream(url) {
             const player = jwplayer("player-container");
+
             player.setup({
-                file: m3u8Link,
+                file: url,
                 width: "100%",
                 stretching: "uniform",
-                type: "hls",
-                autostart: true,
+                type: detectType(url),
+                autostart: false,
                 mute: false,
-                primary: "html5"
+                primary: "html5",
+                controls: true
             });
+        }
+
+        function detectType(url) {
+            if (url.endsWith('.m3u8') || url.endsWith('.m3u')) {
+                return 'hls';
+            } else if (url.endsWith('.mpd')) {
+                return 'dash';
+            } else if (url.endsWith('.mp4')) {
+                return 'mp4';
+            } else {
+                return 'auto';
+            }
         }
     </script>
 </body>
