@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Live</title>
+    <title>Live Stream</title>
     <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Live stream in high-quality 1080p Free." />
@@ -68,54 +68,124 @@
             text-align: center;
             max-width: 320px;
         }
+        #channels {
+            margin-top: 20px;
+        }
+        .channel-item {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .channel-item:hover {
+            background-color: #666;
+        }
     </style>
 </head>
 <body>
     <div class="site-container">
         <div class="site-pusher">
             <header class="header">
-                <h4 style="color: #069994;">Live</h4>
+                <h4 style="color: #069994;">Live Stream</h4>
             </header>
             <div class="site-content">
                 <div class="containerbox">
                     <center>
-                        <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="width: 80%; padding: 10px; margin-bottom: 10px;">
-                        <button class="block" onclick="loadStream()">Load Stream</button>
-                        <!--Video Player Start-->
-                        <div id="player-container"></div>
-                        <script>
-                            function loadStream() {
-                                var link = document.getElementById('m3u8-link').value;
-                                if (link) {
-                                    // Initialize JW Player
-                                    var player = jwplayer("player-container");
-
-                                    // Setup JW Player configuration
-                                    player.setup({
-                                        file: link,
-                                        width: "100%",
-                                        stretching: "uniform",
-                                        type: "hls",
-                                        autostart: true,
-                                        mute: false,
-                                        primary: "html5",
-                                        logo: { hide: true },
-                                        // Enable quality selection
-                                        hlsjsConfig: {
-                                            enableStreaming: true,
-                                            startLevel: -1
-                                        }
-                                    });
-                                } else {
-                                    alert("Please enter a valid .m3u8 link.");
-                                }
-                            }
-                        </script>
-                        <!--Video Player End-->
+                        <!-- Input for .m3u file upload -->
+                        <input type="file" id="m3u-file" accept=".m3u" style="margin-bottom: 10px;">
+                        <button class="block" onclick="loadChannels()">Load Channels</button>
+                        <!-- Input for direct .m3u8 link -->
+                        <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="width: 80%; padding: 10px; margin-top: 10px;">
+                        <button class="block" onclick="playDirectLink()">Play Direct .m3u8</button>
+                        <!-- Channel list -->
+                        <div id="channels"></div>
+                        <!-- Video Player -->
+                        <div id="player-container" style="margin-top: 20px;"></div>
                     </center>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function parseM3U(content) {
+            const lines = content.split('\n');
+            const channels = [];
+            let currentChannel = {};
+
+            lines.forEach(line => {
+                line = line.trim();
+                if (line.startsWith('#EXTINF:')) {
+                    const name = line.split(',')[1];
+                    currentChannel = { name };
+                } else if (line && !line.startsWith('#')) {
+                    currentChannel.url = line;
+                    channels.push(currentChannel);
+                }
+            });
+
+            return channels;
+        }
+
+        function loadChannels() {
+            const fileInput = document.getElementById('m3u-file');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select an .m3u file.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                const channels = parseM3U(content);
+                displayChannels(channels);
+            };
+            reader.readAsText(file);
+        }
+
+        function displayChannels(channels) {
+            const channelsDiv = document.getElementById('channels');
+            channelsDiv.innerHTML = '';
+            channels.forEach((channel) => {
+                const channelItem = document.createElement('div');
+                channelItem.className = 'channel-item';
+                channelItem.textContent = channel.name;
+                channelItem.onclick = () => loadStream(channel.url);
+                channelsDiv.appendChild(channelItem);
+            });
+        }
+
+        function playDirectLink() {
+            const link = document.getElementById('m3u8-link').value;
+            if (link) {
+                loadStream(link);
+            } else {
+                alert('Please enter a valid .m3u8 link.');
+            }
+        }
+
+        function loadStream(url) {
+            // Initialize JW Player
+            var player = jwplayer("player-container");
+
+            // Setup JW Player configuration
+            player.setup({
+                file: url,
+                width: "100%",
+                stretching: "uniform",
+                type: "hls",
+                autostart: true,
+                mute: false,
+                primary: "html5",
+                logo: { hide: true },
+                hlsjsConfig: {
+                    enableStreaming: true,
+                    startLevel: -1
+                }
+            });
+        }
+    </script>
 </body>
 </html>
