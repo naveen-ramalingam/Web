@@ -1,217 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Live Stream</title>
-    <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Live stream in high-quality 1080p Free." />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <style>
-        html, body {
-            font-family: "Roboto", sans-serif;
-            font-size: 1em;
-            background-color: #000000;
-            line-height: 1.4;
-            height: 100%;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
             margin: 0;
             padding: 0;
         }
-        .containerbox {
-            display: flex;
-            height: 100vh;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            padding: 20px;
-            overflow-y: auto;
-            color: white;
-        }
-        .player-container {
-            flex: 1;
-            padding: 20px;
-        }
-        .header {
-            text-align: center;
-            height: 55px;
-            line-height: 55px;
-            color: #000000;
-            background-color: #069994;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-                        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        }
-        .block {
-            margin-top: 3px;
-            margin-bottom: 3px;
-            border-radius: 4px;
-            width: 100%;
-            border: none;
-            background-color: #069994;
-            color: black;
-            padding: 10px 28px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-        }
-        .block:hover {
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-                        rgba(0, 0, 0, 0.23) 0px 3px 6px;
-            background-color: #ddd;
-            color: black;
-        }
-        select, input[type="text"], input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            border: none;
-            font-size: 16px;
+        .container {
+            width: 80%;
+            margin: 0 auto;
         }
         #player-container {
             width: 100%;
             height: 500px;
+            margin-top: 20px;
         }
-        .channel-info {
-            color: white;
-            padding: 10px;
-            background-color: #333;
-            text-align: center;
+        .section {
             margin-bottom: 20px;
-            border-radius: 5px;
         }
-        .channel-info img {
-            max-width: 100px;
-            max-height: 50px;
-            display: block;
-            margin: 0 auto;
+        .section h4 {
+            color: #069994;
+        }
+        input, select, button {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #fff;
+            background-color: #000;
+            color: #fff;
+            width: calc(100% - 22px);
+        }
+        button {
+            background-color: #069994;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #037f6c;
+        }
+        .dropdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dropdown-container select {
+            width: calc(50% - 12px);
+        }
+        .dropdown-container .line {
+            margin: 10px 0;
+            border-top: 1px solid #fff;
+            width: 100%;
+        }
+        #channel-info {
+            color: #fff;
+            padding: 10px;
+        }
+        #channel-logo {
+            width: 100px;
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h4 style="color: #069994;">Live Stream</h4>
-    </header>
-    <div class="containerbox">
-        <div class="sidebar">
-            <!-- Input for M3U file upload -->
-            <input type="file" id="m3u-file" accept=".m3u" style="margin-bottom: 10px;">
-            <button class="block" onclick="loadChannels()">Load Channels</button>
-            <!-- Dropdown for group selection -->
+    <div class="container">
+        <div class="section">
+            <h4>Direct M3U8 Link</h4>
+            <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here">
+            <button onclick="playDirectLink()">Play Direct .m3u8</button>
+        </div>
+
+        <div class="section">
+            <h4>M3U URL</h4>
+            <input type="text" id="m3u-url" placeholder="Enter M3U URL here">
+            <button onclick="loadM3UFromURL()">Load M3U from URL</button>
+        </div>
+
+        <div class="section">
+            <h4>Upload M3U File</h4>
+            <input type="file" id="file-input" accept=".m3u">
+            <button onclick="loadM3UFromFile()">Load Channels</button>
+        </div>
+
+        <div class="section dropdown-container">
+            <div class="line"></div>
+            <label for="group-select">Group:</label>
             <select id="group-select" onchange="onGroupChange()">
-                <option value="">Select a Group</option>
+                <option value="">Select Group</option>
             </select>
-            <!-- Dropdown for channel selection -->
+
+            <label for="channel-select">Channel:</label>
             <select id="channel-select" onchange="onChannelChange()">
-                <option value="">Select a Channel</option>
+                <option value="">Select Channel</option>
             </select>
-            <!-- Input for direct .m3u8 link -->
-            <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="width: 100%; padding: 10px; margin-top: 10px;">
-            <button class="block" onclick="playDirectLink()">Play Direct .m3u8</button>
-            <!-- Input for M3U URL -->
-            <input type="text" id="m3u-url" placeholder="Enter M3U URL here" style="width: 100%; padding: 10px; margin-top: 10px;">
-            <button class="block" onclick="loadM3UFromUrl()">Load M3U from URL</button>
         </div>
-        <div class="player-container">
-            <!-- Channel Info Display -->
-            <div id="channel-info" class="channel-info">
-                <img id="channel-logo" src="" alt="Channel Logo" style="display:none;">
-                <div id="channel-details"></div>
-            </div>
-            <!-- Video Player -->
-            <div id="player-container"></div>
-        </div>
+
+        <div id="channel-info"></div>
+        <img id="channel-logo" src="" alt="Channel Logo" style="display:none;">
+
+        <div id="player-container"></div>
     </div>
+
     <script>
         let channels = {};
 
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('m3u8-link').addEventListener('change', playDirectLink);
+            document.getElementById('file-input').addEventListener('change', loadM3UFromFile);
+            document.getElementById('m3u-url').addEventListener('change', loadM3UFromURL);
+        });
+
         function parseM3U(content) {
             const lines = content.split('\n');
-            const groups = {};
-            let currentGroup = 'All Channels';
-            let currentChannel = {};
+            let currentGroup = '';
 
             lines.forEach(line => {
-                line = line.trim();
                 if (line.startsWith('#EXTINF:')) {
-                    const infoParts = line.split(',');
-                    const name = infoParts[1];
-                    const info = infoParts[0].split(' ');
-                    currentChannel = { name };
-                    info.forEach(attr => {
-                        if (attr.startsWith('tvg-id')) {
-                            currentChannel.tvgId = attr.split('=')[1].replace(/"/g, '');
-                        } else if (attr.startsWith('group-title')) {
-                            currentGroup = attr.split('=')[1].replace(/"/g, '');
-                        } else if (attr.startsWith('tvg-logo')) {
-                            currentChannel.logo = attr.split('=')[1].replace(/"/g, '');
-                        }
-                    });
-                } else if (line && !line.startsWith('#')) {
-                    currentChannel.url = line;
-                    if (!groups[currentGroup]) {
-                        groups[currentGroup] = [];
+                    const info = line.substring(8).split(',');
+                    const metadata = info[0].split(' ');
+                    const channelName = info[1] || 'Unknown';
+                    const tvgIdMatch = metadata.find(m => m.startsWith('tvg-id=')) || '';
+                    const groupTitleMatch = metadata.find(m => m.startsWith('group-title=')) || '';
+                    const tvgLogoMatch = metadata.find(m => m.startsWith('tvg-logo=')) || '';
+
+                    const channel = {
+                        name: channelName,
+                        tvgId: tvgIdMatch.split('=')[1]?.replace(/"/g, '') || 'N/A',
+                        groupTitle: groupTitleMatch.split('=')[1]?.replace(/"/g, '') || 'N/A',
+                        logo: tvgLogoMatch.split('=')[1]?.replace(/"/g, '') || ''
+                    };
+
+                    channels[currentGroup] = channels[currentGroup] || [];
+                    channels[currentGroup].push(channel);
+                } else if (line.startsWith('#EXTGRP:')) {
+                    currentGroup = line.substring(8).trim();
+                } else if (line.startsWith('http')) {
+                    if (channels[currentGroup]) {
+                        channels[currentGroup][channels[currentGroup].length - 1].url = line;
                     }
-                    groups[currentGroup].push(currentChannel);
                 }
             });
 
-            return groups;
+            populateGroupDropdown();
         }
 
-        function loadChannels() {
-            const fileInput = document.getElementById('m3u-file');
-            const file = fileInput.files[0];
-            if (!file) {
-                alert('Please select an .m3u file.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const content = e.target.result;
-                channels = parseM3U(content);
-                populateGroupDropdown(channels);
-            };
-            reader.readAsText(file);
-        }
-
-        function loadM3UFromUrl() {
-            const url = document.getElementById('m3u-url').value;
-            if (!url) {
-                alert('Please enter an M3U URL.');
-                return;
-            }
-
-            fetch(url)
-                .then(response => response.text())
-                .then(content => {
-                    channels = parseM3U(content);
-                    populateGroupDropdown(channels);
-                })
-                .catch(error => {
-                    console.error('Error fetching M3U URL:', error);
-                    alert('Failed to load M3U playlist from URL.');
-                });
-        }
-
-        function populateGroupDropdown(groups) {
+        function populateGroupDropdown() {
             const groupDropdown = document.getElementById('group-select');
-            groupDropdown.innerHTML = '<option value="">Select a Group</option>'; // Clear existing options
-            Object.keys(groups).forEach(group => {
+            groupDropdown.innerHTML = '<option value="">Select Group</option>';
+
+            for (const group in channels) {
                 const option = document.createElement('option');
                 option.value = group;
                 option.textContent = group;
                 groupDropdown.appendChild(option);
-            });
-            onGroupChange(); // Update channels on group change
+            }
         }
 
         function onGroupChange() {
@@ -219,11 +168,10 @@
             const selectedGroup = groupDropdown.value;
             const channelDropdown = document.getElementById('channel-select');
 
-            channelDropdown.innerHTML = '<option value="">Select a Channel</option>'; // Clear existing options
+            channelDropdown.innerHTML = '<option value="">Select Channel</option>';
 
-            if (selectedGroup) {
-                const channelsInGroup = channels[selectedGroup] || [];
-                channelsInGroup.forEach(channel => {
+            if (channels[selectedGroup]) {
+                channels[selectedGroup].forEach(channel => {
                     const option = document.createElement('option');
                     option.value = channel.url;
                     option.textContent = channel.name;
@@ -258,9 +206,8 @@
         function displayChannelInfo(channel) {
             const channelInfo = document.getElementById('channel-info');
             const channelLogo = document.getElementById('channel-logo');
-            const channelDetails = document.getElementById('channel-details');
 
-            channelDetails.innerHTML = `
+            channelInfo.innerHTML = `
                 <div><strong>TVG ID:</strong> ${channel.tvgId || 'N/A'}</div>
                 <div><strong>Group Title:</strong> ${channel.groupTitle || 'N/A'}</div>
                 <div><strong>Channel Name:</strong> ${channel.name || 'N/A'}</div>
@@ -305,6 +252,29 @@
                 return 'mp4';
             } else {
                 return 'auto';
+            }
+        }
+
+        function loadM3UFromURL() {
+            const m3uURL = document.getElementById('m3u-url').value;
+            if (m3uURL) {
+                fetch(m3uURL)
+                    .then(response => response.text())
+                    .then(text => parseM3U(text))
+                    .catch(err => console.error('Error fetching M3U file from URL:', err));
+            }
+        }
+
+        function loadM3UFromFile() {
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const content = e.target.result;
+                    parseM3U(content);
+                };
+                reader.readAsText(file);
             }
         }
     </script>
