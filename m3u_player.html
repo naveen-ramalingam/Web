@@ -2,251 +2,306 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JW Player Example</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Live Stream Player</title>
+    <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Live Stream Player with M3U support" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
+            font-family: "Roboto", sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #000;
         }
+
         .container {
             display: flex;
-            flex-direction: row;
+            width: 100%;
         }
+
         .sidebar {
             width: 300px;
-            padding: 20px;
             background-color: #333;
-            border-right: 2px solid #444;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2in; /* Gap between sections */
         }
-        .sidebar input, .sidebar select, .sidebar button {
-            display: block;
+
+        .sidebar input[type="text"],
+        .sidebar input[type="file"],
+        .sidebar select {
+            width: calc(100% - 22px);
             margin-bottom: 10px;
-            width: 100%;
             padding: 10px;
             border: none;
             border-radius: 4px;
-        }
-        .sidebar select {
-            background-color: #555;
-        }
-        .sidebar button {
-            background-color: #007bff;
+            background: #444;
             color: #fff;
+        }
+
+        .sidebar button {
+            width: calc(100% - 22px);
+            padding: 10px;
+            background-color: #069994;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
+
         .sidebar button:hover {
-            background-color: #0056b3;
+            background-color: #047a77;
         }
+
+        .sidebar .section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar .divider {
+            border-top: 1px solid #555;
+            margin-bottom: 0.2in; /* Gap between sections */
+        }
+
+        .sidebar .group-channel-gap {
+            margin-bottom: 0; /* No gap between Group and Channel dropdowns */
+        }
+
         .player-container {
             flex: 1;
             padding: 20px;
+            box-sizing: border-box;
         }
-        #error-message {
-            color: #f00;
-            font-size: 16px;
-            margin-bottom: 20px;
+
+        #player-container {
+            width: 100%;
+            height: 500px;
         }
+
         #channel-info {
-            margin-bottom: 20px;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        #channel-logo {
+            max-width: 100px;
+            max-height: 50px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #channel-details {
+            background: #000;
+            padding: 10px;
+            border-radius: 4px;
+            color: #fff;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <input type="text" id="directM3U8" placeholder=".m3u8 link here">
-            <button onclick="playDirectM3U8()">Play Direct .m3u8</button>
+            <!-- Direct .m3u8 link input and button -->
+            <div class="section">
+                <input type="text" id="m3u8-link" placeholder="">
+                <button onclick="playDirectLink()">Play Direct .m3u8</button>
+            </div>
 
-            <input type="text" id="m3uURL" placeholder="Enter M3U URL here">
-            <button onclick="loadM3UFromURL()">Load M3U from URL</button>
+            <!-- M3U URL input and button -->
+            <div class="section">
+                <input type="text" id="m3u-url" placeholder="">
+                <button onclick="loadM3UFromURL()">Load M3U from URL</button>
+            </div>
 
-            <input type="file" id="m3uFile" accept=".m3u">
-            <button onclick="loadM3UFile()">Load Channels</button>
+            <!-- File input and button -->
+            <div class="section">
+                <input type="file" id="file-input" accept=".m3u">
+                <button onclick="loadM3UFromFile()">Load Channels</button>
+            </div>
 
-            <select id="groupSelect">
-                <option value="">Group:</option>
-            </select>
+            <!-- Group selection -->
+            <div class="section group-channel-gap">
+                <select id="group-select" onchange="onGroupChange()">
+                    <option value="">Select Group</option>
+                </select>
+            </div>
 
-            <select id="channelSelect">
-                <option value="">Channel:</option>
-            </select>
+            <!-- Channel selection -->
+            <div class="section">
+                <select id="channel-select" onchange="onChannelChange()">
+                    <option value="">Select Channel</option>
+                </select>
+            </div>
+
+            <!-- Channel info -->
+            <div id="channel-info">
+                <img id="channel-logo" src="" alt="Channel Logo">
+                <div id="channel-details"></div>
+            </div>
         </div>
 
         <div class="player-container">
-            <div id="error-message"></div>
-            <div id="channel-info"></div>
+            <!-- Video Player -->
             <div id="player-container"></div>
         </div>
     </div>
 
     <script>
-        var channels = [];
+        let channels = {};
 
-        // Initialize JW Player
-        var player = jwplayer("player-container").setup({
-            width: "100%",
-            height: "auto",
-            controls: true,
-            primary: "html5",
-            logo: {
-                file: "",
-                hide: true
-            }
-        });
-
-        player.on('error', function(event) {
-            document.getElementById('error-message').innerText = `Error: ${event.message}`;
-        });
-
-        function playDirectM3U8() {
-            var url = document.getElementById('directM3U8').value;
-            if (url) {
-                loadStream(url);
-            } else {
-                document.getElementById('error-message').innerText = 'Please enter a valid .m3u8 link.';
+        function playDirectLink() {
+            const m3u8Link = document.getElementById('m3u8-link').value;
+            if (m3u8Link) {
+                loadStream(m3u8Link);
             }
         }
 
         function loadM3UFromURL() {
-            var url = document.getElementById('m3uURL').value;
+            const url = document.getElementById('m3u-url').value;
             if (url) {
                 fetch(url)
                     .then(response => response.text())
-                    .then(data => {
-                        parseM3U(data);
-                        updateGroupSelect();
-                    })
-                    .catch(error => {
-                        document.getElementById('error-message').innerText = `Error loading M3U URL: ${error.message}`;
-                    });
-            } else {
-                document.getElementById('error-message').innerText = 'Please enter a valid M3U URL.';
+                    .then(data => parseM3U(data))
+                    .catch(error => console.error('Error loading M3U URL:', error));
             }
         }
 
-        function loadM3UFile() {
-            var fileInput = document.getElementById('m3uFile');
-            var file = fileInput.files[0];
-            if (file) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var data = e.target.result;
-                    parseM3U(data);
-                    updateGroupSelect();
+        function loadM3UFromFile() {
+            const fileInput = document.getElementById('file-input');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    parseM3U(event.target.result);
                 };
                 reader.readAsText(file);
-            } else {
-                document.getElementById('error-message').innerText = 'Please select an M3U file.';
             }
         }
 
-        function parseM3U(data) {
-            var lines = data.split('\n');
-            channels = [];
-            var groupTitle = '';
+        function parseM3U(content) {
+            const lines = content.split('\n');
+            channels = {};
+            let currentGroup = '';
 
-            lines.forEach(function(line) {
-                line = line.trim();
-                if (line.startsWith('#EXTM3U')) {
-                    return;
-                }
+            lines.forEach(line => {
                 if (line.startsWith('#EXTINF')) {
-                    var parts = line.split(',');
-                    var channelInfo = {
-                        name: parts[1] || 'Unknown',
-                        logo: '',
-                        tvgId: '',
-                        groupTitle: groupTitle
-                    };
-                    var nextLine = lines[lines.indexOf(line) + 1];
-                    if (nextLine) {
-                        channelInfo.logo = nextLine.trim();
+                    const parts = line.split(',');
+                    const channelName = parts[1];
+                    const channelInfo = parts[0].match(/tvg-id="([^"]*)"/);
+                    const tvgId = channelInfo ? channelInfo[1] : '';
+                    const groupInfo = parts[0].match(/group-title="([^"]*)"/);
+                    const groupTitle = groupInfo ? groupInfo[1] : '';
+                    const logoInfo = parts[0].match(/tvg-logo="([^"]*)"/);
+                    const logo = logoInfo ? logoInfo[1] : '';
+                    const url = lines[lines.indexOf(line) + 1];
+
+                    if (!channels[groupTitle]) {
+                        channels[groupTitle] = [];
                     }
-                    channels.push(channelInfo);
-                } else if (line.startsWith('#EXTGRP')) {
-                    groupTitle = line.split(':')[1] || '';
+
+                    channels[groupTitle].push({
+                        name: channelName,
+                        url: url,
+                        tvgId: tvgId,
+                        groupTitle: groupTitle,
+                        logo: logo
+                    });
                 }
             });
 
-            updateChannelSelect();
+            populateGroups();
         }
 
-        function updateGroupSelect() {
-            var groupSelect = document.getElementById('groupSelect');
-            var uniqueGroups = [...new Set(channels.map(c => c.groupTitle))];
-            groupSelect.innerHTML = '<option value="">Group:</option>';
-            uniqueGroups.forEach(group => {
-                groupSelect.innerHTML += `<option value="${group}">${group}</option>`;
+        function populateGroups() {
+            const groupSelect = document.getElementById('group-select');
+            groupSelect.innerHTML = '<option value="">Select Group</option>';
+            Object.keys(channels).forEach(group => {
+                const option = document.createElement('option');
+                option.value = group;
+                option.textContent = group;
+                groupSelect.appendChild(option);
             });
+            onGroupChange();
         }
 
-        function updateChannelSelect() {
-            var channelSelect = document.getElementById('channelSelect');
-            channelSelect.innerHTML = '<option value="">Channel:</option>';
-            channels.forEach(channel => {
-                channelSelect.innerHTML += `<option value="${channel.name}" data-tvgid="${channel.tvgId}" data-grouptitle="${channel.groupTitle}" data-logo="${channel.logo}">${channel.name}</option>`;
-            });
+        function onGroupChange() {
+            const groupSelect = document.getElementById('group-select');
+            const selectedGroup = groupSelect.value;
+            const channelDropdown = document.getElementById('channel-select');
+
+            channelDropdown.innerHTML = '<option value="">Select Channel</option>';
+
+            if (selectedGroup && channels[selectedGroup]) {
+                channels[selectedGroup].forEach(channel => {
+                    const option = document.createElement('option');
+                    option.value = channel.url;
+                    option.textContent = channel.name;
+                    channelDropdown.appendChild(option);
+                });
+            }
         }
 
-        function loadStream(url) {
-            player.setup({
-                file: url,
-                width: "100%",
-                type: "hls",
-                autostart: false,
-                primary: "html5"
-            });
+        function onChannelChange() {
+            const channelDropdown = document.getElementById('channel-select');
+            const selectedUrl = channelDropdown.value;
+
+            if (selectedUrl) {
+                const selectedChannel = findChannelByUrl(selectedUrl);
+                if (selectedChannel) {
+                    displayChannelInfo(selectedChannel);
+                    loadStream(selectedUrl);
+                }
+            }
         }
 
-        document.getElementById('groupSelect').addEventListener('change', function() {
-            var group = this.value;
-            var channelSelect = document.getElementById('channelSelect');
-            var filteredChannels = channels.filter(c => c.groupTitle === group);
-            channelSelect.innerHTML = '<option value="">Channel:</option>';
-            filteredChannels.forEach(channel => {
-                channelSelect.innerHTML += `<option value="${channel.name}" data-tvgid="${channel.tvgId}" data-grouptitle="${channel.groupTitle}" data-logo="${channel.logo}">${channel.name}</option>`;
-            });
-        });
-
-        document.getElementById('channelSelect').addEventListener('change', function() {
-            var selectedOption = this.options[this.selectedIndex];
-            var tvgId = selectedOption.getAttribute('data-tvgid');
-            var groupTitle = selectedOption.getAttribute('data-grouptitle');
-            var channelName = selectedOption.value;
-            var logo = selectedOption.getAttribute('data-logo');
-            var channelInfo = {
-                tvgId: tvgId,
-                groupTitle: groupTitle,
-                name: channelName,
-                logo: logo
-            };
-            displayChannelInfo(channelInfo);
-            loadStream(selectedOption.value);
-        });
+        function findChannelByUrl(url) {
+            for (const group in channels) {
+                const channel = channels[group].find(ch => ch.url === url);
+                if (channel) return channel;
+            }
+            return null;
+        }
 
         function displayChannelInfo(channel) {
-            var channelInfo = document.getElementById('channel-info');
-            var channelLogo = document.createElement('img');
-            channelLogo.id = 'channel-logo';
-            channelLogo.style.maxWidth = '100px';
-            channelLogo.style.display = 'none';
-            channelInfo.innerHTML = `
+            const channelLogo = document.getElementById('channel-logo');
+            const channelDetails = document.getElementById('channel-details');
+
+            channelDetails.innerHTML = `
                 <strong>TVG ID:</strong> ${channel.tvgId || 'N/A'}<br>
                 <strong>Group Title:</strong> ${channel.groupTitle || 'N/A'}<br>
                 <strong>Channel Name:</strong> ${channel.name || 'N/A'}
             `;
+
             if (channel.logo) {
                 channelLogo.src = channel.logo;
                 channelLogo.style.display = 'block';
             } else {
                 channelLogo.style.display = 'none';
             }
-            channelInfo.appendChild(channelLogo);
+        }
+
+        function loadStream(url) {
+            jwplayer("player-container").setup({
+                file: url,
+                width: "100%",
+                type: "hls",
+                autostart: false,
+                primary: "html5"
+            });
         }
     </script>
 </body>
