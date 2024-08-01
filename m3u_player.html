@@ -191,15 +191,14 @@
         }
 
         function loadStream(url) {
-            // Initialize JW Player
             var player = jwplayer("player-container");
 
             // Setup JW Player configuration
             player.setup({
                 file: url,
                 width: "100%",
-                stretching: "uniform",
-                type: "hls",
+                height: "100%",
+                type: detectType(url),
                 autostart: true,
                 mute: false,
                 primary: "html5",
@@ -209,6 +208,13 @@
                     startLevel: -1
                 }
             });
+        }
+
+        function detectType(url) {
+            if (url.endsWith('.m3u8')) return 'hls';
+            if (url.endsWith('.mpd')) return 'dash';
+            if (url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg')) return 'html5';
+            return 'html5'; // Default
         }
     </script>
 </body>
