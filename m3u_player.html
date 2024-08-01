@@ -35,6 +35,9 @@
             color: #fff;
             padding: 20px;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .sidebar input[type="text"],
@@ -65,6 +68,18 @@
         .sidebar .divider {
             border-top: 1px solid #555;
             margin: 20px 0;
+        }
+
+        .sidebar .section-divider {
+            border-top: 1px solid #555;
+            margin: 20px 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .sidebar label {
+            margin-bottom: 5px;
+            display: block;
         }
 
         .player-container {
@@ -102,31 +117,49 @@
     <div class="container">
         <div class="sidebar">
             <!-- Enter .m3u8 link input -->
-            <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here">
-            <button onclick="playDirectLink()">Play Direct .m3u8</button>
-            
-            <!-- Enter M3U URL input -->
-            <input type="text" id="m3u-url" placeholder="Enter M3U URL here">
-            <button onclick="loadM3UFromURL()">Load M3U from URL</button>
-            
-            <!-- Choose file input -->
-            <input type="file" id="file-input" accept=".m3u">
-            <button onclick="loadM3UFromFile()">Load Channels</button>
+            <div class="section">
+                <label for="m3u8-link">Enter .m3u8 link here:</label>
+                <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here">
+                <button onclick="playDirectLink()">Play Direct .m3u8</button>
+            </div>
 
-            <!-- Divider line -->
-            <div class="divider"></div>
+            <div class="section-divider"></div>
+
+            <!-- Enter M3U URL input -->
+            <div class="section">
+                <label for="m3u-url">Enter M3U URL here:</label>
+                <input type="text" id="m3u-url" placeholder="Enter M3U URL here">
+                <button onclick="loadM3UFromURL()">Load M3U from URL</button>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Choose file input -->
+            <div class="section">
+                <label for="file-input">Choose File:</label>
+                <input type="file" id="file-input" accept=".m3u">
+                <button onclick="loadM3UFromFile()">Load Channels</button>
+            </div>
+
+            <div class="section-divider"></div>
 
             <!-- Group selection -->
-            <label for="group-select">Group:</label>
-            <select id="group-select" onchange="onGroupChange()">
-                <option value="">Select Group</option>
-            </select>
+            <div class="section">
+                <label for="group-select">Group:</label>
+                <select id="group-select" onchange="onGroupChange()">
+                    <option value="">Select Group</option>
+                </select>
+            </div>
+
+            <div class="section-divider"></div>
 
             <!-- Channel selection -->
-            <label for="channel-select">Channel:</label>
-            <select id="channel-select" onchange="onChannelChange()">
-                <option value="">Select Channel</option>
-            </select>
+            <div class="section">
+                <label for="channel-select">Channel:</label>
+                <select id="channel-select" onchange="onChannelChange()">
+                    <option value="">Select Channel</option>
+                </select>
+            </div>
 
             <!-- Channel info -->
             <div id="channel-info">
@@ -251,23 +284,20 @@
 
         function findChannelByUrl(url) {
             for (const group in channels) {
-                const channel = channels[group].find(c => c.url === url);
-                if (channel) {
-                    return channel;
-                }
+                const channel = channels[group].find(ch => ch.url === url);
+                if (channel) return channel;
             }
             return null;
         }
 
         function displayChannelInfo(channel) {
-            const channelInfo = document.getElementById('channel-info');
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
 
             channelDetails.innerHTML = `
-                <div><strong>TVG ID:</strong> ${channel.tvgId || 'N/A'}</div>
-                <div><strong>Group Title:</strong> ${channel.groupTitle || 'N/A'}</div>
-                <div><strong>Channel Name:</strong> ${channel.name || 'N/A'}</div>
+                <strong>tvg id:</strong> ${channel.tvgId || 'N/A'}<br>
+                <strong>Group Title:</strong> ${channel.groupTitle || 'N/A'}<br>
+                <strong>Channel Name:</strong> ${channel.name || 'N/A'}
             `;
 
             if (channel.logo) {
