@@ -37,7 +37,7 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 0.5in;
         }
 
         .sidebar input[type="text"],
@@ -48,6 +48,8 @@
             padding: 10px;
             border: none;
             border-radius: 4px;
+            background: #444;
+            color: #fff;
         }
 
         .sidebar button {
@@ -65,21 +67,14 @@
             background-color: #047a77;
         }
 
+        .sidebar .section {
+            display: flex;
+            flex-direction: column;
+        }
+
         .sidebar .divider {
             border-top: 1px solid #555;
-            margin: 20px 0;
-        }
-
-        .sidebar .section-divider {
-            border-top: 1px solid #555;
-            margin: 20px 0;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
-        .sidebar label {
-            margin-bottom: 5px;
-            display: block;
+            margin-bottom: 0.5in;
         }
 
         .player-container {
@@ -116,46 +111,33 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <!-- Enter .m3u8 link input -->
+            <!-- Direct .m3u8 link input and button -->
             <div class="section">
-                <label for="m3u8-link">Enter .m3u8 link here:</label>
                 <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here">
                 <button onclick="playDirectLink()">Play Direct .m3u8</button>
             </div>
 
-            <div class="section-divider"></div>
-
-            <!-- Enter M3U URL input -->
+            <!-- M3U URL input and button -->
             <div class="section">
-                <label for="m3u-url">Enter M3U URL here:</label>
                 <input type="text" id="m3u-url" placeholder="Enter M3U URL here">
                 <button onclick="loadM3UFromURL()">Load M3U from URL</button>
             </div>
 
-            <div class="section-divider"></div>
-
-            <!-- Choose file input -->
+            <!-- File input and button -->
             <div class="section">
-                <label for="file-input">Choose File:</label>
                 <input type="file" id="file-input" accept=".m3u">
                 <button onclick="loadM3UFromFile()">Load Channels</button>
             </div>
 
-            <div class="section-divider"></div>
-
             <!-- Group selection -->
             <div class="section">
-                <label for="group-select">Group:</label>
                 <select id="group-select" onchange="onGroupChange()">
                     <option value="">Select Group</option>
                 </select>
             </div>
 
-            <div class="section-divider"></div>
-
             <!-- Channel selection -->
             <div class="section">
-                <label for="channel-select">Channel:</label>
                 <select id="channel-select" onchange="onChannelChange()">
                     <option value="">Select Channel</option>
                 </select>
