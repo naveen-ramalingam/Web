@@ -67,7 +67,7 @@
             background-color: #ddd;
             color: black;
         }
-        select {
+        select, input[type="text"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
@@ -87,7 +87,7 @@
     </header>
     <div class="containerbox">
         <div class="sidebar">
-            <!-- Input for .m3u file upload -->
+            <!-- Input for M3U file upload -->
             <input type="file" id="m3u-file" accept=".m3u" style="margin-bottom: 10px;">
             <button class="block" onclick="loadChannels()">Load Channels</button>
             <!-- Dropdown for channel selection -->
@@ -97,6 +97,9 @@
             <!-- Input for direct .m3u8 link -->
             <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="width: 100%; padding: 10px; margin-top: 10px;">
             <button class="block" onclick="playDirectLink()">Play Direct .m3u8</button>
+            <!-- Input for M3U URL -->
+            <input type="text" id="m3u-url" placeholder="Enter M3U URL here" style="width: 100%; padding: 10px; margin-top: 10px;">
+            <button class="block" onclick="loadM3UFromUrl()">Load M3U from URL</button>
         </div>
         <div class="player-container">
             <!-- Video Player -->
@@ -138,6 +141,25 @@
                 populateChannelDropdown(channels);
             };
             reader.readAsText(file);
+        }
+
+        function loadM3UFromUrl() {
+            const url = document.getElementById('m3u-url').value;
+            if (!url) {
+                alert('Please enter an M3U URL.');
+                return;
+            }
+
+            fetch(url)
+                .then(response => response.text())
+                .then(content => {
+                    const channels = parseM3U(content);
+                    populateChannelDropdown(channels);
+                })
+                .catch(error => {
+                    console.error('Error fetching M3U URL:', error);
+                    alert('Failed to load M3U playlist from URL.');
+                });
         }
 
         function populateChannelDropdown(channels) {
