@@ -67,7 +67,7 @@
             background-color: #ddd;
             color: black;
         }
-        select, input[type="text"] {
+        select, input[type="text"], input[type="file"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
@@ -79,6 +79,25 @@
             width: 100%;
             height: 500px;
         }
+        .group-title {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ccc;
+        }
+        .channel-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .channel-list li {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        .channel-list img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -87,39 +106,41 @@
     </header>
     <div class="containerbox">
         <div class="sidebar">
-            <!-- Input for M3U file upload -->
             <input type="file" id="m3u-file" accept=".m3u" style="margin-bottom: 10px;">
             <button class="block" onclick="loadChannels()">Load Channels</button>
-            <!-- Dropdown for channel selection -->
-            <select id="channel-select" onchange="onChannelChange()">
-                <option value="">Select a Channel</option>
-            </select>
-            <!-- Input for direct .m3u8 link -->
-            <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="width: 100%; padding: 10px; margin-top: 10px;">
+            <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="margin-top: 10px;">
             <button class="block" onclick="playDirectLink()">Play Direct .m3u8</button>
-            <!-- Input for M3U URL -->
-            <input type="text" id="m3u-url" placeholder="Enter M3U URL here" style="width: 100%; padding: 10px; margin-top: 10px;">
+            <input type="text" id="m3u-url" placeholder="Enter M3U URL here" style="margin-top: 10px;">
             <button class="block" onclick="loadM3UFromUrl()">Load M3U from URL</button>
         </div>
         <div class="player-container">
-            <!-- Video Player -->
             <div id="player-container"></div>
         </div>
     </div>
     <script>
         function parseM3U(content) {
             const lines = content.split('\n');
-            const channels = [];
-            let currentChannel = {};
+            const channels = {};
+            let currentGroup = null;
 
             lines.forEach(line => {
                 line = line.trim();
                 if (line.startsWith('#EXTINF:')) {
-                    const name = line.split(',')[1];
-                    currentChannel = { name };
+                    const details = line.split(' ');
+                    const name = details[1] ? details[1].split(',')[1] : '';
+                    const groupTitle = details.find(detail => detail.startsWith('group-title')).split('=')[1].replace(/"/g, '');
+                    const logo = details.find(detail => detail.startsWith('tvg-logo')).split('=')[1].replace(/"/g, '');
+                    const id = details.find(detail => detail.startsWith('tvg-id')).split('=')[1].replace(/"/g, '');
+                    
+                    if (!channels[groupTitle]) {
+                        channels[groupTitle] = [];
+                    }
+                    currentGroup = groupTitle;
+                    channels[currentGroup].push({ name, url: '', logo, id });
                 } else if (line && !line.startsWith('#')) {
-                    currentChannel.url = line;
-                    channels.push(currentChannel);
+                    if (currentGroup) {
+                        channels[currentGroup][channels[currentGroup].length - 1].url = line;
+                    }
                 }
             });
 
@@ -138,7 +159,7 @@
             reader.onload = function(e) {
                 const content = e.target.result;
                 const channels = parseM3U(content);
-                populateChannelDropdown(channels);
+                displayChannels(channels);
             };
             reader.readAsText(file);
         }
@@ -154,7 +175,7 @@
                 .then(response => response.text())
                 .then(content => {
                     const channels = parseM3U(content);
-                    populateChannelDropdown(channels);
+                    displayChannels(channels);
                 })
                 .catch(error => {
                     console.error('Error fetching M3U URL:', error);
@@ -162,59 +183,68 @@
                 });
         }
 
-        function populateChannelDropdown(channels) {
-            const dropdown = document.getElementById('channel-select');
-            dropdown.innerHTML = '<option value="">Select a Channel</option>'; // Clear existing options
-            channels.forEach((channel) => {
-                const option = document.createElement('option');
-                option.value = channel.url;
-                option.textContent = channel.name;
-                dropdown.appendChild(option);
-            });
-        }
+        function displayChannels(channels) {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.innerHTML = `
+                <input type="file" id="m3u-file" accept=".m3u" style="margin-bottom: 10px;">
+                <button class="block" onclick="loadChannels()">Load Channels</button>
+                <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here" style="margin-top: 10px;">
+                <button class="block" onclick="playDirectLink()">Play Direct .m3u8</button>
+                <input type="text" id="m3u-url" placeholder="Enter M3U URL here" style="margin-top: 10px;">
+                <button class="block" onclick="loadM3UFromUrl()">Load M3U from URL</button>
+                <div id="channels-container"></div>
+            `;
 
-        function onChannelChange() {
-            const dropdown = document.getElementById('channel-select');
-            const url = dropdown.value;
-            if (url) {
-                loadStream(url);
+            const channelsContainer = document.getElementById('channels-container');
+            for (const [groupTitle, groupChannels] of Object.entries(channels)) {
+                const groupDiv = document.createElement('div');
+                groupDiv.innerHTML = `<div class="group-title">${groupTitle}</div>`;
+                const ul = document.createElement('ul');
+                ul.classList.add('channel-list');
+                
+                groupChannels.forEach(channel => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        ${channel.logo ? `<img src="${channel.logo}" alt="${channel.name} logo">` : ''}
+                        <a href="#" onclick="playChannel('${channel.url}')">${channel.name}</a>
+                    `;
+                    ul.appendChild(li);
+                });
+                groupDiv.appendChild(ul);
+                channelsContainer.appendChild(groupDiv);
             }
         }
 
-        function playDirectLink() {
-            const link = document.getElementById('m3u8-link').value;
-            if (link) {
-                loadStream(link);
-            } else {
-                alert('Please enter a valid .m3u8 link.');
-            }
-        }
-
-        function loadStream(url) {
-            var player = jwplayer("player-container");
-
-            // Setup JW Player configuration
+        function playChannel(url) {
+            const player = jwplayer("player-container");
             player.setup({
                 file: url,
                 width: "100%",
-                height: "100%",
-                type: detectType(url),
+                stretching: "uniform",
+                type: "hls",
                 autostart: true,
                 mute: false,
-                primary: "html5",
-                logo: { hide: true },
-                hlsjsConfig: {
-                    enableStreaming: true,
-                    startLevel: -1
-                }
+                primary: "html5"
             });
         }
 
-        function detectType(url) {
-            if (url.endsWith('.m3u8')) return 'hls';
-            if (url.endsWith('.mpd')) return 'dash';
-            if (url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg')) return 'html5';
-            return 'html5'; // Default
+        function playDirectLink() {
+            const m3u8Link = document.getElementById('m3u8-link').value;
+            if (!m3u8Link) {
+                alert('Please enter a .m3u8 link.');
+                return;
+            }
+
+            const player = jwplayer("player-container");
+            player.setup({
+                file: m3u8Link,
+                width: "100%",
+                stretching: "uniform",
+                type: "hls",
+                autostart: true,
+                mute: false,
+                primary: "html5"
+            });
         }
     </script>
 </body>
