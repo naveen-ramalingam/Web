@@ -99,7 +99,12 @@
                                         autostart: true,
                                         mute: false,
                                         primary: "html5",
-                                        logo: { hide: true }
+                                        logo: { hide: true },
+                                        // Enable quality selection
+                                        hlsjsConfig: {
+                                            enableStreaming: true,
+                                            startLevel: -1
+                                        }
                                     });
                                 } else {
                                     alert("Please enter a valid .m3u8 link.");
