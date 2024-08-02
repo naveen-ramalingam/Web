@@ -23,26 +23,28 @@
     <div id="jwplayerDiv"></div>
     <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <script type="text/javascript">
-        jwplayer("jwplayerDiv").setup({
-            file: "https://livestream.sunneo.com/d675e34b54/vestream.SunNeoH_D_IN_index.mpd",
-            type: "dash",
-            autostart: true,
-            width: "100%",
-            height: "100%",
-            stretching: "exactfit",
-            drm: {
-                clearkey: {
-                    keyId: "93e8a76ff4e7d490abb45",
-                    key: "16b7e0711d09ffaaff47e00"
+        var config = {
+            'file': 'https://livestream.sunneo.com/d675e34b54/vestream.SunNeoH_D_IN_index.mpd',
+            'drm': {
+                'clearkey': {
+                    'keyId': '93e8a76ff4e7d490abb45',
+                    'key': '16b7e0711d09ffaaff47e00'
                 }
-            },
-            // Add event listeners for debugging
-            events: {
-                onError: function(event) {
-                    console.error("JW Player Error:", event);
-                },
-                onPlaybackError: function(event) {
-                    console.error("Playback Error:", event);
+            }
+        };
+
+        jwplayer('jwplayerDiv').setup({
+            'file': config['file'],
+            'position': 'bottom',
+            'autostart': true,
+            'stretching': 'exactfit',
+            'width': '100%',
+            'height': '100%',
+            'type': 'application/dash+xml',
+            'drm': {
+                'clearkey': {
+                    'keyId': config['drm']['clearkey']['keyId'],
+                    'key': config['drm']['clearkey']['key']
                 }
             }
         });
