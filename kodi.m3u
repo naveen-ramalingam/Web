@@ -1,4 +1,165 @@
+#EXTM3U
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=09ffaaff477d490abb4516b7e0711d35:759cc157a993e8a76ff4d675e34b5400
-#EXTINF:-1 tvg-id="194389" tvg-language="Hindi" tvg-logo="https://sund-images.sunnxt.com/194389/640x360_SunNeoHD_194389_5edd34c1-4574-452e-a613-2f4140cd636f.jpg" group-title="Sun Nxt",Sun Neo HD
-https://livestream.sunnxt.com/248c92b73514435686fd72ba325d4008/SunNeoHDB_IN_index.mpd
+#EXTINF:-1 tvg-id=194389 tvg-logo="https://sund-images.sunnxt.com/194389/150x150_SunNeoHD_194389_00f513c6-9032-400b-98c8-664e11a68e23.jpg" group-title="Sun Nxt",Sun Neo HD
+https://livestream.sunnxt.com/2082ee4606184c17943d48478136f244/SunNeoHD_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=5ea90a1f3b1e4a0a9b72c8e0f4a9bf31:30899fda5ca4dfb5a4535ce10c4d7341
+#EXTINF:-1 tvg-id=194387 tvg-logo="https://sund-images.sunnxt.com/194387/150x150_SunMarathi_194387_bf754cfb-0e25-4973-8757-2bb434616cc1.jpg" group-title="Sun Nxt",Sun Marathi
+https://livestream.sunnxt.com/350cc0a44cdb400a8110de68afd85161/SunMarathi_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=01f7b9f7bf7e425f86d6dfd478390e3f:5fde68100a7856d055038236ffc7c84a
+#EXTINF:-1 tvg-id=194388 tvg-logo="https://sund-images.sunnxt.com/194388/1000x1500_SunBangla_194388_c9615666-d897-4a49-a467-531e4a9e3057.jpg" group-title="Sun Nxt",Sun Bangla
+https://livestream.sunnxt.com/9876418f56d048879014e243fc0cf2d9/SunBangla_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=3084683c80234b6bbf69abfd5bb258a0:4ae6b547e5c8f51329a12d7953ee4c72
+#EXTINF:-1 tvg-id=193239 tvg-logo="https://sund-images.sunnxt.com/193239/1000x1500_UdayaTV_193239_afd826b8-6b99-44bc-9d64-02a02f64c58d.jpg" group-title="Sun Nxt",Udaya TV
+https://livestream.sunnxt.com/a14a058171cb46b49c38ddbb80cd71fe/UdayaTV_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=19d8a5cc002f411b89b33925acdc33e0:2a9aa7a3f69834c4f348430cc3f658bb
+#EXTINF:-1 tvg-id=194347 tvg-logo="https://sund-images.sunnxt.com/194347/1000x1500_ChintuTV_194347_37929346-ca66-4125-bef0-ab1a941bd847.jpg" group-title="Sun Nxt",Chintu TV
+https://livestream.sunnxt.com/29a1b9de2fbc44d0ac8f569328733f3f/ChintuTV_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=71329783aeb74e6e9e1014fb9e4c30f4:1e025a9ed7e50fa35b8de2c96cccdd6b
+#EXTINF:-1 tvg-id=194400 tvg-logo="https://sund-images.sunnxt.com/194400/1000x1500_UdayaComedy_194400_9a6c31f6-c09d-455c-bd69-2e82a099c766.jpg" group-title="Sun Nxt",Udaya Comedy
+https://livestream.sunnxt.com/037a75604a2c4ae1b494409eef2e6033/UdayaComedy_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=9ac3472b0040459cab52035ead6fe1ae:ba9fe9dd1b8e5421e2f8c9d23bd86922
+#EXTINF:-1 tvg-id=194401 tvg-logo="https://sund-images.sunnxt.com/194401/1000x1500_UdayaMusic_194401_3f2c49e8-fb8b-47a6-8552-356b50a42718.jpg" group-title="Sun Nxt",Udaya Music
+https://livestream.sunnxt.com/17ecf8decebe416cabfc1060981837f7/UdayaMusic_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=b4dbffb517824732a955ca02dd6aacd9:83c2aa2946432f1ded7c049efe79feef
+#EXTINF:-1 tvg-id=194386 tvg-logo="https://sund-images.sunnxt.com/194386/1000x1500_UdayaMovies_194386_17c841f9-a6e1-4f08-9d0b-beb1b10a5816.jpg" group-title="Sun Nxt",Udaya Movies
+https://livestream.sunnxt.com/c4d973ab48d84c109695a7fd57164d87/UdayaMovies_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=91b5f2d0205c4527b7aa3e41f35e1e7f:66ddb1a017753f966e20442ab2f91f18
+#EXTINF:-1 tvg-id=194399 tvg-logo="https://sund-images.sunnxt.com/194399/1000x1500_UdayaTVHD_194399_624b5bef-b68f-4df4-8c61-e887bf657b2c.jpg" group-title="Sun Nxt",Udaya TV HD
+https://livestream.sunnxt.com/a8d28f18944c4946ad7133938860e7cf/UdayaTVHDB_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=91b5f2d0205c4527b7aa3e41f35e1e7f:66ddb1a017753f966e20442ab2f91f18
+#EXTINF:-1 tvg-id=194398 tvg-logo="https://sund-images.sunnxt.com/194398/1000x1500_SuryaTV_194398_e46189f7-c437-4583-be5d-31dc838e95a5.jpg" group-title="Sun Nxt",Surya TV
+https://livestream.sunnxt.com/30612a1b269d4a18aa14657641c47515/SuryaTVB_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=91b5f2d0205c4527b7aa3e41f35e1e7f:66ddb1a017753f966e20442ab2f91f18
+#EXTINF:-1 tvg-id=194348 tvg-logo="https://sund-images.sunnxt.com/194348/1000x1500_KochuTV_194348_bdf27dac-746e-4ffc-86cd-b6907c44eb89.jpg" group-title="Sun Nxt",Kochu TV
+https://livestream.sunnxt.com/1893b9ab790747cb80a584873a608dcb/KochuTVB_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=56e1f5b5b72e4e45a98b6f287c265ab9:6dee8663e63cc8f8dda8478b8b2f3b71
+#EXTINF:-1 tvg-id=193251 tvg-logo="https://sund-images.sunnxt.com/193251/1000x1500_SuryaComedy_193251_701972af-62d9-4d14-b11b-d8e0a5a7e82f.jpg" group-title="Sun Nxt",Surya Comedy
+https://livestream.sunnxt.com/074cc4c933d645eda0260950f3ce4f7b/SuryaComedy_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=7354fb333b0c4159bc6c433c4db13d0f:fbf8b4a11febf7d2eed2283006979176
+#EXTINF:-1 tvg-id=194338 tvg-logo="https://sund-images.sunnxt.com/194338/1000x1500_SuryaMusic_194338_2642caf5-f24d-4545-9209-77846ef1807a.jpg" group-title="Sun Nxt",Surya Music
+https://livestream.sunnxt.com/e18abccfb07049ee83a79c8a38fe159a/SuryaMusic_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=11563b00a46b43f2a0f80ecf42a4fb77:9bad28ad6f23dbb917c63ee680f66a1f
+#EXTINF:-1 tvg-id=194385 tvg-logo="https://sund-images.sunnxt.com/194385/1000x1500_SuryaMovies_194385_cf3f33ca-2abe-44f5-b006-0bc31bbedf51.jpg" group-title="Sun Nxt",Surya Movies
+https://livestream.sunnxt.com/e3b12a222dd341d8b64e2d2ec3432d31/SuryaMovies_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=25a1d2a4c3f848b1aed911ad691fe232:3c8b2cf8611c343e6a231b6a9c7c8b58
+#EXTINF:-1 tvg-id=194397 tvg-logo="https://sund-images.sunnxt.com/194397/1000x1500_SuryaTVHD_194397_9886c46a-6dd6-41a4-8b11-20fcaedebee3.jpg" group-title="Sun Nxt",Surya TV HD
+https://livestream.sunnxt.com/54ce8446ac9e412591bba4de574760d5/SuryaTVHD_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=6b67bccef7024f2da29b42e10dc13f89:2e8460c47d3f01693e193dba5963a5e1
+#EXTINF:-1 tvg-id=194395 tvg-logo="https://sund-images.sunnxt.com/194395/1000x1500_GeminiMusic_194395_a1361848-7564-4874-b740-5a2b6c3d92f8.jpg" group-title="Sun Nxt",Gemini Music
+https://livestream.sunnxt.com/565bc045df62411fba013c41cbb5f4c2/GeminiMusic_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=eae838ccd75d4a1fbff6fd7dd1c97780:8259ce0c112725a4d2c94d154207425f
+#EXTINF:-1 tvg-id=194384 tvg-logo="https://sund-images.sunnxt.com/194384/1000x1500_GeminiMovies_194384_d5b5dab3-14cc-4338-a523-5da631dd2380.jpg" group-title="Sun Nxt",Gemini Movies
+https://livestream.sunnxt.com/8fc1247bb1a24a21b45f2635eda1dc07/GeminiMovies_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=eae838ccd75d4a1fbff6fd7dd1c97780:8259ce0c112725a4d2c94d154207425f
+#EXTINF:-1 tvg-id=194396 tvg-logo="https://sund-images.sunnxt.com/194396/1000x1500_GeminiTV_194396_faed1214-25ea-4887-aea5-5463b5d18b66.jpg" group-title="Sun Nxt",Gemini TV
+https://livestream.sunnxt.com/a1a61fa1811c4d20a5c2d5e14cdc0cd2/GeminiTVB_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=eae838ccd75d4a1fbff6fd7dd1c97780:8259ce0c112725a4d2c94d154207425f
+#EXTINF:-1 tvg-id=194346 tvg-logo="https://sund-images.sunnxt.com/194346/1000x1500_KushiTV_194346_f093221c-76b6-470b-9e5c-549ccc41d2c0.jpg" group-title="Sun Nxt",Kushi TV
+https://livestream.sunnxt.com/b24f908d8104462db019c91dac6512a3/KushiTV_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0faa2e9469fc45fdaf1728333351ec71:ffcf9dee6ede62bd8740dacfaa0c1e59
+#EXTINF:-1 tvg-id=194337 tvg-logo="https://sund-images.sunnxt.com/194337/1000x1500_GeminiLife_194337_0e7deaeb-9087-44ba-8033-95ae1f925825.jpg" group-title="Sun Nxt",Gemini Life
+https://livestream.sunnxt.com/af3c022825d04c21a532d80c370a42d2/GeminiLife_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0c37231880034787bce9fd3607aa09ea:e063bb30351dac572bac24ed43d304b2
+#EXTINF:-1 tvg-id=194394 tvg-logo="https://sund-images.sunnxt.com/194394/1000x1500_GeminiComedy_194394_29af2566-1f28-415d-8985-807e1907f886.jpg" group-title="Sun Nxt",Gemini Comedy
+https://livestream.sunnxt.com/b7f0913638684933ae78f7abc79baa20/GeminiComedy_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=2ec6fa5b77ff4223a376c2b98032fbf8:afe96f602fd6abedcd9c2c8cdf799afd
+#EXTINF:-1 tvg-id=194393 tvg-logo="https://sund-images.sunnxt.com/194393/1000x1500_GeminiMusicHD_194393_d3b5abd2-f5ec-44df-83e7-e396c34d6e86.jpg" group-title="Sun Nxt",Gemini Music HD
+https://livestream.sunnxt.com/3a9f4a8ecfee4d99aca372b763943c72/GeminiMusicHD_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=e16421cf7c374c57a8f7e91049f58cd9:b7e01aba2c307b1f05057e91a9d150d2
+#EXTINF:-1 tvg-id=194392 tvg-logo="https://sund-images.sunnxt.com/194392/1000x1500_GeminiTVHD_194392_6fd78861-a7e8-4d2a-95ed-963e53cc3e5e.jpg" group-title="Sun Nxt",Gemini TV HD
+https://livestream.sunnxt.com/6a5c3dbb8b6044f8be835e13a815f40b/GeminiTVHD_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=96d5157791ea4817a66a419e285a137f:d6d0ad2a9a6cc56e18d7557c7c693a37
+#EXTINF:-1 tvg-id=194410 tvg-logo="https://sund-images.sunnxt.com/194410/1000x1500_SunMusic_194410_516f8c66-632a-43c1-9b51-0343b18246a4.jpg" group-title="Sun Nxt",Sun Music
+https://livestream.sunnxt.com/168833cab00b4850be1a036c5c5e9850/SunMusic_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=93e686ceac134f30b0a7bc3ce5a76b26:2c37e97fa0646751e1f2b85bc4b9ff8a
+#EXTINF:-1 tvg-id=194409 tvg-logo="https://sund-images.sunnxt.com/194409/1000x1500_KTV_194409_5e89dd6b-bf9b-4601-a929-92a1c41ac725.jpg" group-title="Sun Nxt",KTV
+https://livestream.sunnxt.com/6ae70edd4c1440379f5311e8fbddc7c1/KTVB_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=76230567f3c04513a7e5d1249ab65983:4ee6dc9a99d894dc41b0878d6ea22790
+#EXTINF:-1 tvg-id=194408 tvg-logo="https://sund-images.sunnxt.com/194408/1000x1500_SunTV_194408_a77ab1c2-e7b1-40bb-8885-9216173d7c89.jpg" group-title="Sun Nxt",Sun TV
+https://livestream.sunnxt.com/83c3f9aa91eb425aa899cd7d5f62f4cb/SunTV_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=880dc94460af4197bbbf43a176fb3a95:0beb7012ffd133360889d5d56e20de4d
+#EXTINF:-1 tvg-id=194390 tvg-logo="https://sund-images.sunnxt.com/194390/1000x1500_ChuttiTV_194390_37991592-6ec7-4bb7-beba-7aa7c018fa76.jpg" group-title="Sun Nxt",Chutti TV
+https://livestream.sunnxt.com/e3eccb3f250a4ca8826e42914b2322a6/ChuttiTV_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=880dc94460af4197bbbf43a176fb3a95:0beb7012ffd133360889d5d56e20de4d
+#EXTINF:-1 tvg-id=194407 tvg-logo="https://sund-images.sunnxt.com/194407/1000x1500_AdithyaTV_194407_8bbfa0ee-8ce3-4046-8795-eaf5ecfb3900.jpg" group-title="Sun Nxt",Adithya TV
+https://livestream.sunnxt.com/b1865a87b7384835aee1a02038bce2ef/AdithyaTV_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=880dc94460af4197bbbf43a176fb3a95:0beb7012ffd133360889d5d56e20de4d
+#EXTINF:-1 tvg-id=194391 tvg-logo="https://sund-images.sunnxt.com/194391/1000x1500_SunLife_194391_17b50572-bb73-4e57-afd8-65619fae4525.jpg" group-title="Sun Nxt",Sun Life
+https://livestream.sunnxt.com/6b79451f54284b3fb680fd717ee008dc/SunLifeB_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=21ddc14c4da94c079d4f4c343ecdcd80:5701bee4ee9b625d0c8ed7de032a7478
+#EXTINF:-1 tvg-id=194406 tvg-logo="https://sund-images.sunnxt.com/194406/1000x1500_SunMusicHD_194406_beddefd5-b474-4712-b20b-5f8590b675c9.jpg" group-title="Sun Nxt",Sun Music HD
+https://livestream.sunnxt.com/f6f92acd2b4f4870aabf04b274c69376/SunMusicHD_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=426117d115b04497b0b0d425e8095184:aa751ae8a41ac6f87141734163ffe3b2
+#EXTINF:-1 tvg-id=194405 tvg-logo="https://sund-images.sunnxt.com/194405/1000x1500_KTVHD_194405_a35ea6d2-2894-4dab-bb19-762989c525c3.jpg" group-title="Sun Nxt",KTV HD
+https://livestream.sunnxt.com/61477b4c8d8d45d5a49e044cc1dffc60/KTVHDB_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=6752015acf084572a08dfe21796f8b45:ff823ddbe5625c35d3e93f0ed4520115
+#EXTINF:-1 tvg-id=194404 tvg-logo="https://sund-images.sunnxt.com/194404/1000x1500_SunNews_194404_d8143a0f-789c-4ef9-8d84-04b081e00c58.jpg" group-title="Sun Nxt",Sun News
+https://livestream.sunnxt.com/e59b5e4086d94c70bd7d6232fe8fc27c/SunNews_IN_index.mpd
+
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=05da38a46fb7403088f41434e44de980:488046139a1e1d65323cfe4bb1b30b7b
+#EXTINF:-1 tvg-id=194403 tvg-logo="https://sund-images.sunnxt.com/194403/1000x1500_SunTVHD_194403_0f882a30-5504-46fa-9970-8e7b52b4d945.jpg" group-title="Sun Nxt",Sun TV HD
+https://livestream2.sunnxt.com/19ee29194c4d4fc286c3e697362e60cd/SunTVHDB_IN_index.mpd
