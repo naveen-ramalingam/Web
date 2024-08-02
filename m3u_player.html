@@ -41,38 +41,25 @@
             gap: 0.2in; /* Gap between sections */
         }
 
-        .date-time {
-            font-size: 14px;
-            margin-bottom: 10px;
-            color: #ccc;
-            display: flex;
-            justify-content: space-between;
-        }
-
         .sidebar input[type="text"],
         .sidebar input[type="file"],
         .sidebar select,
-        .sidebar button {
-            width: calc(100% - 22px); /* Consistent width */
+        .sidebar button,
+        .sidebar .white-line,
+        .sidebar .conditional-white-line,
+        .sidebar #channel-link {
+            width: calc(100% - 22px);
             margin-bottom: 10px;
             padding: 10px;
             border: none;
             border-radius: 4px;
-        }
-
-        .sidebar input[type="text"],
-        .sidebar select {
             background: #444;
             color: #fff;
-        }
-
-        .sidebar input[type="file"] {
-            background: #555;
+            box-sizing: border-box;
         }
 
         .sidebar button {
             background-color: #069994;
-            color: #fff;
             cursor: pointer;
             font-size: 16px;
         }
@@ -103,14 +90,12 @@
         .sidebar .white-line {
             border-top: 2px solid #fff;
             margin-top: 10px; /* Move closer to Channel dropdown */
-            width: calc(100% - 22px); /* Consistent width */
         }
 
         .sidebar .conditional-white-line {
             border-top: 2px solid #fff;
             display: none; /* Initially hidden, shown only when channel hyperlink appears */
             margin-top: 10px;
-            width: calc(100% - 22px); /* Consistent width */
         }
 
         .player-container {
@@ -148,22 +133,29 @@
         #channel-link {
             color: #fff;
             background-color: #f57f00; /* Orange background */
-            padding: 10px;
-            border-radius: 4px;
             word-wrap: break-word; /* Wrap text if it's too long */
             margin-top: 10px; /* Space above the hyperlink */
             display: none; /* Initially hide the link */
-            width: calc(100% - 22px); /* Consistent width */
+        }
+
+        #date-time {
+            display: flex;
+            justify-content: space-between;
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #444;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <div class="date-time">
-                <span id="current-date"></span>
-                <span id="current-time"></span>
-            </div>
+            <div id="date-time"></div> <!-- Date and Time Section -->
 
             <!-- Direct .m3u8 link input and button -->
             <div class="section">
@@ -214,18 +206,19 @@
     </div>
 
     <script>
-        let channels = {};
-
         function updateDateTime() {
             const now = new Date();
-            const optionsDate = { year: 'numeric', month: '2-digit', day: '2-digit' };
-            const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            
-            document.getElementById('current-date').textContent = now.toLocaleDateString(undefined, optionsDate);
-            document.getElementById('current-time').textContent = now.toLocaleTimeString(undefined, optionsTime);
+            const formattedDate = now.toISOString().split('T')[0].replace(/-/g, '/');
+            const formattedTime = now.toLocaleTimeString();
+            document.getElementById('date-time').innerHTML = `
+                <span>${formattedDate}</span>
+                <span>${formattedTime}</span>
+            `;
         }
 
-        setInterval(updateDateTime, 1000); // Update every second
+        setInterval(updateDateTime, 1000);
+
+        let channels = {};
 
         function playDirectLink() {
             const m3u8Link = document.getElementById('m3u8-link').value;
@@ -377,6 +370,9 @@
                 primary: "html5"
             });
         }
+
+        // Initialize date and time display
+        updateDateTime();
     </script>
 </body>
 </html>
