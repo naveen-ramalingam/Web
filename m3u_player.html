@@ -44,8 +44,7 @@
         .sidebar input[type="text"],
         .sidebar input[type="file"],
         .sidebar select,
-        .sidebar button,
-        .sidebar input[type="checkbox"] {
+        .sidebar button {
             width: calc(100% - 0px); /* Ensure full width */
             margin-bottom: 10px; /* Space between elements */
             padding: 10px;
@@ -145,9 +144,6 @@
             <div class="divider"></div>
 
             <!-- DRM Settings -->
-            <label>
-                <input type="checkbox" id="enable-drm"> Enable DRM
-            </label>
             <input type="text" id="drm-key-id" placeholder="DRM Key ID">
             <input type="text" id="drm-key" placeholder="DRM Key">
             <div class="divider"></div>
@@ -319,7 +315,6 @@
         }
 
         function loadStream(url) {
-            const enableDRM = document.getElementById('enable-drm').checked;
             const drmKeyId = document.getElementById('drm-key-id').value;
             const drmKey = document.getElementById('drm-key').value;
 
@@ -330,7 +325,7 @@
                 aspectratio: "16:9"
             };
 
-            if (enableDRM && drmKeyId && drmKey) {
+            if (drmKeyId && drmKey) {
                 config.drm = {
                     clearkey: {
                         keyId: drmKeyId,
