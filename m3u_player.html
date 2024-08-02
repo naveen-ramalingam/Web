@@ -153,6 +153,14 @@
             </select>
             <div class="divider"></div>
 
+            <!-- DRM Settings -->
+            <div>
+                <input type="checkbox" id="drm-checkbox"> Enable DRM
+            </div>
+            <input type="text" id="key-id" placeholder="Key ID" disabled>
+            <input type="text" id="key" placeholder="Key" disabled>
+            <div class="divider"></div>
+
             <!-- Channel info -->
             <div id="channel-info">
                 <img id="channel-logo" src="" alt="Channel Logo">
@@ -179,6 +187,12 @@
         }
 
         setInterval(updateDateTime, 1000);
+
+        document.getElementById('drm-checkbox').addEventListener('change', function() {
+            const isChecked = this.checked;
+            document.getElementById('key-id').disabled = !isChecked;
+            document.getElementById('key').disabled = !isChecked;
+        });
 
         function playDirectLink() {
             const m3u8Link = document.getElementById('m3u8-link').value;
@@ -240,12 +254,13 @@
                 }
             });
 
-            populateGroups();
+            populateGroupSelect();
         }
 
-        function populateGroups() {
+        function populateGroupSelect() {
             const groupSelect = document.getElementById('group-select');
             groupSelect.innerHTML = '<option value="">Group:</option>';
+
             Object.keys(channels).forEach(group => {
                 const option = document.createElement('option');
                 option.value = group;
@@ -311,12 +326,27 @@
         }
 
         function loadStream(url) {
-            jwplayer("player-container").setup({
+            const drmEnabled = document.getElementById('drm-checkbox').checked;
+            const keyId = document.getElementById('key-id').value;
+            const key = document.getElementById('key').value;
+
+            const playerSetup = {
                 file: url,
                 width: "100%",
                 height: "100%",
                 aspectratio: "16:9"
-            });
+            };
+
+            if (drmEnabled && keyId && key) {
+                playerSetup.drm = {
+                    clearkey: {
+                        keyId: keyId,
+                        key: key
+                    }
+                };
+            }
+
+            jwplayer("player-container").setup(playerSetup);
         }
     </script>
 </body>
