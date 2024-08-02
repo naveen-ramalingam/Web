@@ -79,7 +79,7 @@
         }
 
         .sidebar .group-channel-gap {
-            margin-bottom: 0; /* No gap between Group and Channel dropdowns */
+            margin-bottom: 0.05in; /* Reduced gap between Group and Channel dropdowns */
         }
 
         .sidebar .separator {
@@ -124,14 +124,14 @@
         <div class="sidebar">
             <!-- Direct .m3u8 link input and button -->
             <div class="section">
-                <input type="text" id="m3u8-link" placeholder="Enter .m3u8 link here">
+                <input type="text" id="m3u8-link" placeholder=".m3u8 link here">
                 <button onclick="playDirectLink()">Play Direct .m3u8</button>
                 <div class="separator"></div> <!-- White line after button -->
             </div>
 
             <!-- M3U URL input and button -->
             <div class="section">
-                <input type="text" id="m3u-url" placeholder="Enter M3U URL here">
+                <input type="text" id="m3u-url" placeholder="M3U URL here">
                 <button onclick="loadM3UFromURL()">Load M3U from URL</button>
                 <div class="separator"></div> <!-- White line after button -->
             </div>
@@ -146,16 +146,12 @@
             <!-- Group selection -->
             <div class="section group-channel-gap">
                 <select id="group-select" onchange="onGroupChange()">
-                    <option value="">Select Group</option>
+                    <option value="">Group:</option>
                 </select>
-                <div class="separator"></div> <!-- White line below Group dropdown -->
-            </div>
-
-            <!-- Channel selection -->
-            <div class="section">
                 <select id="channel-select" onchange="onChannelChange()">
-                    <option value="">Select Channel</option>
+                    <option value="">Channel:</option>
                 </select>
+                <div class="separator"></div> <!-- White line below Channel dropdown -->
             </div>
 
             <!-- Channel info -->
@@ -239,7 +235,7 @@
 
         function populateGroups() {
             const groupSelect = document.getElementById('group-select');
-            groupSelect.innerHTML = '<option value="">Select Group</option>';
+            groupSelect.innerHTML = '<option value="">Group:</option>';
             Object.keys(channels).forEach(group => {
                 const option = document.createElement('option');
                 option.value = group;
@@ -254,7 +250,7 @@
             const selectedGroup = groupSelect.value;
             const channelDropdown = document.getElementById('channel-select');
 
-            channelDropdown.innerHTML = '<option value="">Select Channel</option>';
+            channelDropdown.innerHTML = '<option value="">Channel:</option>';
 
             if (selectedGroup && channels[selectedGroup]) {
                 channels[selectedGroup].forEach(channel => {
