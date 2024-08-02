@@ -2,38 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SunNeo</title>
+    <title>Live Stream Player with DRM Option</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="controls">
-            <input type="text" id="directUrl" placeholder="Enter .m3u8 URL">
-            <button onclick="playDirect()">Play Direct .m3u8</button>
-            <br>
-            <input type="text" id="m3uUrl" placeholder="M3U URL here">
-            <button onclick="loadM3U()">Load .m3u from URL</button>
-            <br>
-            <input type="file" id="m3uFile">
-            <button onclick="loadM3UFile()">Load Channels</button>
-            <br>
-            <label for="groupSelect">Group:</label>
-            <select id="groupSelect" onchange="updateChannels()"></select>
-            <br>
-            <label for="channelSelect">Channel:</label>
-            <select id="channelSelect" onchange="playChannel()"></select>
-            <br>
-            <input type="checkbox" id="enableDRM">
-            <label for="enableDRM">Enable DRM</label>
-            <br>
-            <input type="text" id="drmKey" placeholder="DRM Key" value="93e8a76ff4e7d490abb45">
-            <input type="text" id="drmKeyId" placeholder="DRM Key ID" value="16b7e0711d09ff7aaff47e00">
+        <div class="sidebar">
+            <!-- Existing controls -->
+
+            <label for="drm-enabled">Enable DRM:</label>
+            <input type="checkbox" id="drm-enabled">
+            <div class="divider"></div>
+
+            <label for="upload-js">Upload JavaScript File:</label>
+            <input type="file" id="upload-js" accept=".js">
+            <div class="divider"></div>
+
+            <!-- Existing inputs and buttons -->
+            <label for="m3u8-link">Direct .m3u8 Link:</label>
+            <input type="text" id="m3u8-link" placeholder=".m3u8 link here">
+            <button onclick="playDirectLink()">Play Direct .m3u8</button>
+            <div class="divider"></div>
+
+            <label for="m3u-url">M3U URL:</label>
+            <input type="text" id="m3u-url" placeholder=".m3u URL here">
+            <button onclick="loadM3UFromURL()">Load .m3u from URL</button>
+            <div class="divider"></div>
+
+            <label for="file-input">Upload M3U File:</label>
+            <input type="file" id="file-input" accept=".m3u">
+            <button onclick="loadM3UFromFile()">Load Channels</button>
+            <div class="divider"></div>
+
+            <select id="group-select" onchange="onGroupChange()">
+                <option value="">Group:</option>
+            </select>
+            <select id="channel-select" onchange="onChannelChange()">
+                <option value="">Channel:</option>
+            </select>
+            <div class="divider"></div>
+
+            <div id="channel-info">
+                <img id="channel-logo" src="" alt="Channel Logo">
+                <div id="channel-details"></div>
+                <a id="channel-link" target="_blank"></a>
+            </div>
         </div>
-        <div id="jwplayerDiv"></div>
+
+        <div class="player-container">
+            <div id="player-container"></div>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
