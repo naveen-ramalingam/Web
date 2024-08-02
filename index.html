@@ -2,81 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Live Stream Player</title>
+    <title>SunNeo</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Live Stream Player with M3U support">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
-            <!-- Date and Time Display -->
-            <div id="date-time">
-                <div id="current-date"></div>
-                <div id="current-time"></div>
-            </div>
-
-            <!-- Direct .m3u8 link input and button -->
-            <label for="m3u8-link">Direct .m3u8 Link:</label>
-            <input type="text" id="m3u8-link" placeholder=".m3u8 link here">
-            <button onclick="playDirectLink()">Play Direct .m3u8</button>
-            <div class="divider"></div>
-
-            <!-- M3U URL input and button -->
-            <label for="m3u-url">M3U URL:</label>
-            <input type="text" id="m3u-url" placeholder=".m3u URL here">
-            <button onclick="loadM3UFromURL()">Load .m3u from URL</button>
-            <div class="divider"></div>
-
-            <!-- File input and button -->
-            <label for="file-input">Upload M3U File:</label>
-            <input type="file" id="file-input" accept=".m3u">
-            <button onclick="loadM3UFromFile()">Load Channels</button>
-            <div class="divider"></div>
-
-            <!-- Group and Channel selection -->
-            <select id="group-select" onchange="onGroupChange()">
-                <option value="">Group:</option>
-            </select>
-            <select id="channel-select" onchange="onChannelChange()">
-                <option value="">Channel:</option>
-            </select>
-            <div class="divider"></div>
-
-            <!-- DRM Settings -->
-            <label for="drm-checkbox">Enable DRM:</label>
-            <input type="checkbox" id="drm-checkbox">
-            <div class="divider"></div>
-
-            <!-- DRM Key and Key ID input -->
-            <label for="drm-key">DRM Key:</label>
-            <input type="text" id="drm-key" placeholder="DRM Key here">
-            <label for="drm-key-id">DRM Key ID:</label>
-            <input type="text" id="drm-key-id" placeholder="DRM Key ID here">
-            <div class="divider"></div>
-
-            <!-- Channel info -->
-            <div id="channel-info">
-                <img id="channel-logo" src="" alt="Channel Logo">
-                <div id="channel-details"></div>
-                <a id="channel-link" target="_blank"></a>
-            </div>
+        <div class="controls">
+            <input type="text" id="directUrl" placeholder="Enter .m3u8 URL">
+            <button onclick="playDirect()">Play Direct .m3u8</button>
+            <br>
+            <input type="text" id="m3uUrl" placeholder="M3U URL here">
+            <button onclick="loadM3U()">Load .m3u from URL</button>
+            <br>
+            <input type="file" id="m3uFile">
+            <button onclick="loadM3UFile()">Load Channels</button>
+            <br>
+            <label for="groupSelect">Group:</label>
+            <select id="groupSelect" onchange="updateChannels()"></select>
+            <br>
+            <label for="channelSelect">Channel:</label>
+            <select id="channelSelect" onchange="playChannel()"></select>
+            <br>
+            <input type="checkbox" id="enableDRM">
+            <label for="enableDRM">Enable DRM</label>
+            <br>
+            <input type="text" id="drmKey" placeholder="DRM Key" value="93e8a76ff4e7d490abb45">
+            <input type="text" id="drmKeyId" placeholder="DRM Key ID" value="16b7e0711d09ff7aaff47e00">
         </div>
-
-        <div class="player-container">
-            <!-- Video Player -->
-            <div id="player-container"></div>
-        </div>
+        <div id="jwplayerDiv"></div>
     </div>
-
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
