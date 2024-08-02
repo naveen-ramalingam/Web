@@ -1,37 +1,33 @@
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    display: flex;
-    height: 100vh;
-    background-color: #333;
+    padding: 0;
 }
 
 .container {
     display: flex;
-    width: 100%;
 }
 
-.controls {
-    padding: 20px;
-    background-color: #1a1a1a;
-    color: #fff;
-    width: 300px;
+.sidebar {
+    width: 250px;
+    padding: 10px;
+    border-right: 1px solid #ccc;
 }
 
-.controls input, .controls button, .controls select {
-    margin-bottom: 10px;
-    width: 100%;
+.player-container {
+    flex: 1;
+    padding: 10px;
 }
 
-#jwplayerDiv {
-    flex-grow: 1;
-    position: relative;
+.divider {
+    margin: 10px 0;
 }
 
-.jwplayer {
-    position: absolute !important;
+#channel-info {
+    margin-top: 10px;
 }
 
-.jwplayer.jw-flag-aspect-mode {
-    min-height: 100%;
-    max-height: 100%;
+#channel-logo {
+    max-width: 100px;
+    max-height: 100px;
 }
