@@ -89,7 +89,7 @@
 
         .sidebar .white-line {
             border-top: 2px solid #fff;
-            margin-top: 10px; /* Adjust to move the line closer */
+            margin-top: 10px; /* Move closer to Channel dropdown */
         }
 
         .sidebar .conditional-white-line {
@@ -98,9 +98,10 @@
             margin-top: 10px;
         }
 
-        .sidebar .white-line-channel-dropdown {
-            border-top: 2px solid #fff;
-            margin-top: 5px; /* Adjust to move the line slightly up */
+        .player-container {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         #player-container {
@@ -173,7 +174,7 @@
                     <option value="">Channel:</option>
                 </select>
                 <!-- No gap between Group and Channel dropdowns -->
-                <div class="white-line-channel-dropdown"></div> <!-- Adjusted white line below Channel dropdown -->
+                <div class="white-line"></div> <!-- White line below Channel dropdown -->
             </div>
 
             <!-- Channel info -->
