@@ -34,28 +34,24 @@
             width: 300px;
             background-color: #333;
             color: #fff;
-            padding: 20px;
+            padding: 10px 20px; /* Reduce padding to fit elements better */
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 0.2in; /* Gap between sections */
+            gap: 10px; /* Reduce gap between sections */
         }
 
         .sidebar input[type="text"],
         .sidebar input[type="file"],
         .sidebar select,
-        .sidebar button,
-        .sidebar .white-line,
-        .sidebar .conditional-white-line,
-        .sidebar #channel-link {
-            width: calc(100% - 22px);
-            margin-bottom: 10px;
+        .sidebar button {
+            width: calc(100% - 0px); /* Ensure full width */
+            margin-bottom: 10px; /* Space between elements */
             padding: 10px;
             border: none;
             border-radius: 4px;
             background: #444;
             color: #fff;
-            box-sizing: border-box;
         }
 
         .sidebar button {
@@ -68,34 +64,9 @@
             background-color: #047a77;
         }
 
-        .sidebar .section {
-            display: flex;
-            flex-direction: column;
-        }
-
         .sidebar .divider {
             border-top: 1px solid #555;
-            margin-bottom: 0.2in; /* Gap between sections */
-        }
-
-        .sidebar .group-channel-gap {
-            margin-bottom: 0; /* No gap between Group and Channel dropdowns */
-        }
-
-        .sidebar .separator {
-            border-top: 2px solid #fff;
-            margin: 0.2in 0; /* Adjust the margin for spacing */
-        }
-
-        .sidebar .white-line {
-            border-top: 2px solid #fff;
-            margin-top: 10px; /* Move closer to Channel dropdown */
-        }
-
-        .sidebar .conditional-white-line {
-            border-top: 2px solid #fff;
-            display: none; /* Initially hidden, shown only when channel hyperlink appears */
-            margin-top: 10px;
+            margin: 10px 0; /* Space around the divider */
         }
 
         .player-container {
@@ -110,7 +81,7 @@
         }
 
         #channel-info {
-            margin-top: 10px; /* Move up the Channel info */
+            margin-top: 10px; /* Space above channel info */
             color: #fff;
         }
 
@@ -133,69 +104,60 @@
         #channel-link {
             color: #fff;
             background-color: #f57f00; /* Orange background */
+            padding: 10px;
+            border-radius: 4px;
             word-wrap: break-word; /* Wrap text if it's too long */
             margin-top: 10px; /* Space above the hyperlink */
             display: none; /* Initially hide the link */
         }
-
+        
         #date-time {
             display: flex;
             justify-content: space-between;
-            width: calc(100% - 22px);
-            margin-bottom: 10px;
-            padding: 10px;
-            background: #444;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            box-sizing: border-box;
+            font-size: 14px;
+            margin-bottom: 10px; /* Space below date-time */
         }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <div id="date-time"></div> <!-- Date and Time Section -->
+            <!-- Date and Time Display -->
+            <div id="date-time">
+                <div id="current-date"></div>
+                <div id="current-time"></div>
+            </div>
 
             <!-- Direct .m3u8 link input and button -->
-            <div class="section">
-                <input type="text" id="m3u8-link" placeholder=".m3u8 link here">
-                <button onclick="playDirectLink()">Play Direct .m3u8</button>
-                <div class="white-line"></div> <!-- White line after button -->
-            </div>
+            <input type="text" id="m3u8-link" placeholder=".m3u8 link here">
+            <button onclick="playDirectLink()">Play Direct .m3u8</button>
+            <div class="divider"></div>
 
             <!-- M3U URL input and button -->
-            <div class="section">
-                <input type="text" id="m3u-url" placeholder=".m3u URL here">
-                <button onclick="loadM3UFromURL()">Load .m3u from URL</button>
-                <div class="white-line"></div> <!-- White line after button -->
-            </div>
+            <input type="text" id="m3u-url" placeholder=".m3u URL here">
+            <button onclick="loadM3UFromURL()">Load .m3u from URL</button>
+            <div class="divider"></div>
 
             <!-- File input and button -->
-            <div class="section">
-                <input type="file" id="file-input" accept=".m3u">
-                <button onclick="loadM3UFromFile()">Load Channels</button>
-                <div class="white-line"></div> <!-- White line after button -->
-            </div>
+            <input type="file" id="file-input" accept=".m3u">
+            <button onclick="loadM3UFromFile()">Load Channels</button>
+            <div class="divider"></div>
 
             <!-- Group and Channel selection -->
-            <div class="section group-channel-gap">
-                <select id="group-select" onchange="onGroupChange()">
-                    <option value="">Group:</option>
-                </select>
-                <select id="channel-select" onchange="onChannelChange()">
-                    <option value="">Channel:</option>
-                </select>
-                <!-- No gap between Group and Channel dropdowns -->
-                <div class="white-line"></div> <!-- White line below Channel dropdown -->
-            </div>
+            <select id="group-select" onchange="onGroupChange()">
+                <option value="">Group:</option>
+            </select>
+            <select id="channel-select" onchange="onChannelChange()">
+                <option value="">Channel:</option>
+            </select>
+            <div class="divider"></div>
 
             <!-- Channel info -->
             <div id="channel-info">
                 <img id="channel-logo" src="" alt="Channel Logo">
                 <div id="channel-details"></div>
                 <div id="channel-link"></div> <!-- Hyperlink text for the selected channel -->
-                <div id="conditional-white-line" class="conditional-white-line"></div> <!-- Conditional white line -->
             </div>
         </div>
 
@@ -206,19 +168,17 @@
     </div>
 
     <script>
+        let channels = {};
+
         function updateDateTime() {
             const now = new Date();
-            const formattedDate = now.toISOString().split('T')[0].replace(/-/g, '/');
-            const formattedTime = now.toLocaleTimeString();
-            document.getElementById('date-time').innerHTML = `
-                <span>${formattedDate}</span>
-                <span>${formattedTime}</span>
-            `;
+            const date = now.toISOString().split('T')[0].replace(/-/g, '/'); // Format: yyyy/mm/dd
+            const time = now.toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('current-date').textContent = date;
+            document.getElementById('current-time').textContent = time;
         }
 
         setInterval(updateDateTime, 1000);
-
-        let channels = {};
 
         function playDirectLink() {
             const m3u8Link = document.getElementById('m3u8-link').value;
@@ -300,7 +260,7 @@
             const channelSelect = document.getElementById('channel-select');
             channelSelect.innerHTML = '<option value="">Channel:</option>';
 
-            if (selectedGroup && channels[selectedGroup]) {
+            if (channels[selectedGroup]) {
                 channels[selectedGroup].forEach(channel => {
                     const option = document.createElement('option');
                     option.value = channel.url;
@@ -311,36 +271,25 @@
         }
 
         function onChannelChange() {
-            const channelDropdown = document.getElementById('channel-select');
-            const selectedUrl = channelDropdown.value;
-            const channel = findChannelByUrl(selectedUrl);
+            const channelSelect = document.getElementById('channel-select');
+            const selectedChannelURL = channelSelect.value;
 
-            if (channel) {
-                displayChannelInfo(channel);
-                loadStream(selectedUrl);
-            } else {
-                document.getElementById('channel-logo').style.display = 'none';
-                document.getElementById('channel-details').style.display = 'none';
-                document.getElementById('channel-link').style.display = 'none';
-                document.getElementById('conditional-white-line').style.display = 'none';
-            }
-        }
+            if (selectedChannelURL) {
+                const groupSelect = document.getElementById('group-select');
+                const selectedGroup = groupSelect.value;
+                const channel = channels[selectedGroup].find(c => c.url === selectedChannelURL);
 
-        function findChannelByUrl(url) {
-            for (const group in channels) {
-                const channel = channels[group].find(c => c.url === url);
                 if (channel) {
-                    return channel;
+                    displayChannelInfo(channel);
+                    loadStream(selectedChannelURL);
                 }
             }
-            return null;
         }
 
         function displayChannelInfo(channel) {
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
             const channelLink = document.getElementById('channel-link');
-            const conditionalWhiteLine = document.getElementById('conditional-white-line');
 
             if (channel.logo) {
                 channelLogo.src = channel.logo;
@@ -356,23 +305,19 @@
             `;
             channelDetails.style.display = 'block';
 
-            channelLink.innerHTML = `<a href="${channel.url}" target="_blank">${channel.url}</a>`;
+            channelLink.href = channel.url;
+            channelLink.textContent = channel.url;
             channelLink.style.display = 'block';
-            conditionalWhiteLine.style.display = 'block'; // Show the line when hyperlink is visible
         }
 
         function loadStream(url) {
             jwplayer("player-container").setup({
                 file: url,
                 width: "100%",
-                type: "hls",
-                autostart: false,
-                primary: "html5"
+                height: "100%",
+                aspectratio: "16:9"
             });
         }
-
-        // Initialize date and time display
-        updateDateTime();
     </script>
 </body>
 </html>
