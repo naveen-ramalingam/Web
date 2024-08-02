@@ -92,12 +92,6 @@
             margin-top: 10px; /* Move closer to Channel dropdown */
         }
 
-        .player-container {
-            flex: 1;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
         #player-container {
             width: 100%;
             height: 500px;
@@ -125,7 +119,7 @@
         }
 
         #channel-link {
-            color: #069994;
+            color: #fff; /* Set hyperlink text color to white */
             word-wrap: break-word; /* Wrap text if it's too long */
             margin-top: 10px; /* Space above the hyperlink */
         }
@@ -164,6 +158,7 @@
                     <option value="">Channel:</option>
                 </select>
                 <!-- No gap between Group and Channel dropdowns -->
+                <div class="white-line"></div> <!-- White line below Channel dropdown -->
             </div>
 
             <!-- Channel info -->
@@ -187,6 +182,19 @@
         function playDirectLink() {
             const m3u8Link = document.getElementById('m3u8-link').value;
             if (m3u8Link) {
+                // Hide group and channel selections
+                document.getElementById('group-select').selectedIndex = 0;
+                document.getElementById('channel-select').innerHTML = '<option value="">Channel:</option>';
+                
+                // Hide channel details and logo
+                document.getElementById('channel-logo').style.display = 'none';
+                document.getElementById('channel-details').style.display = 'none';
+                
+                // Display the direct play hyperlink
+                const channelLink = document.getElementById('channel-link');
+                channelLink.innerHTML = `<a href="${m3u8Link}" target="_blank">${m3u8Link}</a>`;
+                channelLink.style.display = 'block';
+                
                 loadStream(m3u8Link);
             }
         }
@@ -236,10 +244,10 @@
 
                     channels[groupTitle].push({
                         name: channelName,
-                        url: url,
                         tvgId: tvgId,
                         groupTitle: groupTitle,
-                        logo: logo
+                        logo: logo,
+                        url: url
                     });
                 }
             });
@@ -250,12 +258,15 @@
         function populateGroups() {
             const groupSelect = document.getElementById('group-select');
             groupSelect.innerHTML = '<option value="">Group:</option>';
+
             Object.keys(channels).forEach(group => {
                 const option = document.createElement('option');
                 option.value = group;
                 option.textContent = group;
                 groupSelect.appendChild(option);
             });
+
+            document.getElementById('channel-select').innerHTML = '<option value="">Channel:</option>';
         }
 
         function onGroupChange() {
