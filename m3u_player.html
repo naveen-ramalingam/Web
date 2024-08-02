@@ -106,7 +106,8 @@
         }
 
         #channel-details {
-            background: #000;
+            display: none; /* Initially hide the details */
+            background: #000; /* Apply background color when showing details */
             padding: 10px;
             border-radius: 4px;
             color: #fff;
@@ -265,11 +266,13 @@
                 if (selectedChannel) {
                     displayChannelInfo(selectedChannel);
                     loadStream(selectedUrl);
+                } else {
+                    document.getElementById('channel-logo').style.display = 'none';
+                    document.getElementById('channel-details').style.display = 'none';
                 }
             } else {
-                // Hide channel info if no channel is selected
                 document.getElementById('channel-logo').style.display = 'none';
-                document.getElementById('channel-details').innerHTML = '';
+                document.getElementById('channel-details').style.display = 'none';
             }
         }
 
@@ -287,18 +290,19 @@
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
 
-            channelDetails.innerHTML = `
-                <strong>TVG ID:</strong> ${channel.tvgId || 'N/A'}<br>
-                <strong>Group Title:</strong> ${channel.groupTitle || 'N/A'}<br>
-                <strong>Channel Name:</strong> ${channel.name || 'N/A'}
-            `;
-
             if (channel.logo) {
                 channelLogo.src = channel.logo;
                 channelLogo.style.display = 'block';
             } else {
                 channelLogo.style.display = 'none';
             }
+
+            channelDetails.innerHTML = `
+                <strong>TVG ID:</strong> ${channel.tvgId || 'N/A'}<br>
+                <strong>Group Title:</strong> ${channel.groupTitle || 'N/A'}<br>
+                <strong>Channel Name:</strong> ${channel.name || 'N/A'}
+            `;
+            channelDetails.style.display = 'block';
         }
 
         function loadStream(url) {
