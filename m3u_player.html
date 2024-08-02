@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Live Stream Player</title>
-    <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon">
+    <!-- Remove or comment out the favicon link -->
+    <!-- <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Live Stream Player with M3U support" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -100,7 +101,7 @@
         #channel-logo {
             max-width: 100px;
             max-height: 50px;
-            display: block;
+            display: none; /* Initially hide the logo */
             margin-bottom: 10px;
         }
 
@@ -265,13 +266,19 @@
                     displayChannelInfo(selectedChannel);
                     loadStream(selectedUrl);
                 }
+            } else {
+                // Hide channel info if no channel is selected
+                document.getElementById('channel-logo').style.display = 'none';
+                document.getElementById('channel-details').innerHTML = '';
             }
         }
 
         function findChannelByUrl(url) {
             for (const group in channels) {
-                const channel = channels[group].find(ch => ch.url === url);
-                if (channel) return channel;
+                const channel = channels[group].find(c => c.url === url);
+                if (channel) {
+                    return channel;
+                }
             }
             return null;
         }
