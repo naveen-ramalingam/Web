@@ -95,6 +95,7 @@
         #player-container {
             width: 100%;
             height: 500px;
+            background: #000; /* Ensure the player container has a background */
         }
 
         #channel-info {
@@ -194,8 +195,24 @@
                 const channelLink = document.getElementById('channel-link');
                 channelLink.innerHTML = `<a href="${m3u8Link}" target="_blank">${m3u8Link}</a>`;
                 channelLink.style.display = 'block';
-                
-                loadStream(m3u8Link);
+
+                // Initialize JW Player
+                jwplayer("player-container").setup({
+                    file: m3u8Link,
+                    width: "100%",
+                    height: "100%",
+                    type: "hls",
+                    autostart: false,
+                    primary: "html5",
+                    events: {
+                        onError: function (event) {
+                            console.error('JW Player Error:', event);
+                        },
+                        onReady: function () {
+                            console.log('JW Player is ready');
+                        }
+                    }
+                });
             }
         }
 
@@ -232,16 +249,16 @@
                     const channelName = parts[1];
                     const channelInfo = parts[0].match(/tvg-id="([^"]*)"/);
                     const tvgId = channelInfo ? channelInfo[1] : '';
-                    const groupInfo = parts[0].match(/group-title="([^"]*)"/);
-                    const groupTitle = groupInfo ? groupInfo[1] : '';
-                    const logoInfo = parts[0].match(/tvg-logo="([^"]*)"/);
-                    const logo = logoInfo ? logoInfo[1] : '';
-                    const url = lines[lines.indexOf(line) + 1];
+                    const groupTitleMatch = parts[0].match(/group-title="([^"]*)"/);
+                    const groupTitle = groupTitleMatch ? groupTitleMatch[1] : '';
+                    const logoMatch = parts[0].match(/tvg-logo="([^"]*)"/);
+                    const logo = logoMatch ? logoMatch[1] : '';
+                    const url = lines[++i].trim();
 
                     if (!channels[groupTitle]) {
                         channels[groupTitle] = [];
                     }
-
+                    
                     channels[groupTitle].push({
                         name: channelName,
                         tvgId: tvgId,
@@ -337,9 +354,18 @@
             jwplayer("player-container").setup({
                 file: url,
                 width: "100%",
+                height: "100%",
                 type: "hls",
                 autostart: false,
-                primary: "html5"
+                primary: "html5",
+                events: {
+                    onError: function (event) {
+                        console.error('JW Player Error:', event);
+                    },
+                    onReady: function () {
+                        console.log('JW Player is ready');
+                    }
+                }
             });
         }
     </script>
