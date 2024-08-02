@@ -1,24 +1,4 @@
 let channels = {};
-let drmEnabled = false;
-
-document.getElementById('drm-enabled').addEventListener('change', function() {
-    drmEnabled = this.checked;
-});
-
-document.getElementById('upload-js').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            try {
-                eval(e.target.result);
-            } catch (error) {
-                console.error('Error executing JavaScript file:', error);
-            }
-        };
-        reader.readAsText(file);
-    }
-});
 
 function updateDateTime() {
     const now = new Date();
@@ -167,22 +147,10 @@ function displayChannelInfo(channel) {
 }
 
 function loadStream(url) {
-    const playerConfig = {
+    jwplayer("player-container").setup({
         file: url,
         width: "100%",
         height: "100%",
-        aspectratio: "16:9",
-        autostart: true
-    };
-
-    if (drmEnabled) {
-        playerConfig.drm = {
-            clearkey: {
-                keyId: '44/SunNeoH' + 'd675e34b54' + '00',
-                key: '9JaYHFQ' + 'd675e34b54' + '00'
-            }
-        };
-    }
-
-    jwplayer("player-container").setup(playerConfig);
+        aspectratio: "16:9"
+    });
 }
