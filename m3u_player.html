@@ -89,6 +89,11 @@
 
         .sidebar .white-line {
             border-top: 2px solid #fff;
+            margin-top: 0; /* Remove gap above the line */
+        }
+
+        .sidebar .white-line-with-gap {
+            border-top: 2px solid #fff;
             margin-top: 10px; /* Move closer to Channel dropdown */
         }
 
@@ -133,6 +138,10 @@
             margin-top: 10px; /* Space above the hyperlink */
             display: none; /* Initially hide the link */
         }
+
+        #channel-link-wrapper {
+            display: none; /* Initially hide the white line */
+        }
     </style>
 </head>
 <body>
@@ -147,7 +156,7 @@
 
             <!-- M3U URL input and button -->
             <div class="section">
-                <input type="text" id="m3u-url" placeholder="M3U URL here">
+                <input type="text" id="m3u-url" placeholder=".m3u URL here">
                 <button onclick="loadM3UFromURL()">Load M3U from URL</button>
                 <div class="white-line"></div> <!-- White line after button -->
             </div>
@@ -167,15 +176,16 @@
                 <select id="channel-select" onchange="onChannelChange()">
                     <option value="">Channel:</option>
                 </select>
-                <!-- No gap between Group and Channel dropdowns -->
-                <div class="white-line"></div> <!-- White line below Channel dropdown -->
+                <div class="white-line-with-gap"></div> <!-- White line below Channel dropdown -->
             </div>
 
             <!-- Channel info -->
             <div id="channel-info">
                 <img id="channel-logo" src="" alt="Channel Logo">
                 <div id="channel-details"></div>
-                <div id="channel-link"></div> <!-- Hyperlink text for the selected channel -->
+                <div id="channel-link-wrapper">
+                    <div id="channel-link"></div> <!-- Hyperlink text for the selected channel -->
+                </div>
                 <div class="white-line"></div> <!-- White line below Channel info -->
             </div>
         </div>
@@ -249,10 +259,10 @@
                 }
             });
 
-            populateGroups();
+            updateGroupDropdown();
         }
 
-        function populateGroups() {
+        function updateGroupDropdown() {
             const groupSelect = document.getElementById('group-select');
             groupSelect.innerHTML = '<option value="">Group:</option>';
             Object.keys(channels).forEach(group => {
@@ -291,6 +301,7 @@
                 document.getElementById('channel-logo').style.display = 'none';
                 document.getElementById('channel-details').style.display = 'none';
                 document.getElementById('channel-link').style.display = 'none';
+                document.getElementById('channel-link-wrapper').style.display = 'none';
             }
         }
 
@@ -308,6 +319,7 @@
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
             const channelLink = document.getElementById('channel-link');
+            const channelLinkWrapper = document.getElementById('channel-link-wrapper');
 
             if (channel.logo) {
                 channelLogo.src = channel.logo;
@@ -325,6 +337,7 @@
 
             channelLink.innerHTML = `<a href="${channel.url}" target="_blank">${channel.url}</a>`;
             channelLink.style.display = 'block';
+            channelLinkWrapper.style.display = 'block'; // Show the white line
         }
 
         function loadStream(url) {
