@@ -125,29 +125,13 @@
         }
 
         #channel-link {
-            background: #000;
-            color: #069994;
-            word-wrap: break-word; /* Wrap text if it's too long */
+            background: #000; /* Black background */
+            color: #fff; /* White text */
             padding: 10px;
             border-radius: 4px;
+            word-wrap: break-word; /* Wrap text if it's too long */
             margin-top: 10px; /* Space above the hyperlink */
-            position: relative;
-        }
-
-        #copy-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            background: #069994;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        #copy-btn:hover {
-            background: #047a77;
+            display: none; /* Initially hide the link */
         }
     </style>
 </head>
@@ -190,10 +174,7 @@
             <div id="channel-info">
                 <img id="channel-logo" src="" alt="Channel Logo">
                 <div id="channel-details"></div>
-                <div id="channel-link">
-                    <span id="link-text"></span>
-                    <button id="copy-btn" onclick="copyToClipboard()">Copy</button>
-                </div>
+                <div id="channel-link"></div> <!-- Hyperlink text for the selected channel -->
                 <div class="white-line"></div> <!-- White line below Channel info -->
             </div>
         </div>
@@ -273,7 +254,6 @@
         function populateGroups() {
             const groupSelect = document.getElementById('group-select');
             groupSelect.innerHTML = '<option value="">Group:</option>';
-
             Object.keys(channels).forEach(group => {
                 const option = document.createElement('option');
                 option.value = group;
@@ -327,7 +307,6 @@
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
             const channelLink = document.getElementById('channel-link');
-            const linkText = document.getElementById('link-text');
 
             if (channel.logo) {
                 channelLogo.src = channel.logo;
@@ -343,7 +322,7 @@
             `;
             channelDetails.style.display = 'block';
 
-            linkText.innerHTML = `<a href="${channel.url}" target="_blank">${channel.url}</a>`;
+            channelLink.innerHTML = `<a href="${channel.url}" target="_blank">${channel.url}</a>`;
             channelLink.style.display = 'block';
         }
 
@@ -354,15 +333,6 @@
                 type: "hls",
                 autostart: false,
                 primary: "html5"
-            });
-        }
-
-        function copyToClipboard() {
-            const linkText = document.getElementById('link-text').innerText;
-            navigator.clipboard.writeText(linkText).then(() => {
-                alert('Link copied to clipboard');
-            }, (err) => {
-                console.error('Failed to copy text: ', err);
             });
         }
     </script>
