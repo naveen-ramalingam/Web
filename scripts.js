@@ -147,10 +147,25 @@ function displayChannelInfo(channel) {
 }
 
 function loadStream(url) {
-    jwplayer("player-container").setup({
+    const drmCheckbox = document.getElementById('drm-checkbox');
+    const drmKey = document.getElementById('drm-key').value;
+    const drmKeyId = document.getElementById('drm-key-id').value;
+
+    const config = {
         file: url,
         width: "100%",
         height: "100%",
         aspectratio: "16:9"
-    });
+    };
+
+    if (drmCheckbox.checked) {
+        config.drm = {
+            clearkey: {
+                keyId: drmKeyId,
+                key: drmKey
+            }
+        };
+    }
+
+    jwplayer("player-container").setup(config);
 }
