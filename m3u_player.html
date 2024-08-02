@@ -2,251 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Live Stream Player</title>
-    <!-- Remove or comment out the favicon link -->
-    <!-- <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon"> -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Live Stream Player with M3U support" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <style>
         body {
-            font-family: "Roboto", sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
-            height: 100vh;
-            background-color: #000;
         }
-
-        .container {
-            display: flex;
-            width: 100%;
-        }
-
-        .sidebar {
+        #left-panel {
             width: 300px;
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            gap: 0.2in; /* Gap between sections */
+            background-color: #f0f0f0;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
-
-        .sidebar input[type="text"],
-        .sidebar input[type="file"],
-        .sidebar select {
-            width: calc(100% - 22px);
+        #player-container {
+            flex-grow: 1;
+            padding: 10px;
+        }
+        .panel-title {
+            font-size: 1.5em;
             margin-bottom: 10px;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background: #444;
-            color: #fff;
         }
-
-        .sidebar button {
-            width: calc(100% - 22px);
-            padding: 10px;
+        .date-time {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        input, button, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
             background-color: #069994;
             color: #fff;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
         }
-
-        .sidebar button:hover {
-            background-color: #047a77;
+        button:hover {
+            background-color: #037d7d;
         }
-
-        .sidebar .section {
-            display: flex;
-            flex-direction: column;
+        .white-line {
+            height: 1px;
+            background-color: #ddd;
+            margin: 10px 0;
         }
-
-        .sidebar .divider {
-            border-top: 1px solid #555;
-            margin-bottom: 0.2in; /* Gap between sections */
-        }
-
-        .sidebar .group-channel-gap {
-            margin-bottom: 0; /* No gap between Group and Channel dropdowns */
-        }
-
-        .sidebar .separator {
-            border-top: 2px solid #fff;
-            margin: 0.2in 0; /* Adjust the margin for spacing */
-        }
-
-        .sidebar .white-line {
-            border-top: 2px solid #fff;
-            margin-top: 10px; /* Move closer to Channel dropdown */
-        }
-
-        .sidebar .conditional-white-line {
-            border-top: 2px solid #fff;
-            display: none; /* Initially hidden, shown only when channel hyperlink appears */
-            margin-top: 10px;
-        }
-
-        .player-container {
-            flex: 1;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        #player-container {
-            width: 100%;
-            height: 500px;
-        }
-
-        #channel-info {
-            margin-top: 10px; /* Move up the Channel info */
-            color: #fff;
-        }
-
         #channel-logo {
-            max-width: 100px;
-            max-height: 50px;
-            display: none; /* Initially hide the logo */
+            display: none;
+            width: 100%;
             margin-bottom: 10px;
         }
-
-        #channel-details {
-            display: none; /* Initially hide the details */
-            background: #000; /* Apply background color when showing details */
-            padding: 10px;
-            border-radius: 4px;
-            color: #fff;
-            margin-bottom: 10px; /* Add space below channel details */
+        #channel-details, #channel-link {
+            display: none;
+            margin-bottom: 10px;
         }
-
-        #channel-link {
+        #channel-link a {
+            color: #069994;
+            text-decoration: none;
+        }
+        #channel-link a:hover {
+            text-decoration: underline;
+        }
+        .orange-bg {
+            background-color: #ff9b05;
             color: #fff;
-            background-color: #f57f00; /* Orange background */
-            padding: 10px;
+            padding: 5px;
             border-radius: 4px;
-            word-wrap: break-word; /* Wrap text if it's too long */
-            margin-top: 10px; /* Space above the hyperlink */
-            display: none; /* Initially hide the link */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <!-- Direct .m3u8 link input and button -->
-            <div class="section">
-                <input type="text" id="m3u8-link" placeholder=".m3u8 link here">
-                <button onclick="playDirectLink()">Play Direct .m3u8</button>
-                <div class="white-line"></div> <!-- White line after button -->
-            </div>
-
-            <!-- M3U URL input and button -->
-            <div class="section">
-                <input type="text" id="m3u-url" placeholder=".m3u URL here">
-                <button onclick="loadM3UFromURL()">Load .m3u from URL</button>
-                <div class="white-line"></div> <!-- White line after button -->
-            </div>
-
-            <!-- File input and button -->
-            <div class="section">
-                <input type="file" id="file-input" accept=".m3u">
-                <button onclick="loadM3UFromFile()">Load Channels</button>
-                <div class="white-line"></div> <!-- White line after button -->
-            </div>
-
-            <!-- Group and Channel selection -->
-            <div class="section group-channel-gap">
-                <select id="group-select" onchange="onGroupChange()">
-                    <option value="">Group:</option>
-                </select>
-                <select id="channel-select" onchange="onChannelChange()">
-                    <option value="">Channel:</option>
-                </select>
-                <!-- No gap between Group and Channel dropdowns -->
-                <div class="white-line"></div> <!-- White line below Channel dropdown -->
-            </div>
-
-            <!-- Channel info -->
-            <div id="channel-info">
-                <img id="channel-logo" src="" alt="Channel Logo">
-                <div id="channel-details"></div>
-                <div id="channel-link"></div> <!-- Hyperlink text for the selected channel -->
-                <div id="conditional-white-line" class="conditional-white-line"></div> <!-- Conditional white line -->
-            </div>
-        </div>
-
-        <div class="player-container">
-            <!-- Video Player -->
-            <div id="player-container"></div>
-        </div>
+    <div id="left-panel">
+        <div class="date-time" id="date-time"></div>
+        <div class="panel-title">Selection</div>
+        <input type="text" id="m3u8-link" placeholder=".m3u8 link here">
+        <button onclick="playDirectM3U8()">Play Direct .m3u8</button>
+        <input type="text" id="m3u-url" placeholder="M3U URL here">
+        <button onclick="loadM3UFromURL()">Load M3U from URL</button>
+        <input type="file" id="file-input">
+        <button onclick="loadChannels()">Load Channels</button>
+        <select id="group-select" onchange="onGroupChange()">
+            <option value="">Group:</option>
+        </select>
+        <select id="channel-select" onchange="onChannelChange()">
+            <option value="">Channel:</option>
+        </select>
+        <div class="white-line"></div>
+        <img id="channel-logo" src="" alt="Channel Logo">
+        <div id="channel-details"></div>
+        <div class="white-line" id="conditional-white-line"></div>
+        <div id="channel-link" class="orange-bg"></div>
     </div>
-
+    <div id="player-container">
+        <div id="player-container"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <script>
-        let channels = {};
+        function updateDateTime() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            document.getElementById('date-time').textContent = dateTimeString;
+        }
 
-        function playDirectLink() {
-            const m3u8Link = document.getElementById('m3u8-link').value;
-            if (m3u8Link) {
-                loadStream(m3u8Link);
+        // Update date and time every second
+        setInterval(updateDateTime, 1000);
+
+        const channels = {}; // Object to store channels
+
+        function playDirectM3U8() {
+            const url = document.getElementById('m3u8-link').value;
+            if (url) {
+                loadStream(url);
             }
         }
 
         function loadM3UFromURL() {
             const url = document.getElementById('m3u-url').value;
-            if (url) {
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => parseM3U(data))
-                    .catch(error => console.error('Error loading M3U URL:', error));
-            }
+            fetch(url)
+                .then(response => response.text())
+                .then(data => parseM3U(data))
+                .catch(error => console.error('Error loading M3U:', error));
         }
 
-        function loadM3UFromFile() {
+        function loadChannels() {
             const fileInput = document.getElementById('file-input');
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
+            const file = fileInput.files[0];
+            if (file) {
                 const reader = new FileReader();
-                reader.onload = function(event) {
-                    parseM3U(event.target.result);
+                reader.onload = function(e) {
+                    const data = e.target.result;
+                    parseM3U(data);
                 };
                 reader.readAsText(file);
             }
         }
 
-        function parseM3U(content) {
-            const lines = content.split('\n');
-            channels = {};
+        function parseM3U(data) {
+            const lines = data.split('\n');
+            const channels = {};
             let currentGroup = '';
 
             lines.forEach(line => {
+                if (line.startsWith('#EXTM3U')) return;
                 if (line.startsWith('#EXTINF')) {
-                    const parts = line.split(',');
-                    const channelName = parts[1];
-                    const channelInfo = parts[0].match(/tvg-id="([^"]*)"/);
-                    const tvgId = channelInfo ? channelInfo[1] : '';
-                    const groupInfo = parts[0].match(/group-title="([^"]*)"/);
-                    const groupTitle = groupInfo ? groupInfo[1] : '';
-                    const logoInfo = parts[0].match(/tvg-logo="([^"]*)"/);
-                    const logo = logoInfo ? logoInfo[1] : '';
+                    const [info, ...rest] = line.split(',');
+                    const [tvgId, groupTitle, logo] = info.split(' ').filter(Boolean);
+                    const name = rest.join(',');
                     const url = lines[lines.indexOf(line) + 1];
-
                     if (!channels[groupTitle]) {
                         channels[groupTitle] = [];
                     }
-
                     channels[groupTitle].push({
-                        name: channelName,
+                        name: name,
                         url: url,
                         tvgId: tvgId,
                         groupTitle: groupTitle,
@@ -341,7 +254,7 @@
                 file: url,
                 width: "100%",
                 type: "hls",
-                autostart: false,
+                autostart: true,
                 primary: "html5"
             });
         }
