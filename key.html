@@ -60,8 +60,6 @@
     </div>
 
     <script>
-        const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
-
         async function sendWidevineRequest() {
             const pssh = document.getElementById('pssh').value;
             const licenseUrl = document.getElementById('licenseUrl').value;
@@ -78,7 +76,7 @@
                     body: JSON.stringify(payload)
                 };
 
-                const response = await fetch(CORS_PROXY + licenseUrl, options);
+                const response = await fetch(licenseUrl, options);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
