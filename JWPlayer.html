@@ -111,7 +111,7 @@
             margin-top: 10px; /* Space above the hyperlink */
             display: none; /* Initially hide the link */
         }
-
+        
         #drm-info {
             display: none; /* Initially hide the DRM info */
             background: #000; /* Apply background color when showing details */
@@ -148,15 +148,6 @@
                 <div id="current-time"></div>
             </div>
 
-            <!-- DRM Settings for Direct Link -->
-            <div class="drm-container">
-                <input type="checkbox" id="enable-drm-direct">
-                <label for="enable-drm-direct">Enable DRM</label>
-            </div>
-            <input type="text" id="drm-key-id-direct" placeholder="DRM Key ID">
-            <input type="text" id="drm-key-direct" placeholder="DRM Key">
-            <div class="divider"></div>
-
             <!-- Direct .m3u8 link input and button -->
             <input type="text" id="m3u8-link" placeholder=".m3u8 link here">
             <button onclick="playDirectLink()">Play Direct .m3u8</button>
@@ -180,6 +171,15 @@
             <!-- JSON URL input and button -->
             <input type="text" id="json-url" placeholder="JSON URL here">
             <button onclick="loadJSONFromURL()">Load Channels from JSON URL</button>
+            <div class="divider"></div>
+
+            <!-- DRM Settings -->
+            <div class="drm-container">
+                <input type="checkbox" id="enable-drm">
+                <label for="enable-drm">Enable DRM</label>
+            </div>
+            <input type="text" id="drm-key-id" placeholder="DRM Key ID">
+            <input type="text" id="drm-key" placeholder="DRM Key">
             <div class="divider"></div>
 
             <!-- Group and Channel selection -->
@@ -221,16 +221,8 @@
 
         function playDirectLink() {
             const m3u8Link = document.getElementById('m3u8-link').value;
-            const drmKeyId = document.getElementById('drm-key-id-direct').value;
-            const drmKey = document.getElementById('drm-key-direct').value;
-            const enableDRM = document.getElementById('enable-drm-direct').checked;
-
             if (m3u8Link) {
-                if (enableDRM && drmKeyId && drmKey) {
-                    loadStream(m3u8Link, drmKeyId, drmKey);
-                } else {
-                    loadStream(m3u8Link);
-                }
+                loadStream(m3u8Link);
             }
         }
 
@@ -240,7 +232,7 @@
                 fetch(url)
                     .then(response => response.text())
                     .then(data => parseM3U(data))
-                    .catch(error => alert('Error loading .m3u file: ' + error.message));
+                    .catch(error => alert('Error loading M3U URL: ' + error.message));
             }
         }
 
