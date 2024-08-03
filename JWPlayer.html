@@ -112,11 +112,30 @@
             display: none; /* Initially hide the link */
         }
         
+        #drm-info {
+            display: none; /* Initially hide the DRM info */
+            background: #000; /* Apply background color when showing details */
+            padding: 10px;
+            border-radius: 4px;
+            color: #fff;
+            margin-top: 10px; /* Add space above DRM info */
+        }
+
         #date-time {
             display: flex;
             justify-content: space-between;
             font-size: 14px;
             margin-bottom: 10px; /* Space below date-time */
+        }
+
+        .drm-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .drm-container label {
+            margin-left: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -155,9 +174,10 @@
             <div class="divider"></div>
 
             <!-- DRM Settings -->
-            <label>
-                <input type="checkbox" id="enable-drm"> Enable DRM
-            </label>
+            <div class="drm-container">
+                <input type="checkbox" id="enable-drm">
+                <label for="enable-drm">Enable DRM</label>
+            </div>
             <input type="text" id="drm-key-id" placeholder="DRM Key ID">
             <input type="text" id="drm-key" placeholder="DRM Key">
             <div class="divider"></div>
@@ -176,6 +196,7 @@
                 <img id="channel-logo" src="" alt="Channel Logo">
                 <div id="channel-details"></div>
                 <div id="channel-link"></div> <!-- Hyperlink text for the selected channel -->
+                <div id="drm-info"></div> <!-- DRM info for the selected channel -->
             </div>
         </div>
 
@@ -307,6 +328,7 @@
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
             const channelLink = document.getElementById('channel-link');
+            const drmInfo = document.getElementById('drm-info');
 
             if (channel.logo) {
                 channelLogo.src = channel.logo;
@@ -324,6 +346,16 @@
             channelLink.href = channel.url;
             channelLink.textContent = channel.url;
             channelLink.style.display = 'block';
+
+            if (channel.keyId && channel.key) {
+                drmInfo.innerHTML = `
+                    <strong>Key ID:</strong> ${channel.keyId}<br>
+                    <strong>Key:</strong> ${channel.key}
+                `;
+                drmInfo.style.display = 'block';
+            } else {
+                drmInfo.style.display = 'none';
+            }
         }
 
         function loadStream(url, drmKeyId = '', drmKey = '') {
