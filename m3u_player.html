@@ -198,8 +198,12 @@
             if (channels[currentGroup]) {
                 const channel = channels[currentGroup].find(c => c.url === selectedUrl);
                 if (channel) {
+                    // Update DRM fields with the selected channel's settings
+                    document.getElementById('drm-key-id').value = channel.keyId || '';
+                    document.getElementById('drm-key').value = channel.key || '';
+
                     displayChannelInfo(channel);
-                    loadStream(channel.url);
+                    loadStream(channel.url, channel.keyId, channel.key);
                 }
             }
         }
