@@ -149,6 +149,11 @@
             <button onclick="loadJSONFromFile()">Load Channels from JSON</button>
             <div class="divider"></div>
 
+            <!-- JSON URL input and button -->
+            <input type="text" id="json-url" placeholder="JSON URL here">
+            <button onclick="loadJSONFromURL()">Load Channels from JSON URL</button>
+            <div class="divider"></div>
+
             <!-- DRM Settings -->
             <label>
                 <input type="checkbox" id="enable-drm"> Enable DRM
@@ -357,6 +362,16 @@
                     }
                 };
                 reader.readAsText(file);
+            }
+        }
+
+        function loadJSONFromURL() {
+            const url = document.getElementById('json-url').value;
+            if (url) {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => processChannelData(data))
+                    .catch(error => alert('Error loading JSON URL: ' + error.message));
             }
         }
 
