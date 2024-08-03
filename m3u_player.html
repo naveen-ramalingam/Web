@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Live Stream Player</title>
+    <!-- Remove or comment out the favicon link -->
+    <!-- <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Live Stream Player with M3U support" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,7 +16,108 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
     <style>
-        /* Your existing styles here */
+        body {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #000;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px; /* Reduce padding to fit elements better */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Reduce gap between sections */
+        }
+
+        .sidebar input[type="text"],
+        .sidebar input[type="file"],
+        .sidebar select,
+        .sidebar button,
+        .sidebar input[type="checkbox"] {
+            width: calc(100% - 0px); /* Ensure full width */
+            margin-bottom: 10px; /* Space between elements */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background: #444;
+            color: #fff;
+        }
+
+        .sidebar button {
+            background-color: #069994;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .sidebar button:hover {
+            background-color: #047a77;
+        }
+
+        .sidebar .divider {
+            border-top: 1px solid #555;
+            margin: 10px 0; /* Space around the divider */
+        }
+
+        .player-container {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #player-container {
+            width: 100%;
+            height: 500px;
+        }
+
+        #channel-info {
+            margin-top: 10px; /* Space above channel info */
+            color: #fff;
+        }
+
+        #channel-logo {
+            max-width: 100px;
+            max-height: 50px;
+            display: none; /* Initially hide the logo */
+            margin-bottom: 10px;
+        }
+
+        #channel-details {
+            display: none; /* Initially hide the details */
+            background: #000; /* Apply background color when showing details */
+            padding: 10px;
+            border-radius: 4px;
+            color: #fff;
+            margin-bottom: 10px; /* Add space below channel details */
+        }
+
+        #channel-link {
+            color: #fff;
+            background-color: #f57f00; /* Orange background */
+            padding: 10px;
+            border-radius: 4px;
+            word-wrap: break-word; /* Wrap text if it's too long */
+            margin-top: 10px; /* Space above the hyperlink */
+            display: none; /* Initially hide the link */
+        }
+        
+        #date-time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 10px; /* Space below date-time */
+        }
     </style>
 </head>
 <body>
@@ -79,11 +182,10 @@
 
     <script>
         let channels = {};
-        let currentGroup = '';
 
         function updateDateTime() {
             const now = new Date();
-            const date = now.toISOString().split('T')[0].replace(/-/g, '/');
+            const date = now.toISOString().split('T')[0].replace(/-/g, '/'); // Format: yyyy/mm/dd
             const time = now.toLocaleTimeString('en-US', { hour12: false });
             document.getElementById('current-date').textContent = date;
             document.getElementById('current-time').textContent = time;
@@ -153,7 +255,6 @@
             });
 
             populateGroupDropdown();
-            onGroupChange(); // Ensure channels are populated based on the selected group
         }
 
         function populateGroupDropdown() {
@@ -165,14 +266,11 @@
                 option.textContent = group;
                 groupSelect.appendChild(option);
             }
-            // Clear channel dropdown
-            document.getElementById('channel-select').innerHTML = '<option value="">Channel:</option>';
         }
 
         function onGroupChange() {
             const groupSelect = document.getElementById('group-select');
             const selectedGroup = groupSelect.value;
-            currentGroup = selectedGroup; // Track the currently selected group
             const channelSelect = document.getElementById('channel-select');
             channelSelect.innerHTML = '<option value="">Channel:</option>';
 
@@ -184,26 +282,18 @@
                     channelSelect.appendChild(option);
                 });
             }
-
-            // Clear channel info
-            document.getElementById('channel-logo').style.display = 'none';
-            document.getElementById('channel-details').style.display = 'none';
-            document.getElementById('channel-link').style.display = 'none';
         }
 
         function onChannelChange() {
             const channelSelect = document.getElementById('channel-select');
             const selectedUrl = channelSelect.value;
+            const selectedGroup = document.getElementById('group-select').value;
 
-            if (channels[currentGroup]) {
-                const channel = channels[currentGroup].find(c => c.url === selectedUrl);
+            if (channels[selectedGroup]) {
+                const channel = channels[selectedGroup].find(c => c.url === selectedUrl);
                 if (channel) {
-                    // Update DRM fields with the selected channel's settings
-                    document.getElementById('drm-key-id').value = channel.keyId || '';
-                    document.getElementById('drm-key').value = channel.key || '';
-
                     displayChannelInfo(channel);
-                    loadStream(channel.url, channel.keyId, channel.key);
+                    loadStream(channel.url);
                 }
             }
         }
@@ -271,7 +361,6 @@
         }
 
         function processChannelData(data) {
-            channels = {}; // Reset channels
             const groups = {};
 
             // Reset dropdowns
@@ -288,6 +377,7 @@
                 const keyId = channel.keyId;
                 const key = channel.key;
 
+                // Add group to dropdown if not present
                 if (!groups[group]) {
                     groups[group] = [];
                     const groupOption = document.createElement('option');
@@ -296,6 +386,7 @@
                     document.getElementById('group-select').appendChild(groupOption);
                 }
 
+                // Add channel to group
                 groups[group].push({
                     name: channelName,
                     url: channelURL,
@@ -306,9 +397,33 @@
                 });
             });
 
-            channels = groups;
-            populateGroupDropdown();
-            onGroupChange(); // Ensure channels are populated based on the selected group
+            // Populate channels based on group selection
+            document.getElementById('group-select').addEventListener('change', function() {
+                const selectedGroup = this.value;
+                const channelSelect = document.getElementById('channel-select');
+                channelSelect.innerHTML = '<option value="">Channel:</option>';
+
+                if (groups[selectedGroup]) {
+                    groups[selectedGroup].forEach(channel => {
+                        const option = document.createElement('option');
+                        option.value = channel.url;
+                        option.textContent = channel.name;
+                        channelSelect.appendChild(option);
+                    });
+                }
+            });
+
+            // Handle channel selection
+            document.getElementById('channel-select').addEventListener('change', function() {
+                const selectedChannelURL = this.value;
+                const selectedGroup = document.getElementById('group-select').value;
+                const channel = groups[selectedGroup].find(c => c.url === selectedChannelURL);
+
+                if (channel) {
+                    displayChannelInfo(channel);
+                    loadStream(selectedChannelURL, channel.keyId, channel.key);
+                }
+            });
         }
     </script>
 </body>
