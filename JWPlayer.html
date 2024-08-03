@@ -39,7 +39,6 @@
             display: flex;
             flex-direction: column;
             gap: 10px; /* Reduce gap between sections */
-            height: 100vh; /* Extend background panel to bottom */
         }
 
         .sidebar input[type="text"],
@@ -119,16 +118,6 @@
             font-size: 14px;
             margin-bottom: 10px; /* Space below date-time */
         }
-
-        .drm-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .drm-container label {
-            margin-left: 10px;
-        }
     </style>
 </head>
 <body>
@@ -166,10 +155,9 @@
             <div class="divider"></div>
 
             <!-- DRM Settings -->
-            <div class="drm-container">
-                <input type="checkbox" id="enable-drm">
-                <label for="enable-drm">Enable DRM</label>
-            </div>
+            <label>
+                <input type="checkbox" id="enable-drm"> Enable DRM
+            </label>
             <input type="text" id="drm-key-id" placeholder="DRM Key ID">
             <input type="text" id="drm-key" placeholder="DRM Key">
             <div class="divider"></div>
@@ -249,78 +237,50 @@
 
             lines.forEach(line => {
                 if (line.startsWith('#EXTINF')) {
-                    const groupMatch = line.match(/group-title="([^"]+)"/);
-                    const nameMatch = line.match(/,([^,]+)$/);
-                    if (groupMatch && nameMatch) {
-                        currentGroup = groupMatch[1];
-                        const name = nameMatch[1];
-                        if (!channels[currentGroup]) {
-                            channels[currentGroup] = [];
-                        }
-                        channels[currentGroup].push({ name });
+                    const parts = line.split(',');
+                    const channelName = parts[1];
+                    const channelInfo = parts[0].match(/tvg-id="([^"]*)"/);
+                    const tvgId = channelInfo ? channelInfo[1] : '';
+                    const groupInfo = parts[0].match(/group-title="([^"]*)"/);
+                    const groupTitle = groupInfo ? groupInfo[1] : '';
+                    const logoInfo = parts[0].match(/tvg-logo="([^"]*)"/);
+                    const logo = logoInfo ? logoInfo[1] : '';
+                    const url = lines[lines.indexOf(line) + 1];
+
+                    if (!channels[groupTitle]) {
+                        channels[groupTitle] = [];
                     }
-                } else if (line && !line.startsWith('#')) {
-                    if (channels[currentGroup]) {
-                        channels[currentGroup][channels[currentGroup].length - 1].url = line;
-                    }
+                    channels[groupTitle].push({
+                        name: channelName,
+                        url: url,
+                        logo: logo,
+                        tvgId: tvgId
+                    });
                 }
             });
 
-            populateGroups();
+            populateGroupDropdown();
         }
 
-        function loadJSONFromFile() {
-            const jsonInput = document.getElementById('json-input');
-            if (jsonInput.files.length > 0) {
-                const file = jsonInput.files[0];
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    parseJSON(event.target.result);
-                };
-                reader.onerror = function() {
-                    alert('Error reading JSON file.');
-                };
-                reader.readAsText(file);
-            }
-        }
-
-        function loadJSONFromURL() {
-            const url = document.getElementById('json-url').value;
-            if (url) {
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => parseJSON(data))
-                    .catch(error => alert('Error loading JSON URL: ' + error.message));
-            }
-        }
-
-        function parseJSON(content) {
-            if (typeof content === 'string') {
-                content = JSON.parse(content);
-            }
-
-            channels = content.channels || {};
-            populateGroups();
-        }
-
-        function populateGroups() {
+        function populateGroupDropdown() {
             const groupSelect = document.getElementById('group-select');
             groupSelect.innerHTML = '<option value="">Group:</option>';
-            Object.keys(channels).forEach(group => {
+            for (const group in channels) {
                 const option = document.createElement('option');
                 option.value = group;
                 option.textContent = group;
                 groupSelect.appendChild(option);
-            });
+            }
         }
 
         function onGroupChange() {
             const groupSelect = document.getElementById('group-select');
-            const groupName = groupSelect.value;
+            const selectedGroup = groupSelect.value;
             const channelSelect = document.getElementById('channel-select');
             channelSelect.innerHTML = '<option value="">Channel:</option>';
-            if (channels[groupName]) {
-                channels[groupName].forEach(channel => {
+
+            if (channels[selectedGroup]) {
+                channels[selectedGroup].forEach(channel => {
                     const option = document.createElement('option');
                     option.value = channel.url;
                     option.textContent = channel.name;
@@ -331,87 +291,154 @@
 
         function onChannelChange() {
             const channelSelect = document.getElementById('channel-select');
-            const selectedChannel = channelSelect.options[channelSelect.selectedIndex];
-            const channelInfo = channels[channelSelect.value];
-            
-            // Load DRM Key ID and DRM Key if available
-            if (channelInfo && channelInfo.drm) {
-                document.getElementById('drm-key-id').value = channelInfo.drm.key_id || '';
-                document.getElementById('drm-key').value = channelInfo.drm.key || '';
-            }
+            const selectedUrl = channelSelect.value;
+            const selectedGroup = document.getElementById('group-select').value;
 
-            if (selectedChannel && selectedChannel.value) {
-                loadStream(selectedChannel.value);
-
-                const selectedGroup = document.getElementById('group-select').value;
-                const channel = channels[selectedGroup].find(c => c.url === selectedChannel.value);
-
+            if (channels[selectedGroup]) {
+                const channel = channels[selectedGroup].find(c => c.url === selectedUrl);
                 if (channel) {
-                    document.getElementById('channel-details').innerHTML = `
-                        <p><strong>Channel Name:</strong> ${channel.name}</p>
-                        <p><strong>Group:</strong> ${selectedGroup}</p>
-                    `;
-                    document.getElementById('channel-details').style.display = 'block';
-
-                    if (channel.logo) {
-                        const logo = document.getElementById('channel-logo');
-                        logo.src = channel.logo;
-                        logo.style.display = 'block';
-                    } else {
-                        document.getElementById('channel-logo').style.display = 'none';
-                    }
-
-                    if (channel.url) {
-                        const channelLink = document.getElementById('channel-link');
-                        channelLink.textContent = `Stream URL: ${channel.url}`;
-                        channelLink.href = channel.url;
-                        channelLink.style.display = 'block';
-                    } else {
-                        document.getElementById('channel-link').style.display = 'none';
-                    }
+                    displayChannelInfo(channel);
+                    loadStream(channel.url);
                 }
-            } else {
-                document.getElementById('channel-details').style.display = 'none';
-                document.getElementById('channel-logo').style.display = 'none';
-                document.getElementById('channel-link').style.display = 'none';
             }
         }
 
-        function loadStream(url) {
-            const playerInstance = jwplayer("player-container");
-            playerInstance.setup({
+        function displayChannelInfo(channel) {
+            const channelLogo = document.getElementById('channel-logo');
+            const channelDetails = document.getElementById('channel-details');
+            const channelLink = document.getElementById('channel-link');
+
+            if (channel.logo) {
+                channelLogo.src = channel.logo;
+                channelLogo.style.display = 'block';
+            } else {
+                channelLogo.style.display = 'none';
+            }
+
+            channelDetails.innerHTML = `
+                <strong>TVG ID:</strong> ${channel.tvgId || 'N/A'}<br>
+                <strong>Channel Name:</strong> ${channel.name || 'N/A'}
+            `;
+            channelDetails.style.display = 'block';
+
+            channelLink.href = channel.url;
+            channelLink.textContent = channel.url;
+            channelLink.style.display = 'block';
+        }
+
+        function loadStream(url, drmKeyId = '', drmKey = '') {
+            const enableDRM = document.getElementById('enable-drm').checked;
+
+            let config = {
                 file: url,
                 width: "100%",
-                aspectratio: "16:9",
-                primary: "html5"
+                height: "100%",
+                aspectratio: "16:9"
+            };
+
+            if (enableDRM && drmKeyId && drmKey) {
+                config.drm = {
+                    clearkey: {
+                        keyId: drmKeyId,
+                        key: drmKey
+                    }
+                };
+            }
+
+            jwplayer("player-container").setup(config);
+        }
+
+        function loadJSONFromFile() {
+            const jsonInput = document.getElementById('json-input');
+            if (jsonInput.files.length > 0) {
+                const file = jsonInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        const data = JSON.parse(event.target.result);
+                        processChannelData(data);
+                    } catch (error) {
+                        alert('Error parsing JSON file.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function loadJSONFromURL() {
+            const url = document.getElementById('json-url').value;
+            if (url) {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => processChannelData(data))
+                    .catch(error => alert('Error loading JSON URL: ' + error.message));
+            }
+        }
+
+        function processChannelData(data) {
+            const groups = {};
+
+            // Reset dropdowns
+            document.getElementById('group-select').innerHTML = '<option value="">Group:</option>';
+            document.getElementById('channel-select').innerHTML = '<option value="">Channel:</option>';
+
+            // Process channels
+            data.forEach(channel => {
+                const group = channel['tvg-language'];
+                const channelName = channel.channel_name;
+                const channelURL = channel.channel_url;
+                const logo = channel.channel_logo;
+                const tvgId = channel.channel_id;
+                const keyId = channel.keyId;
+                const key = channel.key;
+
+                // Add group to dropdown if not present
+                if (!groups[group]) {
+                    groups[group] = [];
+                    const groupOption = document.createElement('option');
+                    groupOption.value = group;
+                    groupOption.textContent = group;
+                    document.getElementById('group-select').appendChild(groupOption);
+                }
+
+                // Add channel to group
+                groups[group].push({
+                    name: channelName,
+                    url: channelURL,
+                    logo: logo,
+                    tvgId: tvgId,
+                    keyId: keyId,
+                    key: key
+                });
             });
 
-            // Update DRM settings
-            const drmEnabled = document.getElementById('enable-drm').checked;
-            const drmKeyID = document.getElementById('drm-key-id').value;
-            const drmKey = document.getElementById('drm-key').value;
+            // Populate channels based on group selection
+            document.getElementById('group-select').addEventListener('change', function() {
+                const selectedGroup = this.value;
+                const channelSelect = document.getElementById('channel-select');
+                channelSelect.innerHTML = '<option value="">Channel:</option>';
 
-            if (drmEnabled && drmKeyID && drmKey) {
-                playerInstance.setup({
-                    file: url,
-                    width: "100%",
-                    aspectratio: "16:9",
-                    primary: "html5",
-                    drm: {
-                        clearkey: {
-                            keyId: drmKeyID,
-                            key: drmKey
-                        }
-                    }
-                });
-            } else {
-                playerInstance.setup({
-                    file: url,
-                    width: "100%",
-                    aspectratio: "16:9",
-                    primary: "html5"
-                });
-            }
+                if (groups[selectedGroup]) {
+                    groups[selectedGroup].forEach(channel => {
+                        const option = document.createElement('option');
+                        option.value = channel.url;
+                        option.textContent = channel.name;
+                        channelSelect.appendChild(option);
+                    });
+                }
+            });
+
+            // Handle channel selection
+            document.getElementById('channel-select').addEventListener('change', function() {
+                const selectedChannelURL = this.value;
+                const selectedGroup = document.getElementById('group-select').value;
+                const channel = groups[selectedGroup].find(c => c.url === selectedChannelURL);
+
+                if (channel) {
+                    displayChannelInfo(channel);
+                    loadStream(selectedChannelURL, channel.keyId, channel.key);
+                }
+            });
         }
     </script>
 </body>
