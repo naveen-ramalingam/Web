@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SunNeo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Ensure no scroll bars */
+        }
+        #jwplayerDiv {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="jwplayerDiv"></div>
+    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+    <script type="text/javascript">
+        var config = {
+            'file': 'https://port.denver1769.in/Share5.php?id=57',
+            'image': 'https://static.wikia.nocookie.net/logopedia/images/c/c1/Colors_Tamil_HD.jpg/revision/latest?cb=20180222170738'
+        };
+
+        jwplayer('jwplayerDiv').setup({
+            'file': config['file'],
+            'image': config['image'],
+            'title': 'COLOR TAMIL HD',
+            'autostart': true,
+            'stretching': 'exactfit',
+            'width': '100%',
+            'height': '100%',
+            'type': 'application/vnd.apple.mpegurl',
+            'vlc': {
+                'userAgent': 'Denver1769'
+            }
+        });
+    </script>
+</body>
+</html>
