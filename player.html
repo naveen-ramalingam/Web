@@ -209,6 +209,7 @@
     <script>
         let channels = {};
 
+        // Update the date and time every second
         function updateDateTime() {
             const now = new Date();
             const date = now.toISOString().split('T')[0].replace(/-/g, '/'); // Format: yyyy/mm/dd
@@ -219,6 +220,7 @@
 
         setInterval(updateDateTime, 1000);
 
+        // Play the direct .m3u8 link
         function playDirectLink() {
             const m3u8Link = document.getElementById('m3u8-link').value;
             if (m3u8Link) {
@@ -226,6 +228,7 @@
             }
         }
 
+        // Load the .m3u file from a URL
         function loadM3UFromURL() {
             const url = document.getElementById('m3u-url').value;
             if (url) {
@@ -236,6 +239,7 @@
             }
         }
 
+        // Load the .m3u file from a file input
         function loadM3UFromFile() {
             const fileInput = document.getElementById('file-input');
             if (fileInput.files.length > 0) {
@@ -251,6 +255,7 @@
             }
         }
 
+        // Parse the .m3u file content
         function parseM3U(content) {
             const lines = content.split('\n');
             channels = {};
@@ -283,6 +288,7 @@
             populateGroupDropdown();
         }
 
+        // Populate the group dropdown with the groups from the .m3u file
         function populateGroupDropdown() {
             const groupSelect = document.getElementById('group-select');
             groupSelect.innerHTML = '<option value="">Group:</option>';
@@ -294,6 +300,7 @@
             }
         }
 
+        // Handle group selection change
         function onGroupChange() {
             const groupSelect = document.getElementById('group-select');
             const selectedGroup = groupSelect.value;
@@ -310,6 +317,7 @@
             }
         }
 
+        // Handle channel selection change
         function onChannelChange() {
             const channelSelect = document.getElementById('channel-select');
             const selectedUrl = channelSelect.value;
@@ -324,6 +332,7 @@
             }
         }
 
+        // Display the channel info
         function displayChannelInfo(channel) {
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
@@ -358,6 +367,7 @@
             }
         }
 
+        // Load the stream
         function loadStream(url, drmKeyId = '', drmKey = '') {
             const enableDRM = document.getElementById('enable-drm').checked;
 
@@ -380,6 +390,7 @@
             jwplayer("player-container").setup(config);
         }
 
+        // Load the JSON file from a file input
         function loadJSONFromFile() {
             const jsonInput = document.getElementById('json-input');
             if (jsonInput.files.length > 0) {
@@ -397,6 +408,7 @@
             }
         }
 
+        // Load the JSON file from a URL
         function loadJSONFromURL() {
             const url = document.getElementById('json-url').value;
             if (url) {
@@ -407,6 +419,7 @@
             }
         }
 
+        // Process the channel data from the JSON file
         function processChannelData(data) {
             const groups = {};
 
