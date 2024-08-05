@@ -179,7 +179,6 @@
             <div id="drm-info">
                 <input type="text" id="drm-key-id" placeholder="DRM Key ID">
                 <input type="text" id="drm-key" placeholder="DRM Key">
-                <button onclick="toggleDRMInputs()">Toggle DRM Inputs</button>
             </div>
             <div class="divider"></div>
 
@@ -486,6 +485,16 @@
                 drmInfo.style.display = 'none';
             }
         }
+
+        // Toggle the visibility of the DRM inputs when the "Enable DRM" checkbox is checked
+        document.getElementById('enable-drm').addEventListener('change', function() {
+            const drmInfo = document.getElementById('drm-info');
+            if (this.checked) {
+                drmInfo.style.display = 'block';
+            } else {
+                drmInfo.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
