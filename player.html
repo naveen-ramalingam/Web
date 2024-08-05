@@ -1,10 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Live Stream Player</title>
-    <!-- Remove or comment out the favicon link -->
-    <!-- <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Live Stream Player with M3U support" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,7 +31,6 @@
 
         .sidebar {
             width: 300px;
-            height: 1500px; /* Increase height to 1500px */
             background-color: #333;
             color: #fff;
             padding: 10px 20px; /* Reduce padding to fit elements better */
@@ -224,8 +222,10 @@
         // Play the direct .m3u8 link
         function playDirectLink() {
             const m3u8Link = document.getElementById('m3u8-link').value;
+            const drmKeyId = document.getElementById('drm-key-id').value;
+            const drmKey = document.getElementById('drm-key').value;
             if (m3u8Link) {
-                loadStream(m3u8Link);
+                loadStream(m3u8Link, drmKeyId, drmKey);
             }
         }
 
