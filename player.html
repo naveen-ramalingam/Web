@@ -283,6 +283,10 @@
                 }
             });
 
+            // Reset dropdowns
+            document.getElementById('group-select').innerHTML = '<option value="">Group:</option>';
+            document.getElementById('channel-select').innerHTML = '<option value="">Channel:</option>';
+
             populateGroupDropdown();
         }
 
