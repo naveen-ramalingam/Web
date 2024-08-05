@@ -32,11 +32,11 @@
             width: 300px;
             background-color: #333;
             color: #fff;
-            padding: 10px 20px; /* Reduce padding to fit elements better */
+            padding: 10px 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 10px; /* Reduce gap between sections */
+            gap: 10px;
         }
 
         .sidebar input[type="text"],
@@ -44,8 +44,8 @@
         .sidebar select,
         .sidebar button,
         .sidebar input[type="checkbox"] {
-            width: calc(100% - 0px); /* Ensure full width */
-            margin-bottom: 10px; /* Space between elements */
+            width: calc(100% - 0px);
+            margin-bottom: 10px;
             padding: 10px;
             border: none;
             border-radius: 4px;
@@ -65,7 +65,7 @@
 
         .sidebar .divider {
             border-top: 1px solid #555;
-            margin: 10px 0; /* Space around the divider */
+            margin: 10px 0;
         }
 
         .player-container {
@@ -80,50 +80,50 @@
         }
 
         #channel-info {
-            margin-top: 10px; /* Space above channel info */
+            margin-top: 10px;
             color: #fff;
         }
 
         #channel-logo {
             max-width: 100px;
             max-height: 50px;
-            display: none; /* Initially hide the logo */
+            display: none;
             margin-bottom: 10px;
         }
 
         #channel-details {
-            display: none; /* Initially hide the details */
-            background: #000; /* Apply background color when showing details */
+            display: none;
+            background: #000;
             padding: 10px;
             border-radius: 4px;
             color: #fff;
-            margin-bottom: 10px; /* Add space below channel details */
+            margin-bottom: 10px;
         }
 
         #channel-link {
             color: #fff;
-            background-color: #f57f00; /* Orange background */
+            background-color: #f57f00;
             padding: 10px;
             border-radius: 4px;
-            word-wrap: break-word; /* Wrap text if it's too long */
-            margin-top: 10px; /* Space above the hyperlink */
-            display: none; /* Initially hide the link */
+            word-wrap: break-word;
+            margin-top: 10px;
+            display: none;
         }
-        
+
         #drm-info {
-            display: none; /* Initially hide the DRM info */
-            background: #000; /* Apply background color when showing details */
+            display: none;
+            background: #000;
             padding: 10px;
             border-radius: 4px;
             color: #fff;
-            margin-top: 10px; /* Add space above DRM info */
+            margin-top: 10px;
         }
 
         #date-time {
             display: flex;
             justify-content: space-between;
             font-size: 14px;
-            margin-bottom: 10px; /* Space below date-time */
+            margin-bottom: 10px;
         }
 
         .drm-container {
@@ -195,7 +195,9 @@
             <div id="channel-info">
                 <img id="channel-logo" src="" alt="Channel Logo">
                 <div id="channel-details"></div>
-                <div id="channel-link"></div> <!-- Hyperlink text for the selected channel -->
+                <div id="channel-link"></div>
+                <!-- DRM Info (Added here) -->
+                <div id="channel-drm-info"></div>
             </div>
         </div>
 
@@ -211,7 +213,7 @@
         // Update the date and time every second
         function updateDateTime() {
             const now = new Date();
-            const date = now.toISOString().split('T')[0].replace(/-/g, '/'); // Format: yyyy/mm/dd
+            const date = now.toISOString().split('T')[0].replace(/-/g, '/');
             const time = now.toLocaleTimeString('en-US', { hour12: false });
             document.getElementById('current-date').textContent = date;
             document.getElementById('current-time').textContent = time;
@@ -338,7 +340,8 @@
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
             const channelLink = document.getElementById('channel-link');
-
+            const drmInfo = document.getElementById('channel-drm-info');
+            
             if (channel.logo) {
                 channelLogo.src = channel.logo;
                 channelLogo.style.display = 'block';
@@ -355,6 +358,18 @@
             channelLink.href = channel.url;
             channelLink.textContent = channel.url;
             channelLink.style.display = 'block';
+
+            // Display DRM Info
+            const enableDRM = document.getElementById('enable-drm').checked;
+            if (enableDRM && channel.keyId && channel.key) {
+                drmInfo.innerHTML = `
+                    <strong>DRM Key ID:</strong> ${channel.keyId || 'N/A'}<br>
+                    <strong>DRM Key:</strong> ${channel.key || 'N/A'}
+                `;
+                drmInfo.style.display = 'block';
+            } else {
+                drmInfo.style.display = 'none';
+            }
         }
 
         // Load the stream
@@ -413,11 +428,9 @@
         function processChannelData(data) {
             const groups = {};
 
-            // Reset dropdowns
             document.getElementById('group-select').innerHTML = '<option value="">Group:</option>';
             document.getElementById('channel-select').innerHTML = '<option value="">Channel:</option>';
 
-            // Process channels
             data.forEach(channel => {
                 const group = channel['tvg-language'];
                 const channelName = channel.channel_name;
@@ -427,7 +440,6 @@
                 const keyId = channel.keyId;
                 const key = channel.key;
 
-                // Add group to dropdown if not present
                 if (!groups[group]) {
                     groups[group] = [];
                     const groupOption = document.createElement('option');
@@ -436,7 +448,6 @@
                     document.getElementById('group-select').appendChild(groupOption);
                 }
 
-                // Add channel to group
                 groups[group].push({
                     name: channelName,
                     url: channelURL,
@@ -447,7 +458,6 @@
                 });
             });
 
-            // Populate channels based on group selection
             document.getElementById('group-select').addEventListener('change', function() {
                 const selectedGroup = this.value;
                 const channelSelect = document.getElementById('channel-select');
@@ -463,7 +473,6 @@
                 }
             });
 
-            // Handle channel selection
             document.getElementById('channel-select').addEventListener('change', function() {
                 const selectedChannelURL = this.value;
                 const selectedGroup = document.getElementById('group-select').value;
@@ -476,17 +485,6 @@
             });
         }
 
-        // Toggle the visibility of the DRM inputs
-        function toggleDRMInputs() {
-            const drmInfo = document.getElementById('drm-info');
-            if (drmInfo.style.display === 'none') {
-                drmInfo.style.display = 'block';
-            } else {
-                drmInfo.style.display = 'none';
-            }
-        }
-
-        // Toggle the visibility of the DRM inputs when the "Enable DRM" checkbox is checked
         document.getElementById('enable-drm').addEventListener('change', function() {
             const drmInfo = document.getElementById('drm-info');
             if (this.checked) {
