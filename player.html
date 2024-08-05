@@ -179,6 +179,7 @@
             <div id="drm-info">
                 <input type="text" id="drm-key-id" placeholder="DRM Key ID">
                 <input type="text" id="drm-key" placeholder="DRM Key">
+                <button onclick="toggleDRMInputs()">Toggle DRM Inputs</button>
             </div>
             <div class="divider"></div>
 
@@ -474,6 +475,16 @@
                     loadStream(selectedChannelURL, channel.keyId, channel.key);
                 }
             });
+        }
+
+        // Toggle the visibility of the DRM inputs
+        function toggleDRMInputs() {
+            const drmInfo = document.getElementById('drm-info');
+            if (drmInfo.style.display === 'none') {
+                drmInfo.style.display = 'block';
+            } else {
+                drmInfo.style.display = 'none';
+            }
         }
     </script>
 </body>
