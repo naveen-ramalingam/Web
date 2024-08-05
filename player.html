@@ -3,10 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Live Stream Player</title>
-    <!-- Remove or comment out the favicon link -->
-    <!-- <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon"> -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Live Stream Player with M3U support" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -34,11 +30,11 @@
             width: 300px;
             background-color: #333;
             color: #fff;
-            padding: 10px 20px; /* Reduce padding to fit elements better */
+            padding: 10px 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 10px; /* Reduce gap between sections */
+            gap: 10px;
         }
 
         .sidebar input[type="text"],
@@ -46,8 +42,8 @@
         .sidebar select,
         .sidebar button,
         .sidebar input[type="checkbox"] {
-            width: calc(100% - 0px); /* Ensure full width */
-            margin-bottom: 10px; /* Space between elements */
+            width: calc(100% - 0px);
+            margin-bottom: 10px;
             padding: 10px;
             border: none;
             border-radius: 4px;
@@ -67,7 +63,7 @@
 
         .sidebar .divider {
             border-top: 1px solid #555;
-            margin: 10px 0; /* Space around the divider */
+            margin: 10px 0;
         }
 
         .player-container {
@@ -82,50 +78,50 @@
         }
 
         #channel-info {
-            margin-top: 10px; /* Space above channel info */
+            margin-top: 10px;
             color: #fff;
         }
 
         #channel-logo {
             max-width: 100px;
             max-height: 50px;
-            display: none; /* Initially hide the logo */
+            display: none;
             margin-bottom: 10px;
         }
 
         #channel-details {
-            display: none; /* Initially hide the details */
-            background: #000; /* Apply background color when showing details */
+            display: none;
+            background: #000;
             padding: 10px;
             border-radius: 4px;
             color: #fff;
-            margin-bottom: 10px; /* Add space below channel details */
+            margin-bottom: 10px;
         }
 
         #channel-link {
             color: #fff;
-            background-color: #f57f00; /* Orange background */
+            background-color: #f57f00;
             padding: 10px;
             border-radius: 4px;
-            word-wrap: break-word; /* Wrap text if it's too long */
-            margin-top: 10px; /* Space above the hyperlink */
-            display: none; /* Initially hide the link */
+            word-wrap: break-word;
+            margin-top: 10px;
+            display: none;
         }
         
         #drm-info {
-            display: none; /* Initially hide the DRM info */
-            background: #000; /* Apply background color when showing details */
+            display: none;
+            background: #000;
             padding: 10px;
             border-radius: 4px;
             color: #fff;
-            margin-top: 10px; /* Add space above DRM info */
+            margin-top: 10px;
         }
 
         #date-time {
             display: flex;
             justify-content: space-between;
             font-size: 14px;
-            margin-bottom: 10px; /* Space below date-time */
+            margin-bottom: 10px;
         }
 
         .drm-container {
@@ -230,7 +226,6 @@
 
         // Load the .m3u file from a URL
         function loadM3UFromURL() {
-            resetDropdowns(); // Reset the dropdowns before loading new data
             const url = document.getElementById('m3u-url').value;
             if (url) {
                 fetch(url)
@@ -240,30 +235,70 @@
             }
         }
 
-        // Load the .m3u file from a local file
+        // Load the .m3u file from a file input
         function loadM3UFromFile() {
-            resetDropdowns(); // Reset the dropdowns before loading new data
             const fileInput = document.getElementById('file-input');
             if (fileInput.files.length > 0) {
                 const file = fileInput.files[0];
                 const reader = new FileReader();
-                reader.onload = function (e) {
-                    parseM3U(e.target.result);
+                reader.onload = function(event) {
+                    parseM3U(event.target.result);
+                };
+                reader.onerror = function() {
+                    alert('Error reading file.');
                 };
                 reader.readAsText(file);
             }
         }
 
-        // Load the JSON file from a local file
+        // Parse the .m3u file content
+        function parseM3U(content) {
+            const lines = content.split('\n');
+            channels = {};
+            let currentGroup = '';
+
+            lines.forEach(line => {
+                if (line.startsWith('#EXTINF')) {
+                    const parts = line.split(',');
+                    const channelName = parts[1];
+                    const channelInfo = parts[0].match(/tvg-id="([^"]*)"/);
+                    const tvgId = channelInfo ? channelInfo[1] : '';
+                    const groupInfo = parts[0].match(/group-title="([^"]*)"/);
+                    const groupTitle = groupInfo ? groupInfo[1] : '';
+                    const logoInfo = parts[0].match(/tvg-logo="([^"]*)"/);
+                    const tvgLogo = logoInfo ? logoInfo[1] : '';
+
+                    if (!channels[groupTitle]) {
+                        channels[groupTitle] = [];
+                    }
+
+                    currentGroup = groupTitle;
+                    channels[groupTitle].push({
+                        name: channelName,
+                        id: tvgId,
+                        logo: tvgLogo
+                    });
+                } else if (line && !line.startsWith('#')) {
+                    if (channels[currentGroup]) {
+                        channels[currentGroup][channels[currentGroup].length - 1].url = line.trim();
+                    }
+                }
+            });
+
+            populateGroupSelect();
+        }
+
+        // Load the JSON file from a file input
         function loadJSONFromFile() {
-            resetDropdowns(); // Reset the dropdowns before loading new data
-            const fileInput = document.getElementById('json-input');
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
+            const jsonInput = document.getElementById('json-input');
+            if (jsonInput.files.length > 0) {
+                const file = jsonInput.files[0];
                 const reader = new FileReader();
-                reader.onload = function (e) {
-                    const jsonData = JSON.parse(e.target.result);
-                    parseJSON(jsonData);
+                reader.onload = function(event) {
+                    parseJSON(event.target.result);
+                };
+                reader.onerror = function() {
+                    alert('Error reading JSON file.');
                 };
                 reader.readAsText(file);
             }
@@ -271,66 +306,55 @@
 
         // Load the JSON file from a URL
         function loadJSONFromURL() {
-            resetDropdowns(); // Reset the dropdowns before loading new data
             const url = document.getElementById('json-url').value;
             if (url) {
                 fetch(url)
                     .then(response => response.json())
-                    .then(data => parseJSON(data))
+                    .then(data => parseJSON(JSON.stringify(data)))
                     .catch(error => alert('Error loading JSON URL: ' + error.message));
             }
         }
 
-        // Reset the dropdown lists
-        function resetDropdowns() {
-            const groupSelect = document.getElementById('group-select');
-            const channelSelect = document.getElementById('channel-select');
-            groupSelect.innerHTML = '<option value="">Group:</option>';
-            channelSelect.innerHTML = '<option value="">Channel:</option>';
+        // Parse the JSON file content
+        function parseJSON(content) {
+            const json = JSON.parse(content);
             channels = {};
-        }
-
-        // Parse the M3U file content
-        function parseM3U(data) {
-            const lines = data.split('\n');
-            let currentGroup = '';
-            lines.forEach(line => {
-                if (line.startsWith('#EXTINF:')) {
-                    const nameMatch = line.match(/,(.*)/);
-                    const name = nameMatch ? nameMatch[1] : '';
-                    const groupMatch = line.match(/group-title="([^"]*)"/);
-                    const group = groupMatch ? groupMatch[1] : '';
-                    if (group) {
-                        currentGroup = group;
-                        if (!channels[currentGroup]) {
-                            channels[currentGroup] = [];
-                        }
-                        channels[currentGroup].push({ name, url: '' });
-                    }
-                } else if (line && !line.startsWith('#')) {
-                    if (currentGroup && channels[currentGroup]) {
-                        channels[currentGroup][channels[currentGroup].length - 1].url = line;
-                    }
+            
+            json.forEach(channel => {
+                const group = channel.channel_genre;
+                if (!channels[group]) {
+                    channels[group] = [];
                 }
+
+                channels[group].push({
+                    id: channel.channel_id,
+                    name: channel.channel_name,
+                    genre: channel.channel_genre,
+                    language: channel["tvg-language"],
+                    logo: channel.channel_logo,
+                    url: channel.channel_url,
+                    drm: {
+                        keyId: channel.keyId,
+                        key: channel.key,
+                        bass64: channel.bass64
+                    }
+                });
             });
+
             populateGroupSelect();
         }
 
-        // Parse the JSON data
-        function parseJSON(data) {
-            channels = data;
-            populateGroupSelect();
-        }
-
-        // Populate the group dropdown list
+        // Populate the group select dropdown
         function populateGroupSelect() {
             const groupSelect = document.getElementById('group-select');
-            for (const group in channels) {
+            groupSelect.innerHTML = '<option value="">Group:</option>';
+
+            Object.keys(channels).forEach(group => {
                 const option = document.createElement('option');
                 option.value = group;
                 option.textContent = group;
                 groupSelect.appendChild(option);
-            }
+            });
         }
 
         // Handle group selection change
@@ -338,11 +362,12 @@
             const groupSelect = document.getElementById('group-select');
             const selectedGroup = groupSelect.value;
             const channelSelect = document.getElementById('channel-select');
-            channelSelect.innerHTML = '<option value="">Channel:</option>'; // Reset the channel dropdown
-            if (selectedGroup) {
+            channelSelect.innerHTML = '<option value="">Channel:</option>';
+
+            if (channels[selectedGroup]) {
                 channels[selectedGroup].forEach(channel => {
                     const option = document.createElement('option');
-                    option.value = channel.url;
+                    option.value = channel.id;
                     option.textContent = channel.name;
                     channelSelect.appendChild(option);
                 });
@@ -351,64 +376,81 @@
 
         // Handle channel selection change
         function onChannelChange() {
+            const groupSelect = document.getElementById('group-select');
+            const selectedGroup = groupSelect.value;
             const channelSelect = document.getElementById('channel-select');
-            const selectedChannelURL = channelSelect.value;
-            const selectedGroup = document.getElementById('group-select').value;
-            const selectedChannel = channels[selectedGroup].find(channel => channel.url === selectedChannelURL);
+            const selectedChannelId = channelSelect.value;
+            
+            if (channels[selectedGroup]) {
+                const selectedChannel = channels[selectedGroup].find(channel => channel.id === selectedChannelId);
+                if (selectedChannel) {
+                    displayChannelInfo(selectedChannel);
+                    loadStream(selectedChannel.url, selectedChannel.drm);
+                }
+            }
+        }
 
-            // Display channel logo, details, and link
+        // Display channel information
+        function displayChannelInfo(channel) {
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
             const channelLink = document.getElementById('channel-link');
             const drmInfo = document.getElementById('drm-info');
 
-            if (selectedChannel) {
-                channelLogo.style.display = 'block';
-                channelDetails.style.display = 'block';
-                channelLink.style.display = 'block';
+            channelLogo.src = channel.logo;
+            channelLogo.style.display = 'block';
+            channelDetails.textContent = `Genre: ${channel.genre}, Language: ${channel.language}`;
+            channelDetails.style.display = 'block';
+            channelLink.textContent = `URL: ${channel.url}`;
+            channelLink.style.display = 'block';
+
+            if (channel.drm) {
+                drmInfo.textContent = `DRM Key ID: ${channel.drm.keyId}, DRM Key: ${channel.drm.key}`;
                 drmInfo.style.display = 'block';
-
-                // Replace with actual data
-                channelLogo.src = selectedChannel.logo || '';
-                channelDetails.textContent = selectedChannel.details || 'No details available';
-                channelLink.textContent = selectedChannel.url;
-                channelLink.href = selectedChannel.url;
-                drmInfo.textContent = selectedChannel.drmInfo || 'No DRM information available';
             } else {
-                channelLogo.style.display = 'none';
-                channelDetails.style.display = 'none';
-                channelLink.style.display = 'none';
                 drmInfo.style.display = 'none';
-            }
-
-            if (selectedChannelURL) {
-                loadStream(selectedChannelURL);
             }
         }
 
-        // Load and play the stream
-        function loadStream(url) {
-            const enableDRM = document.getElementById('enable-drm').checked;
-            const keyID = document.getElementById('drm-key-id').value;
-            const key = document.getElementById('drm-key').value;
+        // Load and play the selected stream
+        function loadStream(url, drm = null) {
+            const playerContainer = document.getElementById('player-container');
+            playerContainer.innerHTML = ''; // Clear previous player content
 
-            const playerInstance = jwplayer('player-container');
-            const playerConfig = {
-                file: url,
-                width: '100%',
-                height: '500px'
-            };
+            const video = document.createElement('video');
+            video.id = 'video';
+            video.width = '100%';
+            video.height = '100%';
+            video.controls = true;
+            playerContainer.appendChild(video);
 
-            if (enableDRM) {
-                playerConfig.drm = {
-                    clearkey: {
-                        keyId: keyID,
-                        key: key
-                    }
-                };
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = url;
+                video.addEventListener('loadedmetadata', () => {
+                    video.play();
+                });
             }
 
-            playerInstance.setup(playerConfig);
+            // Handle DRM if enabled and provided
+            if (drm && document.getElementById('enable-drm').checked) {
+                const player = jwplayer('player-container');
+                player.setup({
+                    file: url,
+                    drm: {
+                        clearkey: {
+                            keyId: drm.keyId,
+                            key: drm.key
+                        }
+                    }
+                });
+            }
         }
     </script>
 </body>
