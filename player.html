@@ -32,6 +32,7 @@
 
         .sidebar {
             width: 300px;
+            height: 1000px; /* Increase height to 1000px */
             background-color: #333;
             color: #fff;
             padding: 10px 20px; /* Reduce padding to fit elements better */
@@ -178,6 +179,8 @@
                 <input type="checkbox" id="enable-drm">
                 <label for="enable-drm">Enable DRM</label>
             </div>
+            <input type="text" id="drm-key-id" placeholder="DRM Key ID" style="display: none;"> <!-- Hide DRM Key ID -->
+            <input type="text" id="drm-key" placeholder="DRM Key" style="display: none;"> <!-- Hide DRM Key -->
             <div class="divider"></div>
 
             <!-- Group and Channel selection -->
@@ -241,48 +244,74 @@
         function loadM3UFromFile() {
             const fileInput = document.getElementById('file-input');
             if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     parseM3U(event.target.result);
                 };
-                reader.onerror = function() {
-                    alert('Error reading file.');
-                };
-                reader.readAsText(file);
+                reader.readAsText(fileInput.files[0]);
             }
         }
 
-        // Parse the .m3u file content
+        // Load the JSON file from a file input
+        function loadJSONFromFile() {
+            const fileInput = document.getElementById('json-input');
+            if (fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    parseJSON(event.target.result);
+                };
+                reader.readAsText(fileInput.files[0]);
+            }
+        }
+
+        // Load the JSON file from a URL
+        function loadJSONFromURL() {
+            const url = document.getElementById('json-url').value;
+            if (url) {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => parseJSON(data))
+                    .catch(error => alert('Error loading JSON URL: ' + error.message));
+            }
+        }
+
+        // Parse M3U content
         function parseM3U(data) {
             const lines = data.split('\n');
-            channels = {}; // Reset channels
-            let currentGroup = 'Default';
-            for (let line of lines) {
+            let currentGroup = '';
+            channels = {};
+
+            lines.forEach(line => {
                 line = line.trim();
                 if (line.startsWith('#EXTINF')) {
-                    const channelInfo = line.split(',');
-                    const channelName = channelInfo[1];
-                    const logoMatch = line.match(/tvg-logo="(.*?)"/);
-                    const channelLogo = logoMatch ? logoMatch[1] : '';
-                    const groupMatch = line.match(/group-title="(.*?)"/);
-                    currentGroup = groupMatch ? groupMatch[1] : 'Default';
-                    if (!channels[currentGroup]) {
-                        channels[currentGroup] = [];
+                    const channelInfo = parseM3UChannelInfo(line);
+                    if (currentGroup) {
+                        channelInfo.group = currentGroup;
                     }
-                    channels[currentGroup].push({ name: channelName, logo: channelLogo, url: '' });
+                    if (!channels[channelInfo.group]) {
+                        channels[channelInfo.group] = [];
+                    }
+                    channels[channelInfo.group].push(channelInfo);
+                } else if (line.startsWith('#EXTGRP')) {
+                    currentGroup = line.split(':')[1].trim();
                 } else if (line && !line.startsWith('#')) {
-                    const channelUrl = line;
-                    if (channels[currentGroup] && channels[currentGroup].length > 0) {
-                        channels[currentGroup][channels[currentGroup].length - 1].url = channelUrl;
+                    if (channels[currentGroup]) {
+                        channels[currentGroup][channels[currentGroup].length - 1].url = line;
                     }
                 }
-            }
-            populateGroups();
+            });
+
+            populateGroupSelect();
         }
 
-        // Populate group dropdown
-        function populateGroups() {
+        // Parse JSON content
+        function parseJSON(data) {
+            channels = data;
+            populateGroupSelect();
+        }
+
+        // Populate group select
+        function populateGroupSelect() {
             const groupSelect = document.getElementById('group-select');
             groupSelect.innerHTML = '<option value="">Group:</option>';
             Object.keys(channels).forEach(group => {
@@ -293,115 +322,106 @@
             });
         }
 
-        // Handle group selection change
-        function onGroupChange() {
-            const groupSelect = document.getElementById('group-select');
-            const selectedGroup = groupSelect.value;
+        // Populate channel select
+        function populateChannelSelect(group) {
             const channelSelect = document.getElementById('channel-select');
             channelSelect.innerHTML = '<option value="">Channel:</option>';
-            if (channels[selectedGroup]) {
-                channels[selectedGroup].forEach(channel => {
-                    const option = document.createElement('option');
-                    option.value = channel.url;
-                    option.textContent = channel.name;
-                    channelSelect.appendChild(option);
-                });
-            }
-        }
-
-        // Handle channel selection change
-        function onChannelChange() {
-            const channelSelect = document.getElementById('channel-select');
-            const selectedUrl = channelSelect.value;
-            const selectedGroup = document.getElementById('group-select').value;
-            const selectedChannel = channels[selectedGroup].find(channel => channel.url === selectedUrl);
-
-            if (selectedChannel) {
-                document.getElementById('channel-logo').src = selectedChannel.logo;
-                document.getElementById('channel-logo').style.display = selectedChannel.logo ? 'block' : 'none';
-                document.getElementById('channel-details').textContent = selectedChannel.name;
-                document.getElementById('channel-details').style.display = 'block';
-                document.getElementById('channel-link').textContent = selectedChannel.url;
-                document.getElementById('channel-link').href = selectedChannel.url;
-                document.getElementById('channel-link').style.display = 'block';
-                loadStream(selectedChannel.url);
-            }
-        }
-
-        // Load stream into player
-        function loadStream(url) {
-            const enableDRM = document.getElementById('enable-drm').checked;
-            const playerContainer = document.getElementById('player-container');
-            playerContainer.innerHTML = ''; // Clear existing player
-
-            const videoElement = document.createElement('video');
-            videoElement.controls = true;
-            videoElement.style.width = '100%';
-            videoElement.style.height = '100%';
-
-            playerContainer.appendChild(videoElement);
-
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(url);
-                hls.attachMedia(videoElement);
-                hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                    videoElement.play();
-                });
-            } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-                videoElement.src = url;
-                videoElement.addEventListener('loadedmetadata', function () {
-                    videoElement.play();
-                });
-            } else {
-                alert('Your browser does not support HLS playback.');
-            }
-        }
-
-        // Load channels from JSON file
-        function loadJSONFromFile() {
-            const fileInput = document.getElementById('json-input');
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    parseJSON(event.target.result);
-                };
-                reader.onerror = function() {
-                    alert('Error reading file.');
-                };
-                reader.readAsText(file);
-            }
-        }
-
-        // Load channels from JSON URL
-        function loadJSONFromURL() {
-            const url = document.getElementById('json-url').value;
-            if (url) {
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => parseJSON(JSON.stringify(data)))
-                    .catch(error => alert('Error loading JSON URL: ' + error.message));
-            }
-        }
-
-        // Parse the JSON file content
-        function parseJSON(data) {
-            const jsonData = JSON.parse(data);
-            channels = {}; // Reset channels
-            jsonData.forEach(item => {
-                const group = item.group || 'Default';
-                if (!channels[group]) {
-                    channels[group] = [];
-                }
-                channels[group].push({
-                    name: item.name,
-                    logo: item.logo,
-                    url: item.url
-                });
+            channels[group].forEach(channel => {
+                const option = document.createElement('option');
+                option.value = channel.url;
+                option.textContent = channel.name;
+                channelSelect.appendChild(option);
             });
-            populateGroups();
         }
+
+        // Handle group change
+        function onGroupChange() {
+            const group = document.getElementById('group-select').value;
+            if (group) {
+                populateChannelSelect(group);
+            }
+        }
+
+        // Handle channel change
+        function onChannelChange() {
+            const url = document.getElementById('channel-select').value;
+            if (url) {
+                const group = document.getElementById('group-select').value;
+                const channel = channels[group].find(ch => ch.url === url);
+                loadStream(channel.url, channel.logo, channel.name, channel.link, channel.drm);
+            }
+        }
+
+        // Load and play stream
+        function loadStream(url, logo, name, link, drm) {
+            jwplayer('player-container').setup({
+                file: url,
+                logo: { file: logo || '' },
+                drm: drm || {},
+            });
+
+            // Update channel info
+            const channelLogo = document.getElementById('channel-logo');
+            const channelDetails = document.getElementById('channel-details');
+            const channelLink = document.getElementById('channel-link');
+            const drmInfo = document.getElementById('drm-info');
+
+            if (logo) {
+                channelLogo.src = logo;
+                channelLogo.style.display = 'block';
+            } else {
+                channelLogo.style.display = 'none';
+            }
+
+            if (name) {
+                channelDetails.textContent = name;
+                channelDetails.style.display = 'block';
+            } else {
+                channelDetails.style.display = 'none';
+            }
+
+            if (link) {
+                channelLink.textContent = link;
+                channelLink.href = link;
+                channelLink.style.display = 'block';
+            } else {
+                channelLink.style.display = 'none';
+            }
+
+            if (drm) {
+                drmInfo.textContent = 'DRM Enabled';
+                drmInfo.style.display = 'block';
+            } else {
+                drmInfo.style.display = 'none';
+            }
+        }
+
+        // Parse channel info from M3U EXTINF line
+        function parseM3UChannelInfo(line) {
+            const info = {};
+            const attributes = line.match(/(\w+)=["']([^"']*)["']/g);
+            if (attributes) {
+                attributes.forEach(attr => {
+                    const [key, value] = attr.split('=');
+                    info[key] = value.replace(/['"]/g, '');
+                });
+            }
+            info.name = line.split(',')[1] || '';
+            return info;
+        }
+
+        // DRM checkbox change event
+        document.getElementById('enable-drm').addEventListener('change', function () {
+            const drmKeyId = document.getElementById('drm-key-id');
+            const drmKey = document.getElementById('drm-key');
+            if (this.checked) {
+                drmKeyId.style.display = 'block';
+                drmKey.style.display = 'block';
+            } else {
+                drmKeyId.style.display = 'none';
+                drmKey.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
