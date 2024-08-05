@@ -182,6 +182,17 @@
             </div>
             <div class="divider"></div>
 
+            <!-- Manual DRM Settings -->
+            <div class="drm-container">
+                <input type="checkbox" id="manual-drm">
+                <label for="manual-drm">Manual DRM</label>
+            </div>
+            <div id="manual-drm-info">
+                <input type="text" id="manual-drm-key-id" placeholder="Manual DRM Key ID">
+                <input type="text" id="manual-drm-key" placeholder="Manual DRM Key">
+            </div>
+            <div class="divider"></div>
+
             <!-- Group and Channel selection -->
             <select id="group-select" onchange="onGroupChange()">
                 <option value="">Group:</option>
@@ -360,6 +371,7 @@
         // Load the stream
         function loadStream(url, drmKeyId = '', drmKey = '') {
             const enableDRM = document.getElementById('enable-drm').checked;
+            const manualDRM = document.getElementById('manual-drm').checked;
 
             let config = {
                 file: url,
@@ -375,6 +387,17 @@
                         key: drmKey
                     }
                 };
+            } else if (manualDRM) {
+                const manualDrmKeyId = document.getElementById('manual-drm-key-id').value;
+                const manualDrmKey = document.getElementById('manual-drm-key').value;
+                if (manualDrmKeyId && manualDrmKey) {
+                    config.drm = {
+                        clearkey: {
+                            keyId: manualDrmKeyId,
+                            key: manualDrmKey
+                        }
+                    };
+                }
             }
 
             jwplayer("player-container").setup(config);
@@ -493,6 +516,16 @@
                 drmInfo.style.display = 'block';
             } else {
                 drmInfo.style.display = 'none';
+            }
+        });
+
+        // Toggle the visibility of the manual DRM inputs when the "Manual DRM" checkbox is checked
+        document.getElementById('manual-drm').addEventListener('change', function() {
+            const manualDrmInfo = document.getElementById('manual-drm-info');
+            if (this.checked) {
+                manualDrmInfo.style.display = 'block';
+            } else {
+                manualDrmInfo.style.display = 'none';
             }
         });
     </script>
