@@ -107,7 +107,7 @@
             margin-top: 10px;
             display: none;
         }
-        
+
         #drm-info {
             display: none;
             background: #000;
@@ -321,7 +321,7 @@
             channels = {};
             
             json.forEach(channel => {
-                const group = channel.channel_genre;
+                const group = channel["tvg-language"];
                 if (!channels[group]) {
                     channels[group] = [];
                 }
