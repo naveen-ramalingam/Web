@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Live Stream Player</title>
+    <!-- Remove or comment out the favicon link -->
+    <!-- <link rel="icon" href="https://i.ibb.co/N9WPySH/photo-2024-04-02-12-55-10.jpg" type="image/x-icon"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Live Stream Player with M3U support" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -181,10 +183,10 @@
             <div class="divider"></div>
 
             <!-- Group and Channel selection -->
-            <select id="group-select">
+            <select id="group-select" onchange="onGroupChange()">
                 <option value="">Group:</option>
             </select>
-            <select id="channel-select">
+            <select id="channel-select" onchange="onChannelChange()">
                 <option value="">Channel:</option>
             </select>
             <div class="divider"></div>
@@ -228,6 +230,7 @@
 
         // Load the .m3u file from a URL
         function loadM3UFromURL() {
+            resetDropdowns(); // Reset the dropdowns before loading new data
             const url = document.getElementById('m3u-url').value;
             if (url) {
                 fetch(url)
@@ -237,63 +240,91 @@
             }
         }
 
-        // Load the .m3u file from a file input
+        // Load the .m3u file from a local file
         function loadM3UFromFile() {
+            resetDropdowns(); // Reset the dropdowns before loading new data
             const fileInput = document.getElementById('file-input');
             if (fileInput.files.length > 0) {
                 const file = fileInput.files[0];
                 const reader = new FileReader();
-                reader.onload = function(event) {
-                    parseM3U(event.target.result);
-                };
-                reader.onerror = function() {
-                    alert('Error reading file.');
+                reader.onload = function (e) {
+                    parseM3U(e.target.result);
                 };
                 reader.readAsText(file);
             }
         }
 
-        // Parse the .m3u file content
-        function parseM3U(content) {
-            const lines = content.split('\n');
-            channels = {};
-            let currentGroup = '';
-
-            lines.forEach(line => {
-                if (line.startsWith('#EXTINF')) {
-                    const parts = line.split(',');
-                    const channelName = parts[1];
-                    const channelInfo = parts[0].match(/tvg-id="([^"]*)"/);
-                    const tvgId = channelInfo ? channelInfo[1] : '';
-                    const groupInfo = parts[0].match(/group-title="([^"]*)"/);
-                    const groupTitle = groupInfo ? groupInfo[1] : '';
-                    const logoInfo = parts[0].match(/tvg-logo="([^"]*)"/);
-                    const logo = logoInfo ? logoInfo[1] : '';
-                    const url = lines[lines.indexOf(line) + 1];
-
-                    if (!channels[groupTitle]) {
-                        channels[groupTitle] = [];
-                    }
-                    channels[groupTitle].push({
-                        name: channelName,
-                        url: url,
-                        logo: logo,
-                        tvgId: tvgId
-                    });
-                }
-            });
-
-            // Reset dropdowns
-            document.getElementById('group-select').innerHTML = '<option value="">Group:</option>';
-            document.getElementById('channel-select').innerHTML = '<option value="">Channel:</option>';
-
-            populateGroupDropdown();
+        // Load the JSON file from a local file
+        function loadJSONFromFile() {
+            resetDropdowns(); // Reset the dropdowns before loading new data
+            const fileInput = document.getElementById('json-input');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const jsonData = JSON.parse(e.target.result);
+                    parseJSON(jsonData);
+                };
+                reader.readAsText(file);
+            }
         }
 
-        // Populate the group dropdown with the groups from the .m3u file
-        function populateGroupDropdown() {
+        // Load the JSON file from a URL
+        function loadJSONFromURL() {
+            resetDropdowns(); // Reset the dropdowns before loading new data
+            const url = document.getElementById('json-url').value;
+            if (url) {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => parseJSON(data))
+                    .catch(error => alert('Error loading JSON URL: ' + error.message));
+            }
+        }
+
+        // Reset the dropdown lists
+        function resetDropdowns() {
             const groupSelect = document.getElementById('group-select');
+            const channelSelect = document.getElementById('channel-select');
             groupSelect.innerHTML = '<option value="">Group:</option>';
+            channelSelect.innerHTML = '<option value="">Channel:</option>';
+            channels = {};
+        }
+
+        // Parse the M3U file content
+        function parseM3U(data) {
+            const lines = data.split('\n');
+            let currentGroup = '';
+            lines.forEach(line => {
+                if (line.startsWith('#EXTINF:')) {
+                    const nameMatch = line.match(/,(.*)/);
+                    const name = nameMatch ? nameMatch[1] : '';
+                    const groupMatch = line.match(/group-title="([^"]*)"/);
+                    const group = groupMatch ? groupMatch[1] : '';
+                    if (group) {
+                        currentGroup = group;
+                        if (!channels[currentGroup]) {
+                            channels[currentGroup] = [];
+                        }
+                        channels[currentGroup].push({ name, url: '' });
+                    }
+                } else if (line && !line.startsWith('#')) {
+                    if (currentGroup && channels[currentGroup]) {
+                        channels[currentGroup][channels[currentGroup].length - 1].url = line;
+                    }
+                }
+            });
+            populateGroupSelect();
+        }
+
+        // Parse the JSON data
+        function parseJSON(data) {
+            channels = data;
+            populateGroupSelect();
+        }
+
+        // Populate the group dropdown list
+        function populateGroupSelect() {
+            const groupSelect = document.getElementById('group-select');
             for (const group in channels) {
                 const option = document.createElement('option');
                 option.value = group;
@@ -307,9 +338,8 @@
             const groupSelect = document.getElementById('group-select');
             const selectedGroup = groupSelect.value;
             const channelSelect = document.getElementById('channel-select');
-            channelSelect.innerHTML = '<option value="">Channel:</option>';
-
-            if (channels[selectedGroup]) {
+            channelSelect.innerHTML = '<option value="">Channel:</option>'; // Reset the channel dropdown
+            if (selectedGroup) {
                 channels[selectedGroup].forEach(channel => {
                     const option = document.createElement('option');
                     option.value = channel.url;
@@ -322,170 +352,63 @@
         // Handle channel selection change
         function onChannelChange() {
             const channelSelect = document.getElementById('channel-select');
-            const selectedUrl = channelSelect.value;
+            const selectedChannelURL = channelSelect.value;
             const selectedGroup = document.getElementById('group-select').value;
+            const selectedChannel = channels[selectedGroup].find(channel => channel.url === selectedChannelURL);
 
-            if (channels[selectedGroup]) {
-                const channel = channels[selectedGroup].find(c => c.url === selectedUrl);
-                if (channel) {
-                    displayChannelInfo(channel);
-                    loadStream(channel.url);
-                }
-            }
-        }
-
-        // Display the channel info
-        function displayChannelInfo(channel) {
+            // Display channel logo, details, and link
             const channelLogo = document.getElementById('channel-logo');
             const channelDetails = document.getElementById('channel-details');
             const channelLink = document.getElementById('channel-link');
             const drmInfo = document.getElementById('drm-info');
 
-            if (channel.logo) {
-                channelLogo.src = channel.logo;
+            if (selectedChannel) {
                 channelLogo.style.display = 'block';
+                channelDetails.style.display = 'block';
+                channelLink.style.display = 'block';
+                drmInfo.style.display = 'block';
+
+                // Replace with actual data
+                channelLogo.src = selectedChannel.logo || '';
+                channelDetails.textContent = selectedChannel.details || 'No details available';
+                channelLink.textContent = selectedChannel.url;
+                channelLink.href = selectedChannel.url;
+                drmInfo.textContent = selectedChannel.drmInfo || 'No DRM information available';
             } else {
                 channelLogo.style.display = 'none';
-            }
-
-            channelDetails.innerHTML = `
-                <strong>TVG ID:</strong> ${channel.tvgId || 'N/A'}<br>
-                <strong>Channel Name:</strong> ${channel.name || 'N/A'}
-            `;
-            channelDetails.style.display = 'block';
-
-            channelLink.href = channel.url;
-            channelLink.textContent = channel.url;
-            channelLink.style.display = 'block';
-
-            if (channel.keyId && channel.key) {
-                drmInfo.innerHTML = `
-                    <strong>Key ID:</strong> ${channel.keyId}<br>
-                    <strong>Key:</strong> ${channel.key}
-                `;
-                drmInfo.style.display = 'block';
-            } else {
+                channelDetails.style.display = 'none';
+                channelLink.style.display = 'none';
                 drmInfo.style.display = 'none';
             }
+
+            if (selectedChannelURL) {
+                loadStream(selectedChannelURL);
+            }
         }
 
-        // Load the stream
-        function loadStream(url, drmKeyId = '', drmKey = '') {
+        // Load and play the stream
+        function loadStream(url) {
             const enableDRM = document.getElementById('enable-drm').checked;
+            const keyID = document.getElementById('drm-key-id').value;
+            const key = document.getElementById('drm-key').value;
 
-            let config = {
+            const playerInstance = jwplayer('player-container');
+            const playerConfig = {
                 file: url,
-                width: "100%",
-                height: "100%",
-                aspectratio: "16:9"
+                width: '100%',
+                height: '500px'
             };
 
-            if (enableDRM && drmKeyId && drmKey) {
-                config.drm = {
+            if (enableDRM) {
+                playerConfig.drm = {
                     clearkey: {
-                        keyId: drmKeyId,
-                        key: drmKey
+                        keyId: keyID,
+                        key: key
                     }
                 };
             }
 
-            jwplayer("player-container").setup(config);
-        }
-
-        // Load the JSON file from a file input
-        function loadJSONFromFile() {
-            const jsonInput = document.getElementById('json-input');
-            if (jsonInput.files.length > 0) {
-                const file = jsonInput.files[0];
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    try {
-                        const data = JSON.parse(event.target.result);
-                        processChannelData(data);
-                    } catch (error) {
-                        alert('Error parsing JSON file.');
-                    }
-                };
-                reader.readAsText(file);
-            }
-        }
-
-        // Load the JSON file from a URL
-        function loadJSONFromURL() {
-            const url = document.getElementById('json-url').value;
-            if (url) {
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => processChannelData(data))
-                    .catch(error => alert('Error loading JSON URL: ' + error.message));
-            }
-        }
-
-        // Process the channel data from the JSON file
-        function processChannelData(data) {
-            const groups = {};
-
-            // Reset dropdowns
-            document.getElementById('group-select').innerHTML = '<option value="">Group:</option>';
-            document.getElementById('channel-select').innerHTML = '<option value="">Channel:</option>';
-
-            // Process channels
-            data.forEach(channel => {
-                const group = channel['tvg-language'];
-                const channelName = channel.channel_name;
-                const channelURL = channel.channel_url;
-                const logo = channel.channel_logo;
-                const tvgId = channel.channel_id;
-                const keyId = channel.keyId;
-                const key = channel.key;
-
-                // Add group to dropdown if not present
-                if (!groups[group]) {
-                    groups[group] = [];
-                    const groupOption = document.createElement('option');
-                    groupOption.value = group;
-                    groupOption.textContent = group;
-                    document.getElementById('group-select').appendChild(groupOption);
-                }
-
-                // Add channel to group
-                groups[group].push({
-                    name: channelName,
-                    url: channelURL,
-                    logo: logo,
-                    tvgId: tvgId,
-                    keyId: keyId,
-                    key: key
-                });
-            });
-
-            // Populate channels based on group selection
-            document.getElementById('group-select').addEventListener('change', function() {
-                const selectedGroup = this.value;
-                const channelSelect = document.getElementById('channel-select');
-                channelSelect.innerHTML = '<option value="">Channel:</option>';
-
-                if (groups[selectedGroup]) {
-                    groups[selectedGroup].forEach(channel => {
-                        const option = document.createElement('option');
-                        option.value = channel.url;
-                        option.textContent = channel.name;
-                        channelSelect.appendChild(option);
-                    });
-                }
-            });
-
-            // Handle channel selection
-            document.getElementById('channel-select').addEventListener('change', function() {
-                const selectedChannelURL = this.value;
-                const selectedGroup = document.getElementById('group-select').value;
-                const channel = groups[selectedGroup].find(c => c.url === selectedChannelURL);
-
-                if (channel) {
-                    displayChannelInfo(channel);
-                    loadStream(selectedChannelURL, channel.keyId, channel.key);
-                }
-            });
+            playerInstance.setup(playerConfig);
         }
     </script>
 </body>
