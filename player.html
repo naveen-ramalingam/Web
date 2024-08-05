@@ -258,12 +258,12 @@
             let currentGroup = '';
 
             lines.forEach(line => {
-                if (line.startsWith('#EXTINF')) {
+                line = line.trim();
+                if (line.startsWith('#EXTINF:')) {
                     const parts = line.split(',');
+                    const groupInfo = parts[0].match(/tvg-group="([^"]*)"/);
+                    const tvgId = parts[0].match(/tvg-id="([^"]*)"/);
                     const channelName = parts[1];
-                    const channelInfo = parts[0].match(/tvg-id="([^"]*)"/);
-                    const tvgId = channelInfo ? channelInfo[1] : '';
-                    const groupInfo = parts[0].match(/group-title="([^"]*)"/);
                     const groupTitle = groupInfo ? groupInfo[1] : '';
                     const logoInfo = parts[0].match(/tvg-logo="([^"]*)"/);
                     const tvgLogo = logoInfo ? logoInfo[1] : '';
@@ -275,7 +275,7 @@
                     currentGroup = groupTitle;
                     channels[groupTitle].push({
                         name: channelName,
-                        id: tvgId,
+                        id: tvgId ? tvgId[1] : '',
                         logo: tvgLogo
                     });
                 } else if (line && !line.startsWith('#')) {
@@ -431,17 +431,27 @@
                 hls.on(Hls.Events.MANIFEST_PARSED, () => {
                     video.play();
                 });
+                hls.on(Hls.Events.ERROR, function(event, data) {
+                    if (data.fatal === Hls.ErrorTypes.NETWORK_ERROR) {
+                        console.error('Network error: ', data.fatal);
+                    } else if (data.fatal === Hls.ErrorTypes.MEDIA_ERROR) {
+                        console.error('Media error: ', data.fatal);
+                    } else if (data.fatal === Hls.ErrorTypes.OTHER_ERROR) {
+                        console.error('Other error: ', data.fatal);
+                    }
+                });
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = url;
                 video.addEventListener('loadedmetadata', () => {
                     video.play();
                 });
+            } else {
+                console.error('HLS.js is not supported.');
             }
 
             // Handle DRM if enabled and provided
             if (drm && document.getElementById('enable-drm').checked) {
-                const player = jwplayer('player-container');
-                player.setup({
+                jwplayer('player-container').setup({
                     file: url,
                     drm: {
                         clearkey: {
