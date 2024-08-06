@@ -496,4 +496,17 @@
         });
     </script>
 </body>
-</html>
+</html>// Handle channel selection change
+function onChannelChange() {
+    const channelSelect = document.getElementById('channel-select');
+    const selectedUrl = channelSelect.value;
+    const selectedGroup = document.getElementById('group-select').value;
+
+    if (channels[selectedGroup]) {
+        const channel = channels[selectedGroup].find(c => c.url === selectedUrl);
+        if (channel) {
+            displayChannelInfo(channel);
+            loadStream(channel.url); // Play the stream immediately
+        }
+    }
+}
